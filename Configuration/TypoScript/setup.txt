@@ -1,0 +1,10 @@
+####################################################
+# General configuration root 
+#
+# @author Daniel Lienert <daniel@lienert.cc> 
+# @author Michael Knoll <mimi@kaktusteam.de>
+# @package YAG
+# @subpackage Typoscript
+####################################################
+
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:yag_theme_simpleviewer/Configuration/TypoScript/Themes/GalleryView/Theme.ts">

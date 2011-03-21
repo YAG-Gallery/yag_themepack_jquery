@@ -1,0 +1,3 @@
+config.yag_themepack_jquery {
+	
+}
