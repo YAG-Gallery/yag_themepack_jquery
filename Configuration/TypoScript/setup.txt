@@ -7,4 +7,4 @@
 # @subpackage Typoscript
 ####################################################
 
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:yag_theme_simpleviewer/Configuration/TypoScript/Themes/GalleryView/Theme.ts">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:yag_themepack_jquery/Configuration/TypoScript/Themes/GalleryView/Theme.ts">

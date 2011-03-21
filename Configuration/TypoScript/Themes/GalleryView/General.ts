@@ -17,7 +17,7 @@ plugin.tx_yag.settings.themes.galleryView {
 	
 	controller {
 		ItemList {
-			list.template = EXT:yag_theme_simpleviewer/Resources/Private/Templates/GalleryView/ItemList/List.html
+			list.template = EXT:yag_themepack_jquery/Resources/Private/Templates/GalleryView/ItemList/List.html
 		}
 	}
 }
