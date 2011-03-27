@@ -34,4 +34,38 @@ plugin.tx_yag.settings.themes.galleryView {
 	includeCSS {
 		10 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/GalleryView/css/jquery.galleryview-3.0.css
 	}
+	
+	
+	## Configuration for gallery view
+	
+	transition_interval = 0
+	transition_speed 	= 1000
+	easing 				= 0
+	
+	pause_on_hover 		= false
+	show_panels			= true
+	panel_width			= 800
+	panel_height		= 500
+	panel_animation		= crossfade
+	overlay_opacity		= 0.7
+	overlay_position	= bottom
+	panel_scale			= crop
+	show_panel_nav		= true
+	show_overlays		= true
+	
+	show_filmstrip		= true
+	frame_width			= 120
+	frame_height		= 80
+	start_frame			= 1
+	filmstrip_size		= 3
+	frame_opacity		= 0.5
+	filmstrip_style		= scroll
+	filmstrip_position	= bottom
+	show_filmstrip_nav	= true
+	frame_gap			= 15
+	frame_scale			= crop
+	show_captions		= false
+
+	pointer_size		= 0
+	animate_pointer		= true
 }

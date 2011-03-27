@@ -79,7 +79,9 @@
 .gv-filmstrip { margin: 5px; }
 
 /* FILMSTRIP FRAMES (contains both images and captions) */
-.gv-frame {}
+.gv-frame {
+	list-style-type:none;
+}
 
 /* WRAPPER FOR FILMSTRIP IMAGES */
 .gv-frame .gv-img_wrap {}
