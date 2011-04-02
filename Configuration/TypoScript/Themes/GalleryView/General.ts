@@ -25,9 +25,9 @@ plugin.tx_yag.settings.themes.galleryView {
 	includeLibCSS = jQueryUi
 	
 	includeJS {
-		10 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/GalleryView/js/jquery.timers-1.2.js
-		20 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/GalleryView/js/jquery.easing.1.3.js
-		30 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/GalleryView/js/jquery.galleryview-3.0.js
+		galleryView10 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/GalleryView/js/jquery.timers-1.2.js
+		galleryView20 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/GalleryView/js/jquery.easing.1.3.js
+		galleryView30 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/GalleryView/js/jquery.galleryview-3.0.js
 	}
 	
 	includeCSS >

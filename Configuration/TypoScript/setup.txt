@@ -7,4 +7,8 @@
 # @subpackage Typoscript
 ####################################################
 
+# Include theme GalleryView
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:yag_themepack_jquery/Configuration/TypoScript/Themes/GalleryView/Theme.ts">
+
+# Include theme CrossSlide
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:yag_themepack_jquery/Configuration/TypoScript/Themes/CrossSlide/Theme.ts">

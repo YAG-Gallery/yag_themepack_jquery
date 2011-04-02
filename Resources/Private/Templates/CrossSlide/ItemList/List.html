@@ -1,0 +1,30 @@
+{namespace yag=Tx_Yag_ViewHelpers}
+{namespace extlist=Tx_PtExtlist_ViewHelpers}
+{namespace themepackJquery=Tx_YagThemepackJquery_ViewHelpers}
+
+<extlist:comment>
+<!--  
+Template for rendering an album with CrossSlide
+
+Here is a list of objects / variables that can be accessed in this template:
+
+Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in album
+
+@package YAG
+@author Daniel Lienert <daniel@lienert.cc>
+-->
+</extlist:comment>
+
+<style type="text/css">
+	.yag-crossSlide {
+	  width: 600px;
+	  height: 200px;
+	}
+</style>
+
+<div id="test" class="yag-crossSlide"></div>
+
+<script type="text/javascript">
+	<themepackJquery:CrossSlide identifier="test" listData="{listData}" galleryOptions="{fade:1}"/>
+</script>
+
