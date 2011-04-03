@@ -52,8 +52,15 @@ class Tx_YagThemepackJquery_ViewHelpers_CrossSlideViewHelper extends Tx_Fluid_Co
 	protected $crossSlideSettings = array();
 	
 	
+	/**
+	 * @var bool
+	 */
 	protected $zoomReversed = false;
 	
+	
+	/**
+	 * @var bool
+	 */
 	protected $panReversed = false;
 	
 	
@@ -71,7 +78,7 @@ class Tx_YagThemepackJquery_ViewHelpers_CrossSlideViewHelper extends Tx_Fluid_Co
 	
 
 	/**
-	 * 
+	 * Renders the crossSlide call
 	 *
 	 * @param string $identifier
 	 * @param Tx_PtExtlist_Domain_Model_List_ListData $listData
@@ -84,6 +91,15 @@ class Tx_YagThemepackJquery_ViewHelpers_CrossSlideViewHelper extends Tx_Fluid_Co
 	}
 
 	
+	
+	/**
+	 * Combines the two parts of the crossSlide call
+	 * 
+	 * @param string $identifier div identifier
+	 * @param string $parameterString parameter JSON array
+	 * @param string $imageListArray imageList JSON array
+	 * @return complet crossSlide call
+	 */
 	protected function buildScript($identifier, $parameterString, $imageListArray) {
 		$jsScript = "$('#%s').crossSlide(%s,%s);";
 		$jsScript = sprintf($jsScript, $identifier, $parameterString, $imageListArray);
@@ -91,6 +107,12 @@ class Tx_YagThemepackJquery_ViewHelpers_CrossSlideViewHelper extends Tx_Fluid_Co
 	}
 	
 	
+	
+	/**
+	 * BuildParameterString
+	 * 
+	 * @return string gallery parameter JSON string
+	 */
 	protected function buildParameterString() {
 		$gallerySettings = $this->crossSlideSettings['gallery'];
 		array_filter($gallerySettings);
@@ -101,6 +123,13 @@ class Tx_YagThemepackJquery_ViewHelpers_CrossSlideViewHelper extends Tx_Fluid_Co
 	}
 	
 	
+	
+	/**
+	 * Build the image JOSN parameter string
+	 * 
+	 * @param Tx_PtExtlist_Domain_Model_List_ListData $listData
+	 * @return string image JOSN parameter string
+	 */
 	protected function buildImageListArray(Tx_PtExtlist_Domain_Model_List_ListData $listData) {
 		
 		$jsImageArray = array();
@@ -122,6 +151,13 @@ class Tx_YagThemepackJquery_ViewHelpers_CrossSlideViewHelper extends Tx_Fluid_Co
 	}
 	
 	
+	
+	/**
+	 * Build 'from' and 'to' for a single image
+	 * 
+	 * @param array $imageSettings
+	 * @return array
+	 */
 	protected function buildPanAndZoom($imageSettings) {
 		
 		$pan[] = sprintf('%s%% %s%% ',
@@ -165,6 +201,7 @@ class Tx_YagThemepackJquery_ViewHelpers_CrossSlideViewHelper extends Tx_Fluid_Co
 		
 		return $value;
 	}
+	
 	
 	
 	/**
