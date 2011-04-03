@@ -33,10 +33,28 @@ class Tx_YagThemepackJquery_ViewHelpers_CrossSlideViewHelper extends Tx_Fluid_Co
 	
 	
 	/**
+	 * @var Tx_Yag_Domain_Configuration_ConfigurationBuilder
+	 */
+	protected $configurationBuilder;
+	
+	
+	/**
 	 * @var Tx_Yag_Domain_Configuration_Image_ResolutionConfigCollection
 	 */
 	protected $resolutionConfigCollection;
 	
+	
+	/**
+	 * CrossSlide Settings
+	 * 
+	 * @var array
+	 */
+	protected $crossSlideSettings = array();
+	
+	
+	protected $zoomReversed = false;
+	
+	protected $panReversed = false;
 	
 	
 	/**
@@ -46,22 +64,20 @@ class Tx_YagThemepackJquery_ViewHelpers_CrossSlideViewHelper extends Tx_Fluid_Co
 	public function initialize() {
 		parent::initialize();
 		
-		$this->resolutionConfigCollection = Tx_Yag_Domain_Configuration_ConfigurationBuilderFactory::getInstance()
-													->buildThemeConfiguration()
-													->getResolutionConfigCollection();								
+		$this->configurationBuilder =  Tx_Yag_Domain_Configuration_ConfigurationBuilderFactory::getInstance();
+		$this->resolutionConfigCollection = $this->configurationBuilder->buildThemeConfiguration()->getResolutionConfigCollection();
+		$this->crossSlideSettings = $this->configurationBuilder->getSettings('crossSlide');					
 	}
 	
 
 	/**
 	 * 
-	 * Enter description here ...
+	 *
 	 * @param string $identifier
 	 * @param Tx_PtExtlist_Domain_Model_List_ListData $listData
-	 * @param array $galleryOptions
-	 * @param array $imageOptions
 	 */
-	public function render($identifier, Tx_PtExtlist_Domain_Model_List_ListData $listData, $galleryOptions = array(), $imageOptions = array()) { 
-		$imageListArray = $this->buildImageListArray($listData, $imageOption);
+	public function render($identifier, Tx_PtExtlist_Domain_Model_List_ListData $listData) { 
+		$imageListArray = $this->buildImageListArray($listData);
 		$parameterString = $this->buildParameterString($galleryOptions);
 		
 		return $this->buildScript($identifier, $parameterString, $imageListArray);
@@ -71,21 +87,21 @@ class Tx_YagThemepackJquery_ViewHelpers_CrossSlideViewHelper extends Tx_Fluid_Co
 	protected function buildScript($identifier, $parameterString, $imageListArray) {
 		$jsScript = "$('#%s').crossSlide(%s,%s);";
 		$jsScript = sprintf($jsScript, $identifier, $parameterString, $imageListArray);
-
 		return $jsScript;
 	}
 	
 	
-	protected function buildParameterString($galleryOptions) {
-		array_filter($galleryOptions);
+	protected function buildParameterString() {
+		$gallerySettings = $this->crossSlideSettings['gallery'];
+		array_filter($gallerySettings);
 		
-		$parameterString = json_encode($galleryOptions);
+		$parameterString = json_encode($gallerySettings);
 		
 		return $parameterString;
 	}
 	
 	
-	protected function buildImageListArray(Tx_PtExtlist_Domain_Model_List_ListData $listData, $imageOption = array()) {
+	protected function buildImageListArray(Tx_PtExtlist_Domain_Model_List_ListData $listData) {
 		
 		$jsImageArray = array();
 		
@@ -97,13 +113,74 @@ class Tx_YagThemepackJquery_ViewHelpers_CrossSlideViewHelper extends Tx_Fluid_Co
 				'alt' => $imageObject->getTitle()
 			);
 			
-			$jsImage['from'] = '100% 50% 1x';
-			$jsImage['to'] =   '30% 50% 1.5x';
-			$jsImage['time'] =   '5';
-			
+			$jsImage['time'] = $this->crossSlideSettings['image']['time'];
+			$jsImage = array_merge($jsImage, $this->buildPanAndZoom($this->crossSlideSettings['image']));
 			$jsImageArray[] = $jsImage;
 		}
-		
+
 		return json_encode($jsImageArray);
 	}
+	
+	
+	protected function buildPanAndZoom($imageSettings) {
+		
+		$pan[] = sprintf('%s%% %s%% ',
+									$this->calculatePanRandom($imageSettings['pan']['startY'], $imageSettings['pan']['variance']),
+									$this->calculatePanRandom($imageSettings['pan']['startX'], $imageSettings['pan']['variance'])
+									);
+		$pan[] = sprintf('%s%% %s%% ',
+									$this->calculatePanRandom($imageSettings['pan']['stopY'], $imageSettings['pan']['variance']),
+									$this->calculatePanRandom($imageSettings['pan']['stopY'], $imageSettings['pan']['variance'])
+									);
+									
+		$zoom[] = $this->calculateZoomRandom($imageSettings['zoom']['stop'], $imageSettings['zoom']['variance']) . 'x';
+		$zoom[] = $this->calculateZoomRandom($imageSettings['zoom']['start'], $imageSettings['zoom']['variance']) . 'x';									
+									
+		if($imageSettings['pan']['alternate']) $this->panReversed = $this->panReversed ? false : true;
+		if($imageSettings['zoom']['alternate']) $this->zoomReversed = $this->zoomReversed ? false : true;
+
+		if($this->panReversed) $pan = array_reverse($pan);
+		if($this->zoomReversed) $zoom = array_reverse($zoom);
+		
+		return array(
+			'from' => current($pan) . current($zoom),
+			'to' => end($pan) . end($zoom),
+		);
+	}
+	
+	
+	
+	/**
+	 * Calculate pan random variance
+	 * 
+	 * @param int $value
+	 * @param int $variance
+	 */
+	protected function calculatePanRandom($value, $variance) {
+		$randVariance = (int) rand($variance * -1, $variance);
+		
+		$value += $randVariance;
+		$value < 0 ? 0 : $value;
+		$value > 100 ? 100 : $value;
+		
+		return $value;
+	}
+	
+	
+	/**
+	 * Calculate zoom random variance
+	 * 
+	 * @param int $value
+	 * @param int $variance
+	 */
+	protected function calculateZoomRandom($value, $variance) {
+		$variance = (int)($variance * 1000);
+		$randVariance = (int)rand($variance * -1, $variance);
+		
+		$value += $randVariance / 1000;
+		$value < 1 ? 1 : $value;
+
+		return $value;
+	}
+	
 }
