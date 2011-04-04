@@ -12,7 +12,7 @@
 
 $EM_CONF[$_EXTKEY] = array(
 	'title' => 'YAG Themepack jQuery',
-	'description' => '',
+	'description' => 'Collection of jQuery based themes for YAG. Scripts included: galleryView (highly customizable gallery script), crossSlide (slide show with Ken Burns effect)',
 	'category' => 'plugin',
 	'author' => 'Daniel Lienert',
 	'author_email' => 'daniel@lienert.cc',
@@ -35,7 +35,7 @@ $EM_CONF[$_EXTKEY] = array(
 			'cms' => '',
 			'extbase' => '',
 			'fluid' => '',
-			'yag' => '1.1.1',
+			'yag' => '1.1.3',
 		),
 		'conflicts' => array(
 		),

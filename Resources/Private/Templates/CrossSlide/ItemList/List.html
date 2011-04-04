@@ -16,15 +16,15 @@ Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in 
 </extlist:comment>
 
 <style type="text/css">
-	.yag-crossSlide {
-	  width: 600px;
-	  height: 300px;
+	.yag-crossSlide-{config.contextIdentifier} {
+	  width: {config.settings.crossSlide.gallery.canvasWidth}px;
+	  height: {config.settings.crossSlide.gallery.canvasHeight}px;
 	}
 </style>
 
-<div id="test" class="yag-crossSlide"></div>
+<div id="yagConext-{config.contextIdentifier}" class="yag-crossSlide-{config.contextIdentifier}"></div>
 
 <script type="text/javascript">
-	<themepackJquery:CrossSlide identifier="test" listData="{listData}"/>
+	<themepackJquery:CrossSlide identifier="yagConext-{config.contextIdentifier}" listData="{listData}"/>
 </script>
 

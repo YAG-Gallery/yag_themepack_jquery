@@ -7,6 +7,10 @@
 ####################################################
 
 plugin.tx_yag.settings.themes.crossSlide {
+
+	themeInfo {
+		name = crossSlide (Simple Crossfade)
+	}
 	
 	resolutionConfigs {
 		medium {
@@ -34,17 +38,41 @@ plugin.tx_yag.settings.themes.crossSlide {
 	# --------------------
 	
 	crossSlide {	
+		
+		#Gallery Settings
+		gallery {
+			canvasWidth = 600
+			canvasHeight = 300
+			
+			sleep = 2
+			fade = 1
+		}
+	}
+}
+
+plugin.tx_yag.settings.themes.crossSlideKenBurns < plugin.tx_yag.settings.themes.crossSlide
+plugin.tx_yag.settings.themes.crossSlideKenBurns {
+	
+	themeInfo {
+		name = crossSlide (Ken Burns effect)
+	}
+
+	# --------------------
+	# CrossSlide Settings
+	# --------------------
+	
+	crossSlide {
+	
 		# Imasge Settings
 		image {
-			
 			pan {
-				startX = 60
-				stopX = 40
+				startX = 40
+				stopX = 60
 				
-				startY = 50
-				stopY = 30
+				startY = 30
+				stopY = 60
 				
-				variance = 10
+				variance = 20
 				alternate = 1
 			}
 			
@@ -55,13 +83,16 @@ plugin.tx_yag.settings.themes.crossSlide {
 				variance = 0.3
 				alternate = 1
 			}
-			
-			time = 3
-			
+			time = 3			
 		}
+		
 		
 		#Gallery Settings
 		gallery {
+			canvasWidth = 600
+			canvasHeight = 300
+			
+			sleep = 
 			fade = 1
 		}
 	}

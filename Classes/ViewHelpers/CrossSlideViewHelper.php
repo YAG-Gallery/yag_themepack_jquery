@@ -142,8 +142,12 @@ class Tx_YagThemepackJquery_ViewHelpers_CrossSlideViewHelper extends Tx_Fluid_Co
 				'alt' => $imageObject->getTitle()
 			);
 			
-			$jsImage['time'] = $this->crossSlideSettings['image']['time'];
-			$jsImage = array_merge($jsImage, $this->buildPanAndZoom($this->crossSlideSettings['image']));
+			if(array_key_exists('time', $this->crossSlideSettings['image'])) $jsImage['time'] = $this->crossSlideSettings['image']['time'];
+			
+			if(is_array($this->crossSlideSettings['image']['pan']) && is_array($this->crossSlideSettings['image']['zoom'])) {
+				$jsImage = array_merge($jsImage, $this->buildPanAndZoom($this->crossSlideSettings['image']));	
+			}
+			
 			$jsImageArray[] = $jsImage;
 		}
 

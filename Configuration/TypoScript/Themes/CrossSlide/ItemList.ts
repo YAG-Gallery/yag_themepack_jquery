@@ -7,6 +7,6 @@
 # @subpackage Typoscript
 ####################################################
 
-plugin.tx_yag.settings.themes.galleryView.itemList {
+plugin.tx_yag.settings.themes.crossSlide.itemList {
 	itemsPerPage = 0
 }
