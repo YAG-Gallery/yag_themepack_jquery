@@ -142,7 +142,9 @@ class Tx_YagThemepackJquery_ViewHelpers_CrossSlideViewHelper extends Tx_Fluid_Co
 				'alt' => $imageObject->getTitle()
 			);
 			
-			if(array_key_exists('time', $this->crossSlideSettings['image'])) $jsImage['time'] = $this->crossSlideSettings['image']['time'];
+			if(is_array($this->crossSlideSettings['image']) && array_key_exists('time', $this->crossSlideSettings['image'])) {
+				 $jsImage['time'] = $this->crossSlideSettings['image']['time'];
+			}
 			
 			if(is_array($this->crossSlideSettings['image']['pan']) && is_array($this->crossSlideSettings['image']['zoom'])) {
 				$jsImage = array_merge($jsImage, $this->buildPanAndZoom($this->crossSlideSettings['image']));	
@@ -219,7 +221,7 @@ class Tx_YagThemepackJquery_ViewHelpers_CrossSlideViewHelper extends Tx_Fluid_Co
 		$randVariance = (int)rand($variance * -1, $variance);
 		
 		$value += $randVariance / 1000;
-		$value < 1 ? 1 : $value;
+		$value < 0 ? 0 : $value;
 
 		return $value;
 	}
