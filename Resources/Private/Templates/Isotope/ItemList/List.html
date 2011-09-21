@@ -1,0 +1,40 @@
+{namespace yag=Tx_Yag_ViewHelpers}
+{namespace extlist=Tx_PtExtlist_ViewHelpers}
+{namespace themepackJquery=Tx_YagThemepackJquery_ViewHelpers}
+
+<extlist:comment>
+<!--  
+Template for rendering an album with Isotope
+
+Here is a list of objects / variables that can be accessed in this template:
+
+Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in album
+
+@package YAG
+@author Daniel Lienert <daniel@lienert.cc>
+-->
+</extlist:comment>
+
+<div class="yag-isotope-filter-container">
+    <div class="yag-isotope-filter-label">Tags:</div>
+    <ul class="yag-isotope-filter clearfix" id="filters-{config.contextIdentifier}">
+        <li class="yag-isotope-filterItem"><a href="{f:uri.page()}#" data-filter="*">All</a></li>
+      <themepackJquery:Isotope.tagList>
+        <li class="yag-isotope-filterItem"><a href="{f:uri.page()}#" data-filter=".{cleanTagName}">{tagName}</a></li>
+      </themepackJquery:Isotope.tagList>
+    </ul>
+</div>
+
+<div id="container-{config.contextIdentifier}">
+    <themepackJquery:Isotope.imageList listData="{listData}">
+        <div class="element {tags}" style="padding: 5px;">
+            <a href="{image.sourceUri}" rel="shadowbox[images_{image.album.uid}]">
+                <yag:image item="{image}" resolutionName="{resolutionName}" />
+            </a>
+        </div>
+    </themepackJquery:Isotope.imageList>
+</div>
+
+<yag:Javascript.template templatePath="EXT:yag_themepack_jquery/Resources/Private/Templates/Isotope/JSTemplates/Isotope.js"
+                         addToHead="0"
+                         arguments="{conatiner:'container-{config.contextIdentifier}', filters:'filters-{config.contextIdentifier}'}"></yag:Javascript.template>

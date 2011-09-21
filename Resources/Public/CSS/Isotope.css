@@ -1,0 +1,72 @@
+/**** Isotope filterline ****/
+
+.yag-isotope-filter-label {
+    float:left;
+    line-height: 23px;
+    display: inline-block;
+}
+
+.yag-isotope-filter li {
+    float: left;
+}
+
+.yag-isotope-filter li a {
+    background: url("../Images/Isotope/bg-lightgrey.png") repeat-x scroll 0 0 transparent;
+    border: 1px solid #BFBFBF;
+    color: #000000;
+    display: inline-block;
+    line-height: 23px;
+    margin-right: 6px;
+    padding: 0 5px;
+    text-align: center;
+}
+
+.yag-isotope-filter li a:hover {
+    color: #FF8700;
+}
+
+.yag-isotope-filter-container ul {
+    list-style: none outside none;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+}
+
+
+/**** Isotope filtering ****/
+
+.isotope-item {
+    z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+    pointer-events: none;
+    z-index: 1;
+}
+
+.isotope,
+.isotope .isotope-item {
+    /* change duration value to whatever you like */
+    -webkit-transition-duration: 0.8s;
+    -moz-transition-duration: 0.8s;
+    transition-duration: 0.8s;
+}
+
+.isotope {
+    -webkit-transition-property: height, width;
+    -moz-transition-property: height, width;
+    transition-property: height, width;
+}
+
+.isotope .isotope-item {
+    -webkit-transition-property: -webkit-transform, opacity;
+    -moz-transition-property: -moz-transform, opacity;
+    transition-property: transform, opacity;
+}
+
