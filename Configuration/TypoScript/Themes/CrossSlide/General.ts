@@ -8,9 +8,8 @@
 
 plugin.tx_yag.settings.themes.crossSlide {
 
-	themeInfo {
-		name = crossSlide (Simple Crossfade)
-	}
+	title = CrossSlide (Simple Crossfade)
+	description = Uses JQuery CrossSlide to slide the images.
 	
 	resolutionConfigs {
 		medium {
@@ -52,10 +51,9 @@ plugin.tx_yag.settings.themes.crossSlide {
 
 plugin.tx_yag.settings.themes.crossSlideKenBurns < plugin.tx_yag.settings.themes.crossSlide
 plugin.tx_yag.settings.themes.crossSlideKenBurns {
-	
-	themeInfo {
-		name = crossSlide (Ken Burns effect)
-	}
+
+	title = CrossSlide (Ken Burns Effect)
+	description = Uses JQuery CrossSlide to show a Ken Burns Effect (pan and zoom images)
 
 	# --------------------
 	# CrossSlide Settings

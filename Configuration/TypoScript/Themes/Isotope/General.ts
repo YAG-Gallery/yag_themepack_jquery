@@ -8,10 +8,9 @@
 
 plugin.tx_yag.settings.themes.isotope {
 
-	themeInfo {
-		name = isotope
-	}
-	
+    title = Isotope
+    description = Uses the Isotope Jquery Script
+
 	resolutionConfigs {
 
 		bigSquare {
@@ -30,8 +29,8 @@ plugin.tx_yag.settings.themes.isotope {
 		}
 
 		horizontalLong {
-		    width = 230c
-			height = 110c
+		    width = 110c
+			height = 230c
 		}
 	}
 	

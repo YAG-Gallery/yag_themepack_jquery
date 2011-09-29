@@ -7,7 +7,10 @@
 ####################################################
 
 plugin.tx_yag.settings.themes.galleryView {
-	
+
+	title  = GalleryView
+	description = Uses GalleryView JQuery Plugin
+
 	resolutionConfigs {
 		medium {
 			width = 800
