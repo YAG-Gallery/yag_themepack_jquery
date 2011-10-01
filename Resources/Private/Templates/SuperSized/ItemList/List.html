@@ -1,0 +1,43 @@
+{namespace themepackJquery=Tx_YagThemepackJquery_ViewHelpers}
+
+<themepackJquery:superSized listData="{listData}" />
+
+<!--Thumbnail Navigation-->
+<div id="prevthumb"></div>
+<div id="nextthumb"></div>
+
+<!--Arrow Navigation-->
+
+
+<div id="thumb-tray" class="load-item">
+    <div id="thumb-back"></div>
+    <div id="thumb-forward"></div>
+</div>
+
+<!--Time Bar-->
+<div id="progress-back" class="load-item">
+    <div id="progress-bar"></div>
+
+</div>
+
+<!--Control Bar-->
+<div id="controls-wrapper">
+    <div id="controls">
+
+        <!--Slide counter-->
+        <div id="slidecounter">
+            <span class="slidenumber"></span>/<span class="totalslides"></span>
+        </div>
+
+        <!--Slide captions displayed here-->
+        <div id="slidecaption"></div>
+
+        <!--Navigation-->
+        <div id="navigation">
+            <img id="prevslide" src="{superSizedImagePath}/back_dull.png"/>
+            <img id="pauseplay" src="{superSizedImagePath}/pause_dull.png"/>
+            <img id="nextslide" src="{superSizedImagePath}/forward_dull.png"/>
+        </div>
+
+    </div>
+</div>

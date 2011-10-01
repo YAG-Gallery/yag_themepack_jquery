@@ -20,5 +20,10 @@ module.tx_yag.settings.themes.crossSlideKenBurns < plugin.tx_yag.settings.themes
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:yag_themepack_jquery/Configuration/TypoScript/Themes/Isotope/Theme.ts">
 module.tx_yag.settings.themes.isotope < plugin.tx_yag.settings.themes.isotope
 
+# Include theme SuperSized
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:yag_themepack_jquery/Configuration/TypoScript/Themes/SuperSized/Theme.ts">
+module.tx_yag.settings.themes.superSized < plugin.tx_yag.settings.themes.superSized
+
+
 # Widget
 #<INCLUDE_TYPOSCRIPT: source="FILE:EXT:yag_themepack_jquery/Configuration/TypoScript/Widgets/CrossSlide.ts">

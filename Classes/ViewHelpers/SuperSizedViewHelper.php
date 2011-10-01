@@ -29,15 +29,14 @@
  * @author Daniel Lienert <daniel@lienert.cc>
  * @package ViewHelpers
  */
-class Tx_YagThemepackJquery_ViewHelpers_Isotope_ImageListViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractTagBasedViewHelper {
+class Tx_YagThemepackJquery_ViewHelpers_SuperSizedViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractTagBasedViewHelper {
 	
 	
 	/**
 	 * @var Tx_Yag_Domain_Configuration_ConfigurationBuilder
 	 */
 	protected $configurationBuilder;
-	
-	
+
 	
 	/**
 	 * (non-PHPdoc)
@@ -57,51 +56,59 @@ class Tx_YagThemepackJquery_ViewHelpers_Isotope_ImageListViewHelper extends Tx_F
 	 */
 	public function render(Tx_PtExtlist_Domain_Model_List_ListData $listData) {
 
-		$output = '';
+		$superSizedSettings = $this->buildSuperSizedSettings();
 
-		foreach($listData as $row) {
+		$superSizedSettings['slides'] = $this->buildSlideArray($listData);
+		$superSizedSettingsJSon = json_encode($superSizedSettings);
 
-			$image = $row->getCell('image')->getValue(); /** @var Tx_YAG_Domain_Model_Item $image  */
+		$this->templateVariableContainer->add('superSizedImagePath', $superSizedSettings['image_path']);
 
-			unset($cleanTagNames);
-			foreach($image->getTags() as $tag) {
-				$cleanTagNames[] = str_replace(array('.', ' '), '',$tag->getName());
-			}
-			
-			$this->templateVariableContainer->add('image', $image);
-			$this->templateVariableContainer->add('resolutionName', $this->getRandomResolutionName());
-			$this->templateVariableContainer->add('tags', implode(' ', $cleanTagNames));
-
-			$output .= $this->renderChildren();
-
-			$this->templateVariableContainer->remove('tags');
-			$this->templateVariableContainer->remove('image');
-			$this->templateVariableContainer->remove('resolutionName');
-
-		}
+		$output = '
+			<script type="text/javascript">
+				jQuery(function($){
+					$.supersized('.$superSizedSettingsJSon.');
+				});
+			</script>';
 
 		return $output;
-
 	}
 
 
 	/**
-	 * @return int|string
+	 * @return array
 	 */
-	protected function getRandomResolutionName() {
+	public function buildSuperSizedSettings() {
+		$headerUtility = t3lib_div::makeInstance('Tx_Yag_Utility_HeaderInclusion'); /** @var $headerUtility Tx_Yag_Utility_HeaderInclusion */
 
-		$weightArray = $this->configurationBuilder->getSettings('blockSizeWeighting');
+		$superSizedSettings = $this->configurationBuilder->getSettings('superSizedSettings');
 
-		$maxScore = 0;
-		$selectedResolution = '';
-
-		foreach($weightArray as $resolution => $weight) {
-			$rand = rand(0,$weight);
-			if($rand > $maxScore) {
-				$selectedResolution = $resolution;
-				$maxScore = $rand;
-			}
+		foreach($superSizedSettings as &$value) {
+			$value = is_numeric($value) ? intval($value) : $value;
 		}
-		return $selectedResolution;
+
+		$superSizedSettings['image_path'] = $headerUtility->getFileRelFileName($superSizedSettings['image_path']);
+
+		return $superSizedSettings;
+	}
+
+	
+
+
+	/**
+	 * @param $listData
+	 * @return void
+	 */
+	protected function buildSlideArray($listData) {
+		$slides = array();
+
+		foreach($listData as $listRow) {
+			$image = $listRow['image']->getValue(); /** @var $image Tx_Yag_Domain_Model_Item */
+			$slides[] = array(
+				'image' => $image->getSourceuri(),
+				'title' => $image->getTitle(),
+			);
+		}
+
+		return $slides;
 	}
 }

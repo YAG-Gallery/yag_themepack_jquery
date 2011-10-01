@@ -9,13 +9,13 @@
 plugin.tx_yag.settings.themes.isotope {
 
     title = Isotope
-    description = Uses the Isotope Jquery Script
+    description = Uses the Isotope Jquery Script to display images
 
 	resolutionConfigs {
 
 		bigSquare {
 			width = 230c
-			height = 230c
+			height = 235c
 		}
 
 		smallSquare {
@@ -30,7 +30,7 @@ plugin.tx_yag.settings.themes.isotope {
 
 		horizontalLong {
 		    width = 110c
-			height = 230c
+			height = 235c
 		}
 	}
 	
@@ -58,5 +58,10 @@ plugin.tx_yag.settings.themes.isotope {
 	# Isotope
 	# --------------------
 	
-
+    blockSizeWeighting {
+        smallSquare     = 40
+        bigSquare       = 20
+        verticalLong    = 20
+        horizontalLong  = 20
+    }
 }
