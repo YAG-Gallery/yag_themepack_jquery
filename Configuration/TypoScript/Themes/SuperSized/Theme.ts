@@ -13,3 +13,11 @@ plugin.tx_yag.settings.themes.superSized < plugin.tx_yag.settings.themes.default
 
 # Include ImageList Definitions
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:yag_themepack_jquery/Configuration/TypoScript/Themes/SuperSized/ItemList.ts">
+
+
+# Special super sized page
+superSizedPage = PAGE
+superSizedPage {
+    typeNum = 5173
+    10 < styles.content.get
+}
