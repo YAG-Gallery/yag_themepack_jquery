@@ -8,6 +8,8 @@
 
 .yag-isotope-filter li {
     float: left;
+    list-style: none outside none;
+    margin-left: 5px;
 }
 
 .yag-isotope-filter li a {
