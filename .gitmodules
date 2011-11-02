@@ -1,0 +1,3 @@
+[submodule "Resources/Public/GallerySource/SuperSized"]
+	path = Resources/Public/GallerySource/SuperSized
+	url = git://github.com/buildinternet/supersized.git
