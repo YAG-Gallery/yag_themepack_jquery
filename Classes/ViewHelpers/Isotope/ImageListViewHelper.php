@@ -63,10 +63,13 @@ class Tx_YagThemepackJquery_ViewHelpers_Isotope_ImageListViewHelper extends Tx_F
 
 			$image = $row->getCell('image')->getValue(); /** @var Tx_YAG_Domain_Model_Item $image  */
 
-			unset($cleanTagNames);
-			foreach($image->getTags() as $tag) {
-				$cleanTagNames[] = str_replace(array('.', ' '), '',$tag->getName());
+			$cleanTagNames = array();
+			if(array($image->getTags())) {
+				foreach($image->getTags() as $tag) {
+					$cleanTagNames[] = str_replace(array('.', ' '), '',$tag->getName());
+				}
 			}
+
 			
 			$this->templateVariableContainer->add('image', $image);
 			$this->templateVariableContainer->add('resolutionName', $this->getRandomResolutionName());
