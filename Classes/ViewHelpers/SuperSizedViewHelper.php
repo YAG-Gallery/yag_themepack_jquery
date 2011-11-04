@@ -64,13 +64,16 @@ class Tx_YagThemepackJquery_ViewHelpers_SuperSizedViewHelper extends Tx_Fluid_Co
 		$this->templateVariableContainer->add('superSizedImagePath', $superSizedSettings['image_path']);
 
 		$output = '
-			<script type="text/javascript">
 				jQuery(function($){
 					$.supersized('.$superSizedSettingsJSon.');
 				});
-			</script>';
+			';
 
-		return $output;
+		//return $output;
+
+		t3lib_div::makeInstance('Tx_Extbase_Object_ObjectManager')
+								->get('Tx_Yag_Utility_HeaderInclusion')
+								->addJsInlineCode('superSized-' . $this->configurationBuilder->getContextIdentifier(), $output);
 	}
 
 

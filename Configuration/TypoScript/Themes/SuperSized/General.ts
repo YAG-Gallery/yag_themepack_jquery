@@ -20,7 +20,7 @@ plugin.tx_yag.settings.themes.superSized {
     includeLibJS = jQuery
 	
 	includeJS {
-        superSized = EXT:yag_themepack_jquery/Resources/Public/GallerySource/SuperSized/slideshow/js/supersized.3.1.3.min.js
+        superSized = EXT:yag_themepack_jquery/Resources/Public/GallerySource/SuperSized/slideshow/js/supersized.3.2.5.min.js
 	}
 	
 	includeCSS >
