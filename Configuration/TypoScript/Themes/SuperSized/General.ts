@@ -20,13 +20,15 @@ plugin.tx_yag.settings.themes.superSized {
     includeLibJS = jQuery
 	
 	includeJS {
-        superSized = EXT:yag_themepack_jquery/Resources/Public/GallerySource/SuperSized/slideshow/js/supersized.3.2.5.min.js
+	    superSized10 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/SuperSized/slideshow/js/jquery.easing.min.js
+        superSized20 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/SuperSized/slideshow/js/supersized.3.2.5.min.js
+        superSized30 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/SuperSized/slideshow/theme/supersized.shutter.min.js
 	}
 	
 	includeCSS >
 	includeCSS {
         superSized10 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/SuperSized/slideshow/css/supersized.css
-        superSized11 = EXT:yag_themepack_jquery/Resources/Public/CSS/SuperSized.css
+        superSized11 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/SuperSized/slideshow/theme/supersized.shutter.css
 	}
 
 	# --------------------
@@ -50,8 +52,8 @@ plugin.tx_yag.settings.themes.superSized {
         image_path				=	EXT:yag_themepack_jquery/Resources/Public/GallerySource/SuperSized/slideshow/img/
 
         //Size & Position
-        min_width		        =   1024
-        min_height		        =   768
+        min_width		        =   0
+        min_height		        =   0
         vertical_center         =   1
         horizontal_center       =   1
         fit_portrait         	=   1
