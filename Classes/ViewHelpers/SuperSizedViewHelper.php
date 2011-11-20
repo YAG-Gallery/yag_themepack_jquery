@@ -49,9 +49,8 @@ class Tx_YagThemepackJquery_ViewHelpers_SuperSizedViewHelper extends Tx_Fluid_Co
 	
 
 	/**
-	 * Renders the crossSlide call
+	 * Renders the superSized call
 	 *
-	 * @param string $identifier
 	 * @param Tx_PtExtlist_Domain_Model_List_ListData $listData
 	 */
 	public function render(Tx_PtExtlist_Domain_Model_List_ListData $listData) {
@@ -83,11 +82,7 @@ class Tx_YagThemepackJquery_ViewHelpers_SuperSizedViewHelper extends Tx_Fluid_Co
 	public function buildSuperSizedSettings() {
 		$headerUtility = t3lib_div::makeInstance('Tx_Yag_Utility_HeaderInclusion'); /** @var $headerUtility Tx_Yag_Utility_HeaderInclusion */
 
-		$superSizedSettings = $this->configurationBuilder->getSettings('superSizedSettings');
-
-		foreach($superSizedSettings as &$value) {
-			$value = is_numeric($value) ? intval($value) : $value;
-		}
+		$superSizedSettings = $this->configurationBuilder->getJSCompliantSettings('superSizedSettings');
 
 		$superSizedSettings['image_path'] = $headerUtility->getFileRelFileName($superSizedSettings['image_path']);
 
