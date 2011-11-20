@@ -24,6 +24,9 @@ module.tx_yag.settings.themes.isotope < plugin.tx_yag.settings.themes.isotope
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:yag_themepack_jquery/Configuration/TypoScript/Themes/SuperSized/Theme.ts">
 module.tx_yag.settings.themes.superSized < plugin.tx_yag.settings.themes.superSized
 
+# Include theme NivoSlider
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:yag_themepack_jquery/Configuration/TypoScript/Themes/NivoSlider/Theme.ts">
+module.tx_yag.settings.themes.nivoSlider < plugin.tx_yag.settings.themes.nivoSlider
 
 # Widget
 #<INCLUDE_TYPOSCRIPT: source="FILE:EXT:yag_themepack_jquery/Configuration/TypoScript/Widgets/CrossSlide.ts">
