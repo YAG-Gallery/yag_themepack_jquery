@@ -24,28 +24,7 @@ plugin.tx_yag.settings.themes.nivoSlider {
 		    height = 60c
 		}
 	}
-	
-	controller {
-		ItemList {
-			list.template = EXT:yag_themepack_jquery/Resources/Private/Templates/NivoSlider/ItemList/List.html
-		}
-	}
-	
-	includeLibJS = jQuery
-	includeLibCSS >
-	
-	includeJS {
-		crossSlide = EXT:yag_themepack_jquery/Resources/Public/GallerySource/NivoSlider/jquery.nivo.slider.pack.js
-	}
-	
-	includeCSS >
-	includeCSS {
-	    nivoSlider10 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/NivoSlider/themes/default/default.css
-	    nivoSlider20 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/NivoSlider/themes/pascal/pascal.css
-	    nivoSlider30 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/NivoSlider/themes/orman/orman.css
-	    nivoSlider40 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/NivoSlider/nivo-slider.css
 
-	}
 
     // This CSS is only included if nivoSliderSettings.controlNavThumbs is true
 	thumbNavCSS = EXT:yag_themepack_jquery/Resources/Public/CSS/NivoSlider/ThumbNav.css
@@ -99,4 +78,27 @@ plugin.tx_yag.settings.themes.nivoSlider {
         // Start on a random slide
         randomStart = false
     }
+
+
+    controller {
+		ItemList {
+			list.template = EXT:yag_themepack_jquery/Resources/Private/Templates/NivoSlider/ItemList/List.html
+		}
+	}
+
+	includeLibJS = jQuery
+	includeLibCSS >
+
+	includeJS {
+		crossSlide = EXT:yag_themepack_jquery/Resources/Public/GallerySource/NivoSlider/jquery.nivo.slider.pack.js
+	}
+
+	includeCSS >
+	includeCSS {
+	    nivoSlider10 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/NivoSlider/themes/default/default.css
+	    nivoSlider20 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/NivoSlider/themes/pascal/pascal.css
+	    nivoSlider30 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/NivoSlider/themes/orman/orman.css
+	    nivoSlider40 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/NivoSlider/nivo-slider.css
+
+	}
 }

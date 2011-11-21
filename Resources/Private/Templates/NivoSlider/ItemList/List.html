@@ -30,7 +30,7 @@ Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in 
         </div>
         <f:for each="{listData}" key="rowIndex" as="listRow">
             <f:if condition="{listRow.image.value.description}">
-                <div id="htmlcaption-{listRow.image.value.uid}" class="nivo-html-caption"><f:format.raw>{listRow.image.value.description}</f:format.raw></div>
+                <div id="htmlcaption-{listRow.image.value.uid}" class="nivo-html-caption"><f:format.html>{listRow.image.value.description}</f:format.html></div>
             </f:if>
         </f:for>
     </div>
