@@ -22,9 +22,9 @@ Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in 
         <div class="ribbon"></div>
         <div id="nivoSlider-{config.contextIdentifier}" class="nivoSlider" style="width:{listData.firstRow.image.value.resolutions.medium.width}px; height:{listData.firstRow.image.value.resolutions.medium.height}px;">
             <f:for each="{listData}" key="rowIndex" as="listRow">
-                <img src="http://t3develop.harper/{yag:resource.image(item:listRow.image.value, resolutionName:'medium')}"
+                <img src="{yag:resource.image(item:listRow.image.value, resolutionName:'medium')}"
                            title="{f:if(condition:listRow.image.value.description, then:'#htmlcaption-{listRow.image.value.uid}', else:'')}"
-                           rel="http://t3develop.harper/{yag:resource.image(item:listRow.image.value, resolutionName:'thumb')}"
+                           rel="/{yag:resource.image(item:listRow.image.value, resolutionName:'thumb')}"
                         />
             </f:for>
         </div>
