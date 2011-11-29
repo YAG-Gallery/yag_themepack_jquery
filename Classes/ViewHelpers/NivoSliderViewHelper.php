@@ -91,11 +91,11 @@ class Tx_YagThemepackJquery_ViewHelpers_NivoSliderViewHelper extends Tx_Fluid_Co
 			$this->headerInclusion->addCSSFile($this->headerInclusion->getFileRelFileName($this->configurationBuilder->getSettings('thumbNavCSS')));
 		} else {
 			$itemCount = $this->templateVariableContainer->get('listData')->getCount();
-			$leftMargin = $itemCount * 10;
+			$leftMargin = (int) ($itemCount * 12.5);
 
 			$this->headerInclusion->addCssInlineBlock(
 				'nivoSlider-'.$this->contextIdentifier,
-				'#nivoSlider-{config.contextIdentifier} .nivo-controlNav {
+				'#nivoSlider-'.$this->contextIdentifier.' .nivo-controlNav {
 					margin-left: -'.$leftMargin.'px;
 				}'
 			);
