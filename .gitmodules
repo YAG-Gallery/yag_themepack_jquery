@@ -1,3 +1,6 @@
 [submodule "Resources/Public/GallerySource/SuperSized"]
 	path = Resources/Public/GallerySource/SuperSized
 	url = git://github.com/buildinternet/supersized.git
+[submodule "Resources/Public/GallerySource/Rondell"]
+	path = Resources/Public/GallerySource/Rondell
+	url = git://github.com/Sebobo/jquery.rondell.git
