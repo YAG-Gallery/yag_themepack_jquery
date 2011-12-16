@@ -1,0 +1,56 @@
+{namespace yag=Tx_Yag_ViewHelpers}
+{namespace themepackJquery=Tx_YagThemepackJquery_ViewHelpers}
+{namespace extlist=Tx_PtExtlist_ViewHelpers}
+
+<extlist:comment>
+<!--  
+Template for rendering an album.
+
+Here is a list of objects / variables that can be accessed in this template:
+
+Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in album
+
+@package YAG
+@author Daniel Lienert <daniel@lienert.cc>
+-->
+</extlist:comment>
+
+
+<div id="rondellGallery-{config.contextIdentifier}">
+    <f:for each="{listData}" key="rowIndex" as="listRow">
+        <div>
+            <a target="_blank" rel="rondell_1" href="{yag:resource.image(item:listRow.image.value, resolutionName:'medium')}">
+                <yag:image item="{listRow.image.value}" resolutionName="thumb" />
+                <h3>{listRow.image.value.name}</h3>
+                <p>
+                    {listRow.image.value.description}
+                </p>
+            </a>
+        </div>
+    </f:for>
+</div>
+
+
+
+<script type="text/javascript">
+    $(function() {
+        $('#rondellGallery-{config.contextIdentifier} > div').rondell({
+            preset: 'carousel',
+            radius: {
+                x: 220
+            },
+            isActive: function() {
+                return !$('#fancybox-wrap').is(':visible');
+            }
+        });
+
+        $('#rondellGallery a').fancybox({
+            hideOnContentClick: false,
+            padding: 0,
+            scrolling: 'no',
+            onStart: function(items, idx) {
+                return $(items[idx]).parent().hasClass('rondellItemFocused');
+            }
+        });
+    });
+</script>
