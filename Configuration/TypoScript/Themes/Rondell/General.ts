@@ -26,6 +26,17 @@ plugin.tx_yag.settings.themes.rondell {
 
 	}
 
+	# Show the item title beneath the image
+	showTitle = 1
+
+	# Show the item description beneath the image
+	showDescription = 1
+
+
+	# jQuery Rondell Settings
+	rondellSettings {
+
+	}
 
     controller {
 		ItemList {
@@ -38,12 +49,12 @@ plugin.tx_yag.settings.themes.rondell {
 
 	includeJS {
 		rondell10 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Rondell/lib/modernizr-2.0.6.min.js
-		rondell20 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Rondell/lib/jquery.rondell-0.8.3.min.js
+		rondell20 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Rondell/lib/jquery.fancybox-1.3.4.pack.js
+		rondell30 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Rondell/lib/jquery.rondell-0.8.6.min.js
 	}
 
 	includeCSS >
 	includeCSS {
 	    rondell10 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Rondell/css/jquery.rondell.css
-
 	}
 }
