@@ -20,7 +20,7 @@ plugin.tx_yag.settings.themes.rondell {
         }
 
 		medium {
-			maxW= 800
+			maxW = 800
 			maxH = 800
 		}
 
@@ -35,7 +35,46 @@ plugin.tx_yag.settings.themes.rondell {
 
 	# jQuery Rondell Settings
 	rondellSettings {
+		scaling = 2
+		opacityMin = 0.05
+		zIndex = 1000
+		fadeTime = 300
+		currentLayer = 0
+		resizeableClass = resizeable
+		smallClass = itemSmall
+		hiddenClass	= itemHidden
+		visibleItems = auto
+		alwaysShowCaption = false
+		repeating = true
+		randomStart = false
+		showContainer = true
 
+		autoRotation {
+            enabled = false
+            direction = 0
+            once = false
+            delay = 5000
+        }
+
+		controls {
+            enabled = true,
+            fadeTime = 400,
+            margin {
+                x = 20
+                y = 20
+            }
+        }
+
+        strings	{
+            prev = prev
+            next = next
+        }
+
+        touch {
+            enabled = true
+            preventDefaults = true
+            threshold = 100
+        }
 	}
 
     controller {
