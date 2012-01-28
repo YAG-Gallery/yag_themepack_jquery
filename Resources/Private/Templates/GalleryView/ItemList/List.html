@@ -51,7 +51,11 @@ Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in 
 
 <ul id="yag-galleryView-{config.contextIdentifier}">
     <f:for each="{listData}" key="rowIndex" as="listRow">		
-		 <li><yag:image item="{listRow.image.value}" resolutionName="medium" />
+		 <li><img frame="{yag:resource.image(item:listRow.image.value, resolutionName:'thumb')}"
+				  src="{yag:resource.image(item:listRow.image.value, resolutionName:'medium')}"
+				  title="{listRow.image.value.title}"
+				  longdesc="{listRow.image.value.description}"
+				 />
 	        <div class="gv-panel-overlay">
 	            <p>{listRow.image.value.description}</p>
 	        </div>

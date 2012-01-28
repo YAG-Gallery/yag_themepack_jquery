@@ -1,8 +1,8 @@
 ####################################################
-# Extlist configuration of the album 
+# General Configuration of Gallery View
 #
-# @author Daniel Lienert <daniel@lienert.cc> Michael Knoll <knoll@punkt.de>
-# @package YAG
+# @author Daniel Lienert <daniel@lienert.cc>
+# @package YAG jQuery Themepack
 # @subpackage Typoscript
 ####################################################
 
@@ -11,10 +11,16 @@ plugin.tx_yag.settings.themes.galleryView {
 	title  = GalleryView
 	description = Uses GalleryView JQuery Plugin
 
+	resolutionConfigs >
 	resolutionConfigs {
 		medium {
-			width = 800
-			height = 800
+			width = 800c
+			height = 500c
+		}
+
+		thumb {
+			width = 60c
+			height = 60c
 		}
 	}
 	
@@ -30,12 +36,12 @@ plugin.tx_yag.settings.themes.galleryView {
 	includeJS {
 		galleryView10 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/GalleryView/js/jquery.timers-1.2.js
 		galleryView20 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/GalleryView/js/jquery.easing.1.3.js
-		galleryView30 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/GalleryView/js/jquery.galleryview-3.0.js
+		galleryView30 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/GalleryView/js/jquery.galleryview-3.0-dev.js
 	}
 	
 	includeCSS >
 	includeCSS {
-		10 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/GalleryView/css/jquery.galleryview-3.0.css
+		10 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/GalleryView/css/jquery.galleryview-3.0-dev.css
 	}
 	
 	
@@ -57,11 +63,11 @@ plugin.tx_yag.settings.themes.galleryView {
 	show_overlays		= true
 	
 	show_filmstrip		= true
-	frame_width			= 120
-	frame_height		= 80
+	frame_width			= 60
+	frame_height		= 60
 	start_frame			= 1
 	filmstrip_size		= 3
-	frame_opacity		= 0.5
+	frame_opacity		= 0.4
 	filmstrip_style		= scroll
 	filmstrip_position	= bottom
 	show_filmstrip_nav	= true
