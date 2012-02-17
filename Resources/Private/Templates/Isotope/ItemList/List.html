@@ -27,7 +27,7 @@ Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in 
 
 <div id="container-{config.contextIdentifier}">
     <themepackJquery:Isotope.imageList listData="{listData}">
-        <div class="element {tags}" style="padding: 5px;">
+        <div class="element {tags}" style="padding: 5px;height:{resolutionHeight}px">
             <a href="{image.sourceUri}" rel="shadowbox[images_{image.album.uid}]">
                 <yag:image item="{image}" resolutionName="{resolutionName}" />
             </a>

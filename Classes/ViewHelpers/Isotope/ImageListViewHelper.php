@@ -70,9 +70,12 @@ class Tx_YagThemepackJquery_ViewHelpers_Isotope_ImageListViewHelper extends Tx_F
 				}
 			}
 
-			
+			$resolutionName = $this->getRandomResolutionName();
+			$resolutionHeight = $this->getResolutionHeight($resolutionName, $image);
+
 			$this->templateVariableContainer->add('image', $image);
-			$this->templateVariableContainer->add('resolutionName', $this->getRandomResolutionName());
+			$this->templateVariableContainer->add('resolutionName', $resolutionName);
+			$this->templateVariableContainer->add('resolutionHeight', $resolutionHeight);
 			$this->templateVariableContainer->add('tags', implode(' ', $cleanTagNames));
 
 			$output .= $this->renderChildren();
@@ -80,11 +83,26 @@ class Tx_YagThemepackJquery_ViewHelpers_Isotope_ImageListViewHelper extends Tx_F
 			$this->templateVariableContainer->remove('tags');
 			$this->templateVariableContainer->remove('image');
 			$this->templateVariableContainer->remove('resolutionName');
+			$this->templateVariableContainer->remove('resolutionHeight');
 
 		}
 
 		return $output;
 
+	}
+
+
+	/**
+	 * @param $resolutionName
+	 * @param Tx_YAG_Domain_Model_Item $image
+	 * @return int
+	 */
+	protected function getResolutionHeight($resolutionName, Tx_YAG_Domain_Model_Item $image) {
+		$resolutionConfig = $this->configurationBuilder->buildThemeConfiguration()->getResolutionConfigCollection()->getResolutionConfig($resolutionName);
+		$resolutionImage = $image->getResolutionByConfig($resolutionConfig);
+		$resolutionHeight = $resolutionImage->getHeight();
+
+		return $resolutionHeight;
 	}
 
 

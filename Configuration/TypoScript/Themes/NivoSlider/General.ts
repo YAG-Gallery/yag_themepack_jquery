@@ -94,7 +94,6 @@ plugin.tx_yag.settings.themes.nivoSlider {
 		crossSlide = EXT:yag_themepack_jquery/Resources/Public/GallerySource/NivoSlider/jquery.nivo.slider.pack.js
 	}
 
-	includeCSS >
 	includeCSS {
 	    nivoSlider10 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/NivoSlider/themes/default/default.css
 	    nivoSlider20 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/NivoSlider/themes/pascal/pascal.css
