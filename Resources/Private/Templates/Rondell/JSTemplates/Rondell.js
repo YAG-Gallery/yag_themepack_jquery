@@ -1,6 +1,6 @@
 $(function () {
     $('#rondellGallery-###contextIdentifier### > div').rondell({
-        preset:'carousel',
+        preset:'###preset###',
         radius:{
             x:260
         },

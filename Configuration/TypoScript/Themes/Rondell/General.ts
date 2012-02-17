@@ -38,6 +38,12 @@ plugin.tx_yag.settings.themes.rondell {
 	rondellSettings {
 		# Presets
 		preset = carousel
+
+
+/*
+Currently only presets are supported and forwarded to the template.
+If you need further configuration options, feel free to alter the javascript template in Resources/Private/Templates/Rondell/JSTemplates/Rondell.js
+
 		scaling = 2
 		opacityMin = 0.05
 		zIndex = 1000
@@ -78,6 +84,9 @@ plugin.tx_yag.settings.themes.rondell {
             preventDefaults = true
             threshold = 100
         }
+*/
+
+
 	}
 
     controller {
