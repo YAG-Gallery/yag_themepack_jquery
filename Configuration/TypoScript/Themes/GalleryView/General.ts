@@ -11,13 +11,14 @@ plugin.tx_yag.settings.themes.galleryView {
 	title  = GalleryView
 	description = Uses GalleryView JQuery Plugin
 
-	resolutionConfigs >
 	resolutionConfigs {
+		medium >
 		medium {
 			width = 800c
 			height = 500c
 		}
 
+		thumb >
 		thumb {
 			width = 60c
 			height = 60c

@@ -11,14 +11,15 @@ plugin.tx_yag.settings.themes.nivoSlider {
 	title = Nivo Slider
 	description = Nivo Slider
 
-	resolutionConfigs >
 	resolutionConfigs {
 
+		medium >
 		medium {
 			width = 600c
 			height = 300c
 		}
 
+		thumb >
 		thumb {
 		    width = 60c
 		    height = 60c

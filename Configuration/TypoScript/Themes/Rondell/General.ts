@@ -11,14 +11,15 @@ plugin.tx_yag.settings.themes.rondell {
 	title = Rondell
 	description = jQuery Rondell
 
-	resolutionConfigs >
 	resolutionConfigs {
 
+		thumb >
         thumb {
             maxW = 300
             maxH = 300
         }
 
+		medium >
 		medium {
 			maxW = 800
 			maxH = 800
@@ -35,6 +36,8 @@ plugin.tx_yag.settings.themes.rondell {
 
 	# jQuery Rondell Settings
 	rondellSettings {
+		# Presets
+		preset = carousel
 		scaling = 2
 		opacityMin = 0.05
 		zIndex = 1000
@@ -89,11 +92,13 @@ plugin.tx_yag.settings.themes.rondell {
 	includeJS {
 		rondell10 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Rondell/lib/modernizr-2.0.6.min.js
 		rondell20 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Rondell/lib/jquery.fancybox-1.3.4.pack.js
-		rondell30 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Rondell/lib/jquery.rondell-0.8.6.min.js
+		rondell30 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Rondell/lib/jquery.fancybox-1.3.4.pack.js
+		rondell40 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Rondell/lib/jquery.rondell-0.8.6.min.js
 	}
 
 	includeCSS >
 	includeCSS {
 	    rondell10 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Rondell/css/jquery.rondell.css
+	    rondell20 = EXT:yag_themepack_jquery/Resources/Public/CSS/Rondell.css
 	}
 }

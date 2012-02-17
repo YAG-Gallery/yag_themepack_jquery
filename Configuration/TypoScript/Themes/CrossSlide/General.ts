@@ -12,6 +12,7 @@ plugin.tx_yag.settings.themes.crossSlide {
 	description = Uses JQuery CrossSlide to slide the images.
 	
 	resolutionConfigs {
+		medium >
 		medium {
 			width = 800
 		}
