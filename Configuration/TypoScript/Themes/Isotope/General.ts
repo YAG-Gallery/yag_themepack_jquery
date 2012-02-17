@@ -15,7 +15,7 @@ plugin.tx_yag.settings.themes.isotope {
 
 		bigSquare {
 			width = 230c
-			height = 235c
+			height = 230c
 		}
 
 		smallSquare {
@@ -30,7 +30,7 @@ plugin.tx_yag.settings.themes.isotope {
 
 		horizontalLong {
 		    width = 110c
-			height = 235c
+			height = 230c
 		}
 	}
 	
