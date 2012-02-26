@@ -76,7 +76,7 @@ class Tx_YagThemepackJquery_ViewHelpers_NivoSliderViewHelper extends Tx_Fluid_Co
 			';
 
 		$this->addCustomCSS();
-		$this->headerInclusion->addJsInlineCode('superSized-' . $this->configurationBuilder->getContextIdentifier(), $output);
+		$this->headerInclusion->addJsInlineCode('nivoSlider-' . $this->configurationBuilder->getContextIdentifier(), $output);
 
 	}
 

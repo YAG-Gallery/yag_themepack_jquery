@@ -1,0 +1,56 @@
+{namespace yag=Tx_Yag_ViewHelpers}
+{namespace extlist=Tx_PtExtlist_ViewHelpers}
+
+<extlist:comment>
+	<!--
+ Template for rendering an album.
+
+ Here is a list of objects / variables that can be accessed in this template:
+
+ Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in album
+
+ @package YAG
+ @author Daniel Lienert <daniel@lienert.cc>
+ -->
+</extlist:comment>
+
+<yag:Javascript.template templatePath="EXT:yag_themepack_jquery/Resources/Private/Templates/Galleriffic/JSTemplates/Galleriffic.js"
+						 arguments="{contextIdentifier: config.contextIdentifier, yagSettings:'{yag:Javascript.JsonSettings(tsPath:\'galleriffic\', onlyKeyValuePairs:1)}'}" />
+
+<div id="yag-galleriffic-{config.contextIdentifier}" class="galleriffic-container" style="width: 900px">
+	<div id="gallery-{config.contextIdentifier}" class="galleriffic-content">
+		<div id="controls" class="controls"></div>
+		<div class="slideshow-container" style="height: {config.settings.resolutionConfigs.medium.maxH}px;">
+			<div id="loading" class="loader"></div>
+			<div id="slideshow" class="slideshow"></div>
+		</div>
+		<div id="caption" class="caption-container"></div>
+	</div>
+	<div id="thumbs-{config.contextIdentifier}" class="navigation">
+		<ul class="thumbs noscript">
+			<f:for each="{listData}" key="rowIndex" as="listRow">
+				<li>
+					<a class="thumb" name="{listRow.image.value.title}" href="{yag:resource.image(item:listRow.image.value, resolutionName:'medium')}" title="{listRow.image.value.title}">
+						<yag:image item="{listRow.image.value}" resolutionName="thumb" />
+					</a>
+					<div class="caption">
+						<f:if condition="{config.settings.item.showOriginalDownloadLink}">
+							<div class="download">
+								<a href="{image.sourceUri}"><f:translate key="tx_yag_controller_item.downloadOrig" default="download"/></a>
+							</div>
+						</f:if>
+
+						<f:if condition="{config.settings.item.showTitle}">
+							<div class="image-title">{listRow.image.value.title}</div>
+						</f:if>
+
+						<f:if condition="{config.settings.item.showDescription}">
+							<div class="image-desc">{listRow.image.value.description}</div>
+						</f:if>
+					</div>
+				</li>
+			</f:for>
+		</ul>
+	</div>
+	<div style="clear: both;"></div>
+</div>
