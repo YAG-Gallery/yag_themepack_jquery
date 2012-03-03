@@ -105,7 +105,6 @@ If you need further configuration options, feel free to alter the javascript tem
 		rondell40 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Rondell/lib/jquery.rondell-0.8.6.min.js
 	}
 
-	includeCSS >
 	includeCSS {
 	    rondell10 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Rondell/css/jquery.rondell.css
 	    rondell20 = EXT:yag_themepack_jquery/Resources/Public/CSS/Rondell.css
