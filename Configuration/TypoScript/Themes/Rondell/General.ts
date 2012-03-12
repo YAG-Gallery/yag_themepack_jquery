@@ -6,6 +6,11 @@
 # @subpackage Typoscript
 ####################################################
 
+
+########
+# Default Rondell configuration
+########
+
 plugin.tx_yag.settings.themes.rondell {
 
 	title = Rondell
@@ -13,16 +18,10 @@ plugin.tx_yag.settings.themes.rondell {
 
 	resolutionConfigs {
 
-		thumb >
-        thumb {
-            maxW = 300
-            maxH = 300
-        }
-
 		medium >
 		medium {
-			maxW = 800
-			maxH = 800
+			maxW = 500
+			maxH = 500
 		}
 
 	}
@@ -35,58 +34,10 @@ plugin.tx_yag.settings.themes.rondell {
 
 
 	# jQuery Rondell Settings
+
 	rondellSettings {
-		# Presets
+		# Presets (carousel, products, pages, cubic, gallery, thumbGallery)
 		preset = carousel
-
-
-/*
-Currently only presets are supported and forwarded to the template.
-If you need further configuration options, feel free to alter the javascript template in Resources/Private/Templates/Rondell/JSTemplates/Rondell.js
-
-		scaling = 2
-		opacityMin = 0.05
-		zIndex = 1000
-		fadeTime = 300
-		currentLayer = 0
-		resizeableClass = resizeable
-		smallClass = itemSmall
-		hiddenClass	= itemHidden
-		visibleItems = auto
-		alwaysShowCaption = false
-		repeating = true
-		randomStart = false
-		showContainer = true
-
-		autoRotation {
-            enabled = false
-            direction = 0
-            once = false
-            delay = 5000
-        }
-
-		controls {
-            enabled = true,
-            fadeTime = 400,
-            margin {
-                x = 20
-                y = 20
-            }
-        }
-
-        strings	{
-            prev = prev
-            next = next
-        }
-
-        touch {
-            enabled = true
-            preventDefaults = true
-            threshold = 100
-        }
-*/
-
-
 	}
 
     controller {
@@ -95,18 +46,86 @@ If you need further configuration options, feel free to alter the javascript tem
 		}
 	}
 
+
 	includeLibJS = jQuery
 	includeLibCSS >
 
 	includeJS {
 		rondell10 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Rondell/lib/modernizr-2.0.6.min.js
 		rondell20 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Rondell/lib/jquery.fancybox-1.3.4.pack.js
-		rondell30 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Rondell/lib/jquery.fancybox-1.3.4.pack.js
-		rondell40 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Rondell/lib/jquery.rondell-0.8.6.min.js
+		rondell40 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Rondell/lib/jquery.rondell.js
 	}
 
 	includeCSS {
 	    rondell10 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Rondell/css/jquery.rondell.css
 	    rondell20 = EXT:yag_themepack_jquery/Resources/Public/CSS/Rondell.css
+	}
+}
+
+
+########
+# Rondell gallery configuration
+# Cubic preview images
+########
+
+plugin.tx_yag.settings.themes.rondellGallery < plugin.tx_yag.settings.themes.rondell
+plugin.tx_yag.settings.themes.rondellGallery {
+
+	title = Rondell Gallery
+	description = jQuery Rondell in Gallery mode
+
+	item {
+		showTitle = 0
+		showDescription = 0
+	}
+
+	medium >
+	medium {
+		maxW = 580
+		maxH = 580
+	}
+
+	rondellSettings {
+		# Presets (carousel, products, pages, cubic, gallery, thumbGallery)
+		preset = thumbGallery
+
+		center {
+			top = 215
+			left = 280
+		}
+
+		size {
+			height = 430
+			width = 810
+		}
+
+		itemProperties {
+
+			sizeFocused {
+				width = 480
+				height = 420
+			}
+
+			size {
+				width = 85
+				height = 85
+			}
+		}
+
+		scrollbar {
+			enabled = true,
+			style {
+				width = 240
+				right = 30
+				bottom = 50
+			}
+		}
+
+		special {
+			thumbsOffset {
+				x = 525
+				y = 70
+			}
+		}
 	}
 }

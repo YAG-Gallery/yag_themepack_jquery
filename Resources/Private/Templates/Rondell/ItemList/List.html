@@ -14,27 +14,27 @@ Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in 
 @author Daniel Lienert <daniel@lienert.cc>
 -->
 </extlist:comment>
-
-
 <div id="rondellGallery-{config.contextIdentifier}">
     <f:for each="{listData}" key="rowIndex" as="listRow">
-        <div>
-            <a target="_blank" rel="rondell_1" href="{yag:resource.image(item:listRow.image.value, resolutionName:'medium')}">
-                <yag:image class="resizeable" item="{listRow.image.value}" resolutionName="medium" />
-                <f:if condition="{listRow.image.value.title}">
+		<a target="_blank" rel="rondell_1" href="{yag:resource.image(item:listRow.image.value, resolutionName:'medium')}">
+			<yag:image class="resizeable" item="{listRow.image.value}" resolutionName="medium" />
+			<f:if condition="{config.settings.item.showTitle}">
+				<f:if condition="{listRow.image.value.title}">
 					<h3>{listRow.image.value.title}</h3>
 				</f:if>
-                <f:if condition="{listRow.image.value.description}">
+			</f:if>
+			<f:if condition="{config.settings.item.showDescription}">
+				<f:if condition="{listRow.image.value.description}">
 					<p>
 						{listRow.image.value.description}
 					</p>
 				</f:if>
-            </a>
-        </div>
+			</f:if>
+		</a>
     </f:for>
 </div>
 
 
 <yag:Javascript.template templatePath="EXT:yag_themepack_jquery/Resources/Private/Templates/Rondell/JSTemplates/Rondell.js"
                          addToHead="0"
-                         arguments="{contextIdentifier:config.contextIdentifier, preset:config.settings.rondellSettings.preset}"></yag:Javascript.template>
+                         arguments="{contextIdentifier:config.contextIdentifier, rondellSettings:'{yag:Javascript.JsonSettings(tsPath:\'rondellSettings\', onlyKeyValuePairs:1)}'}"></yag:Javascript.template>

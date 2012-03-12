@@ -1,13 +1,6 @@
 $(function () {
-    $('#rondellGallery-###contextIdentifier### > div').rondell({
-        preset:'###preset###',
-        radius:{
-            x:260
-        },
-        scaling:2.4,
-        isActive:function () {
-            return !$('#fancybox-wrap').is(':visible');
-        }
+    $('#rondellGallery-###contextIdentifier### > a').rondell({
+        ###rondellSettings###
     });
 
     $('#rondellGallery-###contextIdentifier### a').fancybox({
