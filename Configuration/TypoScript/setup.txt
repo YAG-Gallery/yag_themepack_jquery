@@ -31,10 +31,7 @@ module.tx_yag.settings.themes.nivoSlider < plugin.tx_yag.settings.themes.nivoSli
 # Include theme Rondell
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:yag_themepack_jquery/Configuration/TypoScript/Themes/Rondell/Theme.ts">
 module.tx_yag.settings.themes.rondell < plugin.tx_yag.settings.themes.rondell
-
-# Include theme Galleriffic
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:yag_themepack_jquery/Configuration/TypoScript/Themes/Galleriffic/Theme.ts">
-module.tx_yag.settings.themes.galleriffic < plugin.tx_yag.settings.themes.galleriffic
+module.tx_yag.settings.themes.rondellGallery < plugin.tx_yag.settings.themes.rondellGallery
 
 # Widget
 #<INCLUDE_TYPOSCRIPT: source="FILE:EXT:yag_themepack_jquery/Configuration/TypoScript/Widgets/CrossSlide.ts">

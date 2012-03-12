@@ -13,6 +13,3 @@ plugin.tx_yag.settings.themes.rondell < plugin.tx_yag.settings.themes.default
 
 # Include ImageList Definitions
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:yag_themepack_jquery/Configuration/TypoScript/Themes/Rondell/ItemList.ts">
-
-module.tx_yag.settings.themes.rondell < plugin.tx_yag.settings.themes.rondell
-module.tx_yag.settings.themes.rondellGallery < plugin.tx_yag.settings.themes.rondellGallery
