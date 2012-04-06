@@ -32,6 +32,8 @@ plugin.tx_yag.settings.themes.rondell {
 	# Show the item description beneath the image
 	showDescription = 1
 
+	# Do not limit the item count
+	itemsPerPage = 0
 
 	# jQuery Rondell Settings
 
