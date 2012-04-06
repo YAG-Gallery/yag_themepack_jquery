@@ -51,9 +51,9 @@ plugin.tx_yag.settings.themes.rondell {
 	includeLibCSS >
 
 	includeJS {
-		rondell10 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Rondell/lib/modernizr-2.0.6.min.js
-		rondell20 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Rondell/lib/jquery.fancybox-1.3.4.pack.js
-		rondell40 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Rondell/lib/jquery.rondell.js
+		rondell10 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Rondell/js/modernizr-2.0.6.min.js
+		rondell20 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Rondell/js/jquery.fancybox-1.3.4.pack.js
+		rondell40 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Rondell/js/jquery.rondell.js
 	}
 
 	includeCSS {
