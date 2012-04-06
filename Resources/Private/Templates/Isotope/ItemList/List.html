@@ -15,6 +15,8 @@ Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in 
 -->
 </extlist:comment>
 
+<yag:Javascript.template templatePath="EXT:yag/Resources/Private/JSTemplates/FancyBox.js" arguments="{yagSettings: '{yag:Javascript.JsonSettings(tsPath:\'fancybox\', onlyKeyValuePairs:1)}'}"/>
+
 <div class="yag-isotope-filter-container">
     <div class="yag-isotope-filter-label">Tags:</div>
     <ul class="yag-isotope-filter clearfix" id="filters-{config.contextIdentifier}">
@@ -28,7 +30,7 @@ Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in 
 <div id="container-{config.contextIdentifier}">
     <themepackJquery:Isotope.imageList listData="{listData}">
         <div class="element {tags}" style="padding: 5px;height:{resolutionHeight}px">
-            <a href="{image.sourceUri}" rel="shadowbox[images_{image.album.uid}]">
+            <a href="{image.sourceUri}" class="fancybox" rel="album_{image.album.uid}" title="{image.title} - {image.description}">
                 <yag:image item="{image}" resolutionName="{resolutionName}" />
             </a>
         </div>

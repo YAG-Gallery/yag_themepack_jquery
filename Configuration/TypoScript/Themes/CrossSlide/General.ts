@@ -30,8 +30,7 @@ plugin.tx_yag.settings.themes.crossSlide {
 	includeJS {
 		crossSlide = EXT:yag_themepack_jquery/Resources/Public/GallerySource/CrossSlide/jquery.cross-slide.min.js
 	}
-	
-	includeCSS >
+
 
 	# --------------------
 	# CrossSlide Settings

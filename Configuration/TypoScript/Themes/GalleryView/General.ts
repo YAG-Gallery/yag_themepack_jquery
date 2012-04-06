@@ -39,10 +39,9 @@ plugin.tx_yag.settings.themes.galleryView {
 		galleryView20 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/GalleryView/js/jquery.easing.1.3.js
 		galleryView30 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/GalleryView/js/jquery.galleryview-3.0-dev.js
 	}
-	
-	includeCSS >
+
 	includeCSS {
-		10 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/GalleryView/css/jquery.galleryview-3.0-dev.css
+		galleryView = EXT:yag_themepack_jquery/Resources/Public/GallerySource/GalleryView/css/jquery.galleryview-3.0-dev.css
 	}
 	
 	
