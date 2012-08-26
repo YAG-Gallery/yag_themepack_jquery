@@ -66,6 +66,7 @@ class Tx_YagThemepackJquery_ViewHelpers_SuperSizedViewHelper extends Tx_Fluid_Co
 				jQuery(function($){
 					$.supersized('.$superSizedSettingsJSon.');
 				});
+				$.supersized.themeVars.image_path = "'.$superSizedSettings['image_path'].'";
 			';
 
 		//return $output;
