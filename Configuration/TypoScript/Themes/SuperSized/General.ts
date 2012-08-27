@@ -21,7 +21,7 @@ plugin.tx_yag.settings.themes.superSized {
 	
 	includeJS {
 	    superSized10 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/SuperSized/slideshow/js/jquery.easing.min.js
-        superSized20 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/SuperSized/slideshow/js/supersized.3.2.6.min.js
+        superSized20 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/SuperSized/slideshow/js/supersized.3.2.7.min.js
         superSized30 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/SuperSized/slideshow/theme/supersized.shutter.min.js
 	}
 	
