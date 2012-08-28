@@ -1,0 +1,33 @@
+{namespace yag=Tx_Yag_ViewHelpers}
+{namespace themepackJquery=Tx_YagThemepackJquery_ViewHelpers}
+{namespace extlist=Tx_PtExtlist_ViewHelpers}
+
+<extlist:comment>
+<!--  
+Template for rendering an album.
+
+Here is a list of objects / variables that can be accessed in this template:
+
+Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in album
+
+@package YAG
+@author Daniel Lienert <daniel@lienert.cc>
+-->
+</extlist:comment>
+
+
+<div id="galleria-{config.contextIdentifier}" style="height:{config.settings.galleria.height}px;width:{config.settings.galleria.width}px">
+	<f:for each="{listData}" key="rowIndex" as="listRow">
+		<a href="{yag:resource.image(item:listRow.image.value, resolutionName:'medium')}">
+			<img src="{yag:resource.image(item:listRow.image.value, resolutionName:'thumb')}"
+				 data-big="{yag:resource.image(item:listRow.image.value, resolutionName:'big')}"
+				 data-title="{listRow.image.value.title}"
+				 data-description="{listRow.image.value.description}" />
+		</a>
+	</f:for>
+</div>
+
+<script>
+	Galleria.loadTheme('{config.settings.galleria.themeBasePath}{config.settings.galleria.theme}/galleria.{config.settings.galleria.theme}.js');
+	Galleria.run('#galleria-{config.contextIdentifier}');
+</script>
