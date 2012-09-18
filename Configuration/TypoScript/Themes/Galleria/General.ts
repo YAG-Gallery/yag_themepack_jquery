@@ -35,7 +35,7 @@ plugin.tx_yag.settings.themes.galleria {
 
 
 
-    galleria {
+    galleriaSettings {
 		// basepath to the gallery theme directory
 		themeBasePath = typo3conf/ext/yag_themepack_jquery/Resources/Public/GallerySource/Galleria/src/themes/
 
