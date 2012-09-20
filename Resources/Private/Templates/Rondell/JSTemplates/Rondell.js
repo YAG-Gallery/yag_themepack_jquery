@@ -9,7 +9,7 @@ $(function () {
         scrolling:'no',
         overlayColor:'#333',
         onStart:function (items, idx) {
-            return $(items[idx]).parent().hasClass('rondellItemFocused');
+            return $(items[idx]).hasClass('rondellItemFocused') || $('#fancybox-wrap').is(':visible');
         }
     });
 });

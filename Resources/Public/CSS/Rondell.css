@@ -9,7 +9,10 @@
   left: 0;
 }
 
-#fancybox-loading div, #fancybox-close {
+#fancybox-loading div,
+#fancybox-close,
+#fancybox-left-ico,
+#fancybox-right-ico {
   background-image: url("../GallerySource/Rondell/images/fancybox.png");
 }
 
@@ -72,6 +75,65 @@
   background: #fefefe;
   width: 100%;
   height: 100%;
+}
+
+#fancybox-title {
+  background: #fefefe;
+  padding: 0 10px 3px;
+}
+
+#fancybox-left, #fancybox-right {
+  position: absolute;
+  bottom: 0px;
+  height: 100%;
+  width: 35%;
+  cursor: pointer;
+  outline: none;
+  z-index: 1102;
+  display: none;
+}
+
+#fancybox-left {
+  left: 0px;
+}
+
+#fancybox-right {
+  right: 0px;
+}
+
+#fancybox-left:hover span {
+  left: 20px;
+}
+
+#fancybox-right:hover span {
+  left: auto;
+  right: 20px;
+}
+
+#fancybox-left:hover,
+#fancybox-right:hover {
+  visibility: visible; /* IE6 */
+}
+
+#fancybox-left-ico,
+#fancybox-right-ico {
+  position: absolute;
+  top: 50%;
+  left: -9999px;
+  width: 30px;
+  height: 30px;
+  margin-top: -15px;
+  cursor: pointer;
+  z-index: 1102;
+  display: block;
+}
+
+#fancybox-left-ico {
+  background-position: -40px -30px;
+}
+
+#fancybox-right-ico {
+  background-position: -40px -60px;
 }
 
 #fancybox-close {
