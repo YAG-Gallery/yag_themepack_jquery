@@ -14,20 +14,34 @@ Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in 
 @author Daniel Lienert <daniel@lienert.cc>
 -->
 </extlist:comment>
-
-
-<div id="galleria-{config.contextIdentifier}" style="height:{config.settings.galleriaSettings.height}px;width:{config.settings.galleriaSettings.width}px">
-	<f:for each="{listData}" key="rowIndex" as="listRow">
-		<a href="{yag:resource.image(item:listRow.image.value, resolutionName:'medium')}">
-			<img src="{yag:resource.image(item:listRow.image.value, resolutionName:'thumb')}"
-				 data-big="{yag:resource.image(item:listRow.image.value, resolutionName:'big')}"
-				 data-title="{listRow.image.value.title}"
-				 data-description="{listRow.image.value.description}" />
-		</a>
-	</f:for>
-</div>
-
 <script>
-	Galleria.loadTheme('{config.settings.galleriaSettings.themeBasePath}{config.settings.galleriaSettings.theme}/galleria.{config.settings.galleriaSettings.theme}.js');
-	Galleria.run('#galleria-{config.contextIdentifier}');
+    Galleria.loadTheme('{config.settings.galleriaSettings.themeBasePath}{config.settings.galleriaSettings.theme}/galleria.{config.settings.galleriaSettings.theme}.js');
 </script>
+
+<f:if condition="{config.settings.galleriaSettings.jsonMode}">
+    <f:then>
+        <div id="galleria-{config.contextIdentifier}" style="height:{config.settings.galleriaSettings.height}px;width:{config.settings.galleriaSettings.width}px"></div>
+        <themepackJquery:galleria identifier="{config.contextIdentifier}" listData="{listData}"/>
+    </f:then>
+
+    <f:else>
+        <div id="galleria-{config.contextIdentifier}" style="height:{config.settings.galleriaSettings.height}px;width:{config.settings.galleriaSettings.width}px">
+            <f:for each="{listData}" key="rowIndex" as="listRow">
+                <a href="{yag:resource.image(item:listRow.image.value, resolutionName:'medium')}">
+                    <img src="{yag:resource.image(item:listRow.image.value, resolutionName:'thumb')}"
+                         data-big="{yag:resource.image(item:listRow.image.value, resolutionName:'big')}"
+                         data-title="{listRow.image.value.title}"
+                         data-description="{listRow.image.value.description}"
+                    />
+                </a>
+            </f:for>
+        </div>
+
+        <script>
+            Galleria.run('#galleria-{config.contextIdentifier}');
+        </script>
+    </f:else>
+</f:if>
+
+
+

@@ -36,6 +36,9 @@ plugin.tx_yag.settings.themes.galleria {
 
 
     galleriaSettings {
+		// If set to 1, render the images in a JSON format instead of html tags
+		jsonMode = 0
+
 		// basepath to the gallery theme directory
 		themeBasePath = typo3conf/ext/yag_themepack_jquery/Resources/Public/GallerySource/Galleria/src/themes/
 
