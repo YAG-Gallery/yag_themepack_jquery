@@ -83,14 +83,15 @@ class Tx_YagThemepackJquery_ViewHelpers_GalleriaViewHelper extends Tx_Fluid_Core
 		foreach($listData as $row) { /** @var Tx_PtExtlist_Domain_Model_List_Row $row */
 			$image = $row->getCell('image')->getValue(); /** @var Tx_Yag_Domain_Model_Item $image */
 
+			$pathPrefix = TYPO3_MODE === 'BE' ? '../' : $GLOBALS['TSFE']->absRefPrefix;
+
 			$data[] = array(
-				'thumb' => $image->getResolutionByConfig($resolutionConfigCollection->getResolutionConfig('thumb'))->getPath(),
-				'image' => $image->getResolutionByConfig($resolutionConfigCollection->getResolutionConfig('medium'))->getPath(),
-				'big' => $image->getResolutionByConfig($resolutionConfigCollection->getResolutionConfig('big'))->getPath(),
+				'thumb' => $pathPrefix . $image->getResolutionByConfig($resolutionConfigCollection->getResolutionConfig('thumb'))->getPath(),
+				'image' => $pathPrefix. $image->getResolutionByConfig($resolutionConfigCollection->getResolutionConfig('medium'))->getPath(),
+				'big' => $pathPrefix . $image->getResolutionByConfig($resolutionConfigCollection->getResolutionConfig('big'))->getPath(),
         		'title' => $image->getTitle(),
         		'description' =>  $image->getDescription(),
         		'link' => $this->renderTypoLink($image->getLink())
-//        	layer: '<div><h2>This image is gr8</h2><p>And this text will be on top of the image</p>'
 			);
 		}
 
