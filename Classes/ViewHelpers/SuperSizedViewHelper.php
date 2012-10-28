@@ -81,11 +81,11 @@ class Tx_YagThemepackJquery_ViewHelpers_SuperSizedViewHelper extends Tx_Fluid_Co
 	 * @return array
 	 */
 	public function buildSuperSizedSettings() {
-		$headerUtility = t3lib_div::makeInstance('Tx_Yag_Utility_HeaderInclusion'); /** @var $headerUtility Tx_Yag_Utility_HeaderInclusion */
+		$fileSystemDiv = t3lib_div::makeInstance('Tx_Yag_Domain_FileSystem_Div'); /** @var $fileSystemDiv Tx_Yag_Domain_FileSystem_Div */
 
 		$superSizedSettings = $this->configurationBuilder->getJSCompliantSettings('superSizedSettings');
 
-		$superSizedSettings['image_path'] = $headerUtility->getFileRelFileName($superSizedSettings['image_path']);
+		$superSizedSettings['image_path'] = $fileSystemDiv->getFileRelFileName($superSizedSettings['image_path']);
 
 		return $superSizedSettings;
 	}

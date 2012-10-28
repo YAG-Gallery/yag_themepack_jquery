@@ -40,7 +40,7 @@ plugin.tx_yag.settings.themes.galleria {
 		jsonMode = 0
 
 		// basepath to the gallery theme directory
-		themeBasePath = typo3conf/ext/yag_themepack_jquery/Resources/Public/GallerySource/Galleria/src/themes/
+		themeBasePath = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Galleria/src/themes/
 
 		// select a theme from the directory
 		theme = classic
