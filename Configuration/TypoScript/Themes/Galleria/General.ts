@@ -34,21 +34,33 @@ plugin.tx_yag.settings.themes.galleria {
 	}
 
 
+	## If set to 1, render the images in a JSON format instead of html tags
+	jsonMode = 0
 
-    galleriaSettings {
-		// If set to 1, render the images in a JSON format instead of html tags
-		jsonMode = 0
+	## basepath to the gallery theme directory
+	galleriaThemeBasePath = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Galleria/src/themes/
 
-		// basepath to the gallery theme directory
-		themeBasePath = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Galleria/src/themes/
+	## select a theme from the directory
+	galleriaTheme = classic
 
-		// select a theme from the directory
-		theme = classic
+	## width and height of the galleria frame
+	width = 800
+	height = 350
 
-		// width and height of the galleria frame
-		width = 800
-		height = 370
-    }
+
+	##
+	## These settings are directly converted to galleria js settings
+    ##
+	galleriaSettings {
+
+		## Default options
+		transition = slide
+		thumbCrop = height
+
+		## Specific for classic theme
+		_toggleInfo = true
+	}
+
 
 
     controller {
@@ -56,6 +68,7 @@ plugin.tx_yag.settings.themes.galleria {
 			list.template = EXT:yag_themepack_jquery/Resources/Private/Templates/Galleria/ItemList/List.html
 		}
 	}
+
 
 	includeLibJS = jQuery
 	includeLibCSS >
