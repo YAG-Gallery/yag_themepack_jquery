@@ -1,6 +1,7 @@
 {namespace yag=Tx_Yag_ViewHelpers}
 {namespace themepackJquery=Tx_YagThemepackJquery_ViewHelpers}
 {namespace extlist=Tx_PtExtlist_ViewHelpers}
+{namespace ptx=Tx_PtExtbase_ViewHelpers}
 
 <extlist:comment>
 <!--  
@@ -20,14 +21,14 @@ Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in 
 	Galleria.configure({yag:javascript.jsonSettings(tsPath:'galleriaSettings')});
 </script>
 
-<f:if condition="{config.settings.galleriaSettings.jsonMode}">
+<f:if condition="{config.settings.jsonMode}">
     <f:then>
-        <div id="galleria-{config.contextIdentifier}" class="tx-yag-galleria-wrapper" style="height:{config.settings.height}px;width:{config.settings.width}px"></div>
+        <div id="galleria-{config.contextIdentifier}" class="tx-yag-galleria-wrapper" style="height:{ptx:cObjectConfig(config:config.settings.height)}px;width:{ptx:cObjectConfig(config:config.settings.width)}px"></div>
         <themepackJquery:galleria identifier="{config.contextIdentifier}" listData="{listData}"/>
     </f:then>
 
     <f:else>
-        <div id="galleria-{config.contextIdentifier}" class="tx-yag-galleria-wrapper" style="height:{config.settings.height}px;width:{config.settings.width}px">
+        <div id="galleria-{config.contextIdentifier}" class="tx-yag-galleria-wrapper" style="height:{ptx:cObjectConfig(config:config.settings.height)}px;width:{ptx:cObjectConfig(config:config.settings.width)}px">
             <f:for each="{listData}" key="rowIndex" as="listRow">
                 <a href="{yag:resource.image(item:listRow.image.value, resolutionName:'medium')}">
                     <img src="{yag:resource.image(item:listRow.image.value, resolutionName:'thumb')}"

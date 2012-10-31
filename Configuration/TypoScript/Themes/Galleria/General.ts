@@ -47,7 +47,6 @@ plugin.tx_yag.settings.themes.galleria {
 	width = 800
 	height = 350
 
-
 	##
 	## These settings are directly converted to galleria js settings
     ##
