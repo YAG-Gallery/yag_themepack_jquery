@@ -90,7 +90,6 @@ plugin.tx_yag.settings.themes.rondellGallery {
 	rondellSettings {
 		# Presets (carousel, products, pages, cubic, gallery, thumbGallery)
 		preset = thumbGallery
-
 		center {
 			top = 215
 			left = 280
@@ -115,7 +114,7 @@ plugin.tx_yag.settings.themes.rondellGallery {
 		}
 
 		scrollbar {
-			enabled = true,
+			enabled = true
 			style {
 				width = 240
 				right = 30

@@ -1,7 +1,5 @@
 $(function () {
-    $('#rondellGallery-###contextIdentifier### > a').rondell({
-        ###rondellSettings###
-    });
+    $('#rondellGallery-###contextIdentifier### > a').rondell(###rondellSettings###);
 
     $('#rondellGallery-###contextIdentifier### a').fancybox({
         hideOnContentClick:false,
