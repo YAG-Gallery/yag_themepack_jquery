@@ -14,40 +14,14 @@ Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in 
 -->
 </extlist:comment>
 
-<yag:Javascript.template templatePath="EXT:yag_themepack_jquery/Resources/Private/Templates/GalleryView/JSTemplates/GalleryView.js"  
-						 arguments="{
-						 	contextIdentifier: config.contextIdentifier
-						 	transition_speed: config.settings.transition_speed
-							transition_interval: config.settings.transition_interval
-							easing: config.settings.easing
-							
-							pause_on_hover: config.settings.pause_on_hover
-						 	show_panels: config.settings.show_panels
-							panel_width: config.settings.panel_width
-							panel_height: config.settings.panel_height
-							panel_animation: config.settings.panel_animation
-							overlay_opacity: config.settings.overlay_opacity
-							overlay_position: config.settings.overlay_position
-							panel_scale: config.settings.panel_scale
-							show_panel_nav: config.settings.show_panel_nav
-							show_overlays: config.settings.show_overlays
-							
-							show_filmstrip: config.settings.show_filmstrip
-							frame_width: config.settings.frame_width
-							frame_height: config.settings.frame_height
-							start_frame: config.settings.start_frame
-							filmstrip_size: config.settings.filmstrip_size
-							frame_opacity: config.settings.frame_opacity
-							filmstrip_style: config.settings.filmstrip_style
-							filmstrip_position: config.settings.filmstrip_position
-							show_filmstrip_nav: config.settings.show_filmstrip_nav
-							frame_scale: config.settings.frame_scale
-							frame_gap: config.settings.frame_gap
-							show_captions: config.settings.show_captions
-							
-							pointer_size: config.settings.pointer_size
-							animate_pointer: config.settings.animate_pointer
-						 }"/>
+<script>
+
+
+
+$(document).ready(function(){
+	$('#yag-galleryView-{config.contextIdentifier}').galleryView({yag:javascript.jsonSettings(tsPath:'galleryViewSettings')});
+});
+</script>
 
 <ul id="yag-galleryView-{config.contextIdentifier}">
     <f:for each="{listData}" key="rowIndex" as="listRow">		
