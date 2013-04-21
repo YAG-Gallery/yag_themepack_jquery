@@ -96,8 +96,6 @@ plugin.tx_yag.settings.themes.nivoSlider {
 
 	includeCSS {
 	    nivoSlider10 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/NivoSlider/themes/default/default.css
-	    nivoSlider20 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/NivoSlider/themes/pascal/pascal.css
-	    nivoSlider30 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/NivoSlider/themes/orman/orman.css
 	    nivoSlider40 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/NivoSlider/nivo-slider.css
 
 	}

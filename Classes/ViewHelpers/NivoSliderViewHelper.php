@@ -48,7 +48,24 @@ class Tx_YagThemepackJquery_ViewHelpers_NivoSliderViewHelper extends Tx_Fluid_Co
 	 * @var string
 	 */
 	protected $contextIdentifier;
-	
+
+
+	/**
+	 * @var Tx_Yag_Domain_FileSystem_Div
+	 */
+	protected $fileSystemDiv;
+
+
+
+	/**
+	 * @param Tx_Yag_Domain_FileSystem_Div $fileSystemDiv
+	 */
+	public function injectFileSystemDiv(Tx_Yag_Domain_FileSystem_Div $fileSystemDiv) {
+		$this->fileSystemDiv = $fileSystemDiv;
+	}
+
+
+
 	/**
 	 * (non-PHPdoc)
 	 * @see Classes/Core/ViewHelper/Tx_Fluid_Core_ViewHelper_AbstractTagBasedViewHelper::initialize()
@@ -88,7 +105,7 @@ class Tx_YagThemepackJquery_ViewHelpers_NivoSliderViewHelper extends Tx_Fluid_Co
 		$nivoSettings = $this->configurationBuilder->getJSCompliantSettings('nivoSliderSettings');
 
 		if($nivoSettings['controlNavThumbs'] == true) {
-			$this->headerInclusion->addCSSFile($this->headerInclusion->getFileRelFileName($this->configurationBuilder->getSettings('thumbNavCSS')));
+			$this->headerInclusion->addCSSFile($this->configurationBuilder->getSettings('thumbNavCSS'));
 		} else {
 			$itemCount = $this->templateVariableContainer->get('listData')->getCount();
 			$leftMargin = (int) ($itemCount * 12.5);
