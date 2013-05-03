@@ -24,6 +24,12 @@ plugin.tx_yag.settings.themes.rondell {
 			maxH = 500
 		}
 
+		lightbox >
+		lightbox {
+			maxW = 1200
+			maxH = 1200
+		}
+
 	}
 
 	# Show the item title beneath the image
@@ -42,7 +48,7 @@ plugin.tx_yag.settings.themes.rondell {
 		preset = carousel
 	}
 
-    controller {
+	controller {
 		ItemList {
 			list.template = EXT:yag_themepack_jquery/Resources/Private/Templates/Rondell/ItemList/List.html
 		}
@@ -50,17 +56,20 @@ plugin.tx_yag.settings.themes.rondell {
 
 
 	includeLibJS = jQuery
+	jsPosition = footer
+
 	includeLibCSS >
 
 	includeJS {
-		rondell10 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Rondell/js/modernizr-2.0.6.min.js
-		rondell20 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Rondell/js/jquery.fancybox-1.3.4.pack.js
-		rondell40 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Rondell/js/jquery.rondell.js
+		rondell10 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Rondell/libs/modernizr-2.0.6.min.js
+		rondell20 = EXT:yag_themepack_jquery/Resources/Public/Javascript/json2.min.js
+		rondell40 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Rondell/dist/jquery.rondell.min.js
+		rondell50 = EXT:yag_themepack_jquery/Resources/Public/Javascript/Rondell/init.js
 	}
 
 	includeCSS {
-	    rondell10 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Rondell/css/jquery.rondell.css
-	    rondell20 = EXT:yag_themepack_jquery/Resources/Public/CSS/Rondell.css
+		rondell10 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Rondell/dist/jquery.rondell.min.css
+		rondell20 = EXT:yag_themepack_jquery/Resources/Public/CSS/Rondell.css
 	}
 }
 
