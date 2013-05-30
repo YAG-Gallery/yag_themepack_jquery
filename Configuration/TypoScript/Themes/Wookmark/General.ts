@@ -69,9 +69,10 @@ plugin.tx_yag.settings.themes.wookmark {
 
 	includeJS {
 		wookmark10 = EXT:yag_themepack_jquery/Resources/Public/Javascript/json2.min.js
-		wookmark20 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Wookmark/example-lightbox/js/jquery.colorbox-min.js
-		wookmark30 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Wookmark/jquery.wookmark.min.js
-		wookmark40 = EXT:yag_themepack_jquery/Resources/Public/Javascript/init.js
+		wookmark20 = EXT:yag_themepack_jquery/Resources/Public/Javascript/imagesloaded.pkgd.min.js
+		wookmark30 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Wookmark/example-lightbox/js/jquery.colorbox-min.js
+		wookmark40 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Wookmark/jquery.wookmark.min.js
+		wookmark50 = EXT:yag_themepack_jquery/Resources/Public/Javascript/init.js
 	}
 
 	includeCSS {
