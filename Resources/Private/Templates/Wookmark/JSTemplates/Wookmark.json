@@ -1,0 +1,6 @@
+{
+  "galleryId": "#wookmarkGallery-###contextIdentifier###",
+  "options": ###wookmarkSettings###,
+  "filterId": "#filters-###contextIdentifier###",
+  "theme": "wookmark"
+}

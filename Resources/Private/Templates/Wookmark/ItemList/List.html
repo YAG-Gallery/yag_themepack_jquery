@@ -1,0 +1,59 @@
+{namespace yag=Tx_Yag_ViewHelpers}
+{namespace themepackJquery=Tx_YagThemepackJquery_ViewHelpers}
+{namespace extlist=Tx_PtExtlist_ViewHelpers}
+
+<extlist:comment>
+<!--  
+Template for rendering an album.
+
+Here is a list of objects / variables that can be accessed in this template:
+
+Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in album
+
+@package YAG
+@author Sebastian Helzle <sebastian@helzle.net>
+-->
+</extlist:comment>
+
+<div class="wookmark-filter-container">
+  <ul class="wookmark-filters wookmark-clearfix" id="filters-{config.contextIdentifier}">
+    <themepackJquery:Wookmark.tagList>
+      <li data-filter="{cleanTagName}">{tagName}</li>
+    </themepackJquery:Wookmark.tagList>
+  </ul>
+</div>
+
+<div id="wookmarkGallery-{config.contextIdentifier}" class="wookmark-tiles">
+  <ul>
+    <themepackJquery:Wookmark.imageList listData="{listData}">
+      <li data-filter-class="[{quotedTags}]">
+        <a target="_blank" title="{image.title}" rel="wookmark_1" class="wookmark-image-wrap"
+           href="{yag:resource.image(item:image, resolutionName:'lightbox')}">
+          <yag:image class="resizeable" item="{image}" resolutionName="medium" />
+        </a>
+        <f:if condition="{config.settings.item.showTitle}">
+          <f:if condition="{image.title}">
+            <div class="title">{image.title}</div>
+          </f:if>
+        </f:if>
+        <f:if condition="{config.settings.item.showDescription}">
+          <f:if condition="{image.description}">
+            <p>
+              {image.description}
+            </p>
+          </f:if>
+          <f:if condition="{tags}">
+            <p class="wookmark-tags">
+              {tags}
+            </p>
+          </f:if>
+        </f:if>
+      </li>
+    </themepackJquery:Wookmark.imageList>
+  </ul>
+</div>
+
+<yag:Javascript.template templatePath="EXT:yag_themepack_jquery/Resources/Private/Templates/Wookmark/JSTemplates/Wookmark.json"
+                         position="current"
+                         type="application/json"
+                         arguments="{contextIdentifier:config.contextIdentifier, wookmarkSettings:'{yag:javascript.jsonSettings(tsPath:\'wookmarkSettings\')}'}"></yag:Javascript.template>

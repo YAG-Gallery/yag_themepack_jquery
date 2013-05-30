@@ -10,3 +10,6 @@
 [submodule "Resources/Public/GallerySource/GalleryView"]
 	path = Resources/Public/GallerySource/GalleryView
 	url = git://github.com/jackwanders/GalleryView.git
+[submodule "Resources/Public/GallerySource/Wookmark"]
+	path = Resources/Public/GallerySource/Wookmark
+	url = https://github.com/GBKS/Wookmark-jQuery

@@ -37,6 +37,10 @@ module.tx_yag.settings.themes.rondellGallery < plugin.tx_yag.settings.themes.ron
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:yag_themepack_jquery/Configuration/TypoScript/Themes/Galleria/Theme.ts">
 module.tx_yag.settings.themes.galleria < plugin.tx_yag.settings.themes.galleria
 
+# Include theme Wookmark
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:yag_themepack_jquery/Configuration/TypoScript/Themes/Wookmark/Theme.ts">
+module.tx_yag.settings.themes.wookmark < plugin.tx_yag.settings.themes.wookmark
+
 
 # Widget
 #<INCLUDE_TYPOSCRIPT: source="FILE:EXT:yag_themepack_jquery/Configuration/TypoScript/Widgets/CrossSlide.ts">

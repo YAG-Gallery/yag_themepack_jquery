@@ -64,7 +64,7 @@ plugin.tx_yag.settings.themes.rondell {
 		rondell10 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Rondell/libs/modernizr-2.0.6.min.js
 		rondell20 = EXT:yag_themepack_jquery/Resources/Public/Javascript/json2.min.js
 		rondell40 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Rondell/dist/jquery.rondell.min.js
-		rondell50 = EXT:yag_themepack_jquery/Resources/Public/Javascript/Rondell/init.js
+		rondell50 = EXT:yag_themepack_jquery/Resources/Public/Javascript/init.js
 	}
 
 	includeCSS {
