@@ -7,7 +7,7 @@
       if (data.theme != undefined) {
         switch (data.theme) {
           case 'rondell':
-            $(data.galleryId + " li").rondell(data.options);
+            $(data.galleryId + " > *").rondell(data.options);
             break;
           case 'wookmark':
             var $handler = $(data.galleryId),

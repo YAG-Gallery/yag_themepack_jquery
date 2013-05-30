@@ -7,6 +7,6 @@
 # @subpackage Typoscript
 ####################################################
 
-plugin.tx_yag.settings.themes.nivoSlider.itemList {
+plugin.tx_yag.settings.themes.rondell.itemList {
 	itemsPerPage = 0
 }

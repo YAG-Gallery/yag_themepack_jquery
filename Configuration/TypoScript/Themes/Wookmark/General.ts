@@ -38,6 +38,9 @@ plugin.tx_yag.settings.themes.wookmark {
 	# Show the item description beneath the image
 	showDescription = 1
 
+	# Show the items tags beneath the image
+	showTags = 1
+
 	# Do not limit the item count
 	itemsPerPage = 0
 
