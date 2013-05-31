@@ -36,7 +36,36 @@
                 $items.wookmarkInstance.filter(activeFilters, data.options.filterMode);
               });
             });
+            break;
+          case 'gmaps':
+            var serviceData = [],
+                $container = $(data.galleryId),
+                $dataSource = $('.yag-gmaps-data li', $container),
+                $gmapsContainer = $('.yag-gmaps-container', $container),
+                $row;
 
+            $dataSource.each(function(idx) {
+              $row = $(this);
+
+              itemData = $row.data('yagGmaps');
+
+              if (itemData.gpsLongitude != 0 && itemData.gpsLatitude != 0) {
+                serviceData.push({
+                  dataId: idx,
+                  title: itemData.title,
+                  latitude: itemData.gpsLongitude,
+                  longitude: itemData.gpsLatitude,
+                  notice: '<img src="' + $('img', $row).attr('src') + '" />'
+                });
+              }
+            });
+
+            $gmapsContainer
+              .css({
+                width: data.options.width,
+                height: data.options.height
+              })
+              .ptGoogleMap($.extend({data: serviceData}, data.options));
             break;
         }
       }

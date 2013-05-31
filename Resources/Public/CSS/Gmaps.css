@@ -1,0 +1,12 @@
+.yag-gmaps-container {
+  width: 700px;
+  height: 400px;
+  border: 3px solid #333;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+}
+
+.yag-gmaps-data {
+  display: none;
+}
