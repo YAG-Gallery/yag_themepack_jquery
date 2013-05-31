@@ -4,9 +4,6 @@
 [submodule "Resources/Public/GallerySource/Rondell"]
 	path = Resources/Public/GallerySource/Rondell
 	url = git://github.com/Sebobo/jquery.rondell.git
-[submodule "Resources/Public/GallerySource/Galleria"]
-	path = Resources/Public/GallerySource/Galleria
-	url = git://github.com/aino/galleria.git
 [submodule "Resources/Public/GallerySource/GalleryView"]
 	path = Resources/Public/GallerySource/GalleryView
 	url = git://github.com/jackwanders/GalleryView.git
