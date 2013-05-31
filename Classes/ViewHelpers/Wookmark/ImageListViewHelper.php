@@ -47,13 +47,13 @@ class Tx_YagThemepackJquery_ViewHelpers_Wookmark_ImageListViewHelper extends Tx_
 		parent::initialize();
 		$this->configurationBuilder =  Tx_Yag_Domain_Configuration_ConfigurationBuilderFactory::getInstance();
 	}
-	
+
 
 	/**
 	 * Renders image tags
 	 *
-	 * @param string $identifier
 	 * @param Tx_PtExtlist_Domain_Model_List_ListData $listData
+	 * @return string
 	 */
 	public function render(Tx_PtExtlist_Domain_Model_List_ListData $listData) {
 
