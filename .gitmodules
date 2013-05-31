@@ -10,3 +10,6 @@
 [submodule "Resources/Public/GallerySource/Wookmark"]
 	path = Resources/Public/GallerySource/Wookmark
 	url = https://github.com/GBKS/Wookmark-jQuery
+[submodule "Resources/Public/GallerySource/Galleria"]
+	path = Resources/Public/GallerySource/Galleria
+	url = https://github.com/aino/galleria.git
