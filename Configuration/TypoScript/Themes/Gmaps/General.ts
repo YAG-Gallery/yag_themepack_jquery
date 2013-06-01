@@ -66,6 +66,7 @@ plugin.tx_yag.settings.themes.gmaps {
 	includeLibCSS >
 
 	includeJS {
+		gmaps05 = HTTP://www.google.com/jsapi
 		gmaps10 = EXT:yag_themepack_jquery/Resources/Public/Javascript/json2.min.js
 		gmaps20 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Gmaps/js/pt.gmaps.min.js
 		gmaps30 = EXT:yag_themepack_jquery/Resources/Public/Javascript/init.js
