@@ -1,15 +1,15 @@
 [submodule "Resources/Public/GallerySource/SuperSized"]
 	path = Resources/Public/GallerySource/SuperSized
-	url = git://github.com/buildinternet/supersized.git
+	url = https://github.com/buildinternet/supersized.git
 [submodule "Resources/Public/GallerySource/Rondell"]
 	path = Resources/Public/GallerySource/Rondell
-	url = git://github.com/Sebobo/jquery.rondell.git
-[submodule "Resources/Public/GallerySource/Galleria"]
-	path = Resources/Public/GallerySource/Galleria
-	url = git://github.com/aino/galleria.git
+	url = https://github.com/Sebobo/jquery.rondell.git
 [submodule "Resources/Public/GallerySource/GalleryView"]
 	path = Resources/Public/GallerySource/GalleryView
-	url = git://github.com/jackwanders/GalleryView.git
+	url = https://github.com/jackwanders/GalleryView.git
 [submodule "Resources/Public/GallerySource/Wookmark"]
 	path = Resources/Public/GallerySource/Wookmark
 	url = https://github.com/GBKS/Wookmark-jQuery
+[submodule "Resources/Public/GallerySource/Galleria"]
+	path = Resources/Public/GallerySource/Galleria
+	url = https://github.com/aino/galleria.git

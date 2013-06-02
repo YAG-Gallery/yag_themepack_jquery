@@ -20,8 +20,7 @@ plugin.tx_yag.settings.themes.wookmark {
 
 		medium >
 		medium {
-			maxW = 280
-			maxH = 400
+			width = 160
 		}
 
 		lightbox >
@@ -42,7 +41,7 @@ plugin.tx_yag.settings.themes.wookmark {
 	showTags = 1
 
 	# Do not limit the item count
-	itemsPerPage = 0
+	itemList.itemsPerPage = 0
 
 	# jQuery Wookmark Settings
 
