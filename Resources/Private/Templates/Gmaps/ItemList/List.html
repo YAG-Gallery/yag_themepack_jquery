@@ -22,5 +22,5 @@ Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in 
                          type="application/json"
                          arguments="{contextIdentifier:config.contextIdentifier,
                           gmapsSettings:'{yag:javascript.jsonSettings(tsPath:\'gmapsSettings\')}',
-                          listData:'{themepackJquery:Gmaps.imageList(listData:listData)}'
+                          listData:'{yag:Javascript.ItemListJson(listData:listData, resolutions:\'thumb,lightbox\')}'
                          }"></yag:Javascript.template>
