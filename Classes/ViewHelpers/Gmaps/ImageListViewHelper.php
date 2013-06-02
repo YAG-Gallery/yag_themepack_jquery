@@ -36,7 +36,20 @@ class Tx_YagThemepackJquery_ViewHelpers_Gmaps_ImageListViewHelper extends Tx_Flu
 	 * @var Tx_Yag_Domain_Configuration_ConfigurationBuilder
 	 */
 	protected $configurationBuilder;
-	
+
+
+	/**
+	 * @var Tx_Yag_Domain_FileSystem_Div
+	 */
+	protected $fileSystemDiv;
+
+
+	/**
+	 * @param Tx_Yag_Domain_FileSystem_Div $fileSystemDiv
+	 */
+	public function injectFileSystemDiv(Tx_Yag_Domain_FileSystem_Div $fileSystemDiv) {
+		$this->fileSystemDiv = $fileSystemDiv;
+	}
 	
 	
 	/**
@@ -56,33 +69,33 @@ class Tx_YagThemepackJquery_ViewHelpers_Gmaps_ImageListViewHelper extends Tx_Flu
 	 * @param Tx_PtExtlist_Domain_Model_List_ListData $listData
 	 */
 	public function render(Tx_PtExtlist_Domain_Model_List_ListData $listData) {
+		$listDataArray = array();
 
-		$output = '';
+		$resolutionConfigCollection = Tx_Yag_Domain_Configuration_ConfigurationBuilderFactory::getInstance()
+				->buildThemeConfiguration()
+				->getResolutionConfigCollection();
 
 		foreach($listData as $row) {
 
 			$image = $row->getCell('image')->getValue(); /** @var Tx_YAG_Domain_Model_Item $image  */
 
 			$imageMeta = $image->getItemMeta();
+
+			$thumbPath = $image->getResolutionByConfig($resolutionConfigCollection->getResolutionConfig('thumb'))->getPath();
+			$lightboxPath = $image->getResolutionByConfig($resolutionConfigCollection->getResolutionConfig('lightbox'))->getPath();
+
 			$itemMetaData = array(
 				'title' => $image->getTitle(),
 				'gpsLatitude' => $imageMeta->getGpsLatitude(),
 				'gpsLongitude' => $imageMeta->getGpsLongitude(),
+				'thumb' => $this->fileSystemDiv->getFileRelFileName($thumbPath),
+				'lightbox' => $this->fileSystemDiv->getFileRelFileName($lightboxPath),
+				'description' => $image->getDescription(),
 			);
 
-			$jsonMetaData = json_encode($itemMetaData);
-
-			$this->templateVariableContainer->add('image', $image);
-			$this->templateVariableContainer->add('jsonMetaData', $jsonMetaData);
-
-			$output .= $this->renderChildren();
-
-			$this->templateVariableContainer->remove('image');
-			$this->templateVariableContainer->remove('jsonMetaData');
-
+			$listDataArray[]= $itemMetaData;
 		}
 
-		return $output;
-
+		return json_encode($listDataArray);
 	}
 }

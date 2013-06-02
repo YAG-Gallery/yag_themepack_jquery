@@ -1,5 +1,6 @@
 {
   "galleryId": "#gmapsGallery-###contextIdentifier###",
   "options": ###gmapsSettings###,
-  "theme": "gmaps"
+  "theme": "gmaps",
+  "listData": ###listData###
 }

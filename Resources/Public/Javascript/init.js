@@ -38,27 +38,26 @@
             });
             break;
           case 'gmaps':
-            var serviceData = [],
-                $container = $(data.galleryId),
-                $dataSource = $('.yag-gmaps-data li', $container),
-                $gmapsContainer = $('.yag-gmaps-container', $container),
-                $row;
+            var serviceData = [], i, itemData,
+                $gmapsContainer = $(data.galleryId);
 
-            $dataSource.each(function(idx) {
-              $row = $(this);
-
-              itemData = $row.data('yagGmaps');
+            for (i = 0; i < data.listData.length; i++) {
+              itemData = data.listData[i];
 
               if (itemData.gpsLongitude != 0 && itemData.gpsLatitude != 0) {
                 serviceData.push({
-                  dataId: idx,
+                  dataId: i,
                   title: itemData.title,
                   latitude: itemData.gpsLongitude,
                   longitude: itemData.gpsLatitude,
-                  notice: '<img src="' + $('img', $row).attr('src') + '" />'
+                  markerContent: '' +
+                    '<a href="' + itemData.lightbox + '" rel="gmaps-lightbox-' + data.galleryId + '" title="Open in lightbox">' +
+                      '<img src="' + itemData.thumb + '" alt="' + itemData.title + '" />' +
+                    '</a>' +
+                    '<p>' + itemData.description + '</p>'
                 });
               }
-            });
+            }
 
             $gmapsContainer
               .css({

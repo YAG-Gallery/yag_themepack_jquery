@@ -18,10 +18,10 @@ plugin.tx_yag.settings.themes.gmaps {
 
 	resolutionConfigs {
 
-		medium >
-		medium {
-			maxW = 280
-			maxH = 400
+		thumb >
+		thumb {
+			maxW = 200
+			maxH = 200
 		}
 
 		lightbox >
@@ -67,7 +67,7 @@ plugin.tx_yag.settings.themes.gmaps {
 
 	includeJS {
 		gmaps10 = EXT:yag_themepack_jquery/Resources/Public/Javascript/json2.min.js
-		gmaps20 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Gmaps/js/pt.gmaps.min.js
+		gmaps20 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Gmaps/js/pt.gmaps.js
 		gmaps30 = EXT:yag_themepack_jquery/Resources/Public/Javascript/init.js
 	}
 

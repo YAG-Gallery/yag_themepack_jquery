@@ -15,20 +15,12 @@ Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in 
 -->
 </extlist:comment>
 
-<div id="gmapsGallery-{config.contextIdentifier}">
-  <ul class="yag-gmaps-data">
-    <themepackJquery:Gmaps.imageList listData="{listData}">
-      <li data-yag-gmaps='{jsonMetaData}'>
-        <a target="_blank" title="{image.title}" rel="gmaps_1" href="{yag:resource.image(item:image, resolutionName:'lightbox')}">
-          <yag:image class="resizeable" item="{image}" resolutionName="medium" />
-        </a>
-      </li>
-    </themepackJquery:Gmaps.imageList>
-  </ul>
-  <div class="yag-gmaps-container"></div>
-</div>
+<div id="gmapsGallery-{config.contextIdentifier}" class="yag-gmaps-container"></div>
 
 <yag:Javascript.template templatePath="EXT:yag_themepack_jquery/Resources/Private/Templates/Gmaps/JSTemplates/Gmaps.json"
                          position="current"
                          type="application/json"
-                         arguments="{contextIdentifier:config.contextIdentifier, gmapsSettings:'{yag:javascript.jsonSettings(tsPath:\'gmapsSettings\')}'}"></yag:Javascript.template>
+                         arguments="{contextIdentifier:config.contextIdentifier,
+                          gmapsSettings:'{yag:javascript.jsonSettings(tsPath:\'gmapsSettings\')}',
+                          listData:'{themepackJquery:Gmaps.imageList(listData:listData)}'
+                         }"></yag:Javascript.template>
