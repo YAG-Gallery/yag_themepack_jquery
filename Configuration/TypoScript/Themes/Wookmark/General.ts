@@ -68,7 +68,7 @@ plugin.tx_yag.settings.themes.wookmark {
 
 	controller {
 		ItemList {
-#			list.template = EXT:yag_themepack_jquery/Resources/Private/Templates/Wookmark/ItemList/List.html
+			list.template = EXT:yag_themepack_jquery/Resources/Private/Templates/Wookmark/ItemList/List.html
 		}
 	}
 
