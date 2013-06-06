@@ -12,17 +12,24 @@
           case 'wookmark':
             var $handler = $(data.galleryId),
                 $items = $('li', $handler),
-                $filters = $('li', data.filterId);
+                $filters = $('li', data.filterId),
+                $pager = $('.yag-wookmark-pager a', $handler),
+                $itemTemplate = $items.eq(0).clone(),
+                currentPage = 1,
+                isLoading = false;
 
             $handler.imagesLoaded(function() {
+              // Initialize main wookmark plugin
               $items.wookmark($.extend(data.options.wookmark, {
                 container: $handler
               }));
 
-              if (data.options.colorbox.enabled && $.fn.colorbox) {
+              // Initialize colorbox if enabled in options
+              if (data.options.lightbox.enabled && $.fn.colorbox) {
                 $('li a', $handler).colorbox($.extend({rel: 'wookmark_1'}, data.options.lightbox));
               }
 
+              // Initialize filters
               $filters.click(function(event) {
                 var $item = $(event.currentTarget),
                     activeFilters = [];
@@ -50,6 +57,7 @@
                   title: itemData.title,
                   latitude: itemData.gpsLongitude,
                   longitude: itemData.gpsLatitude,
+                  icon: itemData.marker,
                   markerContent: '' +
                     '<a href="' + itemData.lightbox + '" rel="gmaps-lightbox-' + data.galleryId + '" title="Open in lightbox">' +
                       '<img src="' + itemData.thumb + '" alt="' + itemData.title + '" />' +
@@ -64,7 +72,7 @@
                 width: data.options.width,
                 height: data.options.height
               })
-              .ptGoogleMap($.extend({data: serviceData}, data.options));
+              .yagGoogleMap($.extend({data: serviceData}, data.options));
             break;
         }
       }

@@ -30,6 +30,12 @@ plugin.tx_yag.settings.themes.gmaps {
 			maxH = 1200
 		}
 
+		marker >
+		marker {
+			maxW = 36
+			maxH = 36
+		}
+
 	}
 
 	# Show the item title beneath the image
@@ -51,6 +57,10 @@ plugin.tx_yag.settings.themes.gmaps {
 		height = 600
 		showRouteToLink = false
 		dropAnimation = true
+		cluster = true
+		langCode = 'de'
+		showAllMarkers = true
+		showFirstMarkerOnStart = true
 	}
 
 	controller {
@@ -58,7 +68,6 @@ plugin.tx_yag.settings.themes.gmaps {
 			list.template = EXT:yag_themepack_jquery/Resources/Private/Templates/Gmaps/ItemList/List.html
 		}
 	}
-
 
 	includeLibJS = jQuery
 	jsPosition = footer
@@ -68,11 +77,12 @@ plugin.tx_yag.settings.themes.gmaps {
 	includeJS {
 		gmaps05 = HTTP://www.google.com/jsapi
 		gmaps10 = EXT:yag_themepack_jquery/Resources/Public/Javascript/json2.min.js
-		gmaps20 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Gmaps/js/pt.gmaps.js
-		gmaps30 = EXT:yag_themepack_jquery/Resources/Public/Javascript/init.js
+		gmaps20 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Gmaps/js/markerclusterer.js
+		gmaps30 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Gmaps/js/yag.gmaps.js
+		gmaps40 = EXT:yag_themepack_jquery/Resources/Public/Javascript/init.js
 	}
 
 	includeCSS {
-		wookmark10 = EXT:yag_themepack_jquery/Resources/Public/CSS/Gmaps.css
+		wookmark10 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Gmaps/css/Gmaps.css
 	}
 }

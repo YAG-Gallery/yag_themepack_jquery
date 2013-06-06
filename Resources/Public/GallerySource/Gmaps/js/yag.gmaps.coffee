@@ -5,7 +5,7 @@ Google Maps integration for YAG gallery
 (($) ->
 
   # Global list of all initialized maps
-  ptGoogleMaps = []
+  yagGoogleMaps = []
 
   # List of callbacks waiting for the api
   loaderCallbacks = []
@@ -20,6 +20,7 @@ Google Maps integration for YAG gallery
     mapOptions:
       zoom: 14
     data: {}
+    cluster: true
     langCode: 'de'
     startAddress: ''
     dropAnimation: false
@@ -36,7 +37,7 @@ Google Maps integration for YAG gallery
   ###
   Map class
   ###
-  class PtGoogleMap
+  class YagGoogleMap
     constructor: (@$mapObj, @options) ->
       @infoWindow = undefined
       @markers = []
@@ -61,7 +62,22 @@ Google Maps integration for YAG gallery
       for dataEntry in @options.data
         # Store marker if coordinates are sane
         if Math.abs(dataEntry.latitude) <= 90 and Math.abs(dataEntry.longitude) <= 180
+          console.log dataEntry
           @markers.push @createMapMarker(dataEntry)
+
+      # Create clusters
+      clusterStyles = [{
+        url: '/typo3conf/ext/yag_themepack_jquery/Resources/Public/GallerySource/Gmaps/img/cluster.png'
+        height: 36,
+        width: 36,
+        anchor: [10, 0],
+        textColor: '#333',
+        textSize: 12,
+      }]
+      markerCluster = new MarkerClusterer @map, @markers,
+        gridSize: 20
+        maxZoom: 13
+        styles: clusterStyles
 
       # Zoom to show all markers
       @showAllMarkers() if @options.showAllMarkers and @markers.length > 1
@@ -106,8 +122,9 @@ Google Maps integration for YAG gallery
     createMapMarker: (markerData) =>
       markerOptions =
         position: new google.maps.LatLng(markerData.latitude, markerData.longitude)
-        map: @map
+#        map: @map
         title: markerData.title
+        icon: markerData.icon
 
       # Add drop animation if set
       if @options.dropAnimation
@@ -160,7 +177,7 @@ Google Maps integration for YAG gallery
 
   ###
   Function for loading the google maps api async
-  Calls initializePTGoogleMap when script has been loaded
+  Calls initializeYagGoogleMap when script has been loaded
   ###
   loadScript = (options, callback) ->
     return unless window.google
@@ -189,11 +206,11 @@ Google Maps integration for YAG gallery
   ###
   Register jQuery plugin
   ###
-  $.fn.ptGoogleMap = (options, idx=undefined) ->
+  $.fn.yagGoogleMap = (options, idx=undefined) ->
     # Call plugin for each element separately
     if @length > 1
       @each ->
-        $(@).ptGoogleMap options
+        $(@).yagGoogleMap options
       return @
 
     return @ if @length is 0
@@ -210,7 +227,7 @@ Google Maps integration for YAG gallery
 
     # Load script if necessary and create map when it's done
     loadScript options, ->
-      ptGoogleMaps.push new PtGoogleMap($self, options)
+      yagGoogleMaps.push new YagGoogleMap($self, options)
 
     # Return jQuery object for chaining
     return @
