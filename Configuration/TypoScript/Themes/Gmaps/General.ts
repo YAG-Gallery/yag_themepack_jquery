@@ -48,10 +48,11 @@ plugin.tx_yag.settings.themes.gmaps {
 	showTags = 1
 
 	# Do not limit the item count
-	itemsPerPage = 0
+	itemList {
+		itemsPerPage = 0
+	}
 
-	# jQuery Wookmark Settings
-
+	# Gmaps plugin Settings
 	gmapsSettings {
 		width = 100%
 		height = 600
