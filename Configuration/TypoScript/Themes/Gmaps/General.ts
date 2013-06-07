@@ -32,8 +32,8 @@ plugin.tx_yag.settings.themes.gmaps {
 
 		marker >
 		marker {
-			maxW = 36
-			maxH = 36
+			maxW = 50
+			maxH = 50
 		}
 
 	}
@@ -53,14 +53,15 @@ plugin.tx_yag.settings.themes.gmaps {
 	# jQuery Wookmark Settings
 
 	gmapsSettings {
-		width = 800
+		width = 100%
 		height = 600
 		showRouteToLink = false
 		dropAnimation = true
 		cluster = true
 		langCode = 'de'
 		showAllMarkers = true
-		showFirstMarkerOnStart = true
+		showFirstMarkerOnStart = false
+		lightbox = true
 	}
 
 	controller {
@@ -77,12 +78,14 @@ plugin.tx_yag.settings.themes.gmaps {
 	includeJS {
 		gmaps05 = HTTP://www.google.com/jsapi
 		gmaps10 = EXT:yag_themepack_jquery/Resources/Public/Javascript/json2.min.js
+		gmaps20 = EXT:yag_themepack_jquery/Resources/Public/Javascript/jquery.colorbox-min.js
 		gmaps20 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Gmaps/js/markerclusterer.js
 		gmaps30 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Gmaps/js/yag.gmaps.js
 		gmaps40 = EXT:yag_themepack_jquery/Resources/Public/Javascript/init.js
 	}
 
 	includeCSS {
-		wookmark10 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Gmaps/css/Gmaps.css
+		wookmark10 = EXT:yag_themepack_jquery/Resources/Public/CSS/Colorbox/colorbox.css
+		wookmark20 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Gmaps/css/Gmaps.css
 	}
 }

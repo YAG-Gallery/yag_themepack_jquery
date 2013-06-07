@@ -34,7 +34,17 @@ Google Maps integration for YAG gallery
       center: {
         lat: 49.02,
         lng: 8.4
-      }
+      },
+      clusterStyles: [
+        {
+          url: '/typo3conf/ext/yag_themepack_jquery/Resources/Public/GallerySource/Gmaps/img/cluster.png',
+          width: 32,
+          height: 35,
+          anchor: [8, 0],
+          textColor: '#333',
+          textSize: 20
+        }
+      ]
     };
     /*
     Map class
@@ -42,7 +52,7 @@ Google Maps integration for YAG gallery
 
     YagGoogleMap = (function() {
       function YagGoogleMap($mapObj, options) {
-        var clusterStyles, dataEntry, markerCluster, _i, _len, _ref,
+        var dataEntry, markerCluster, _i, _len, _ref,
           _this = this;
 
         this.$mapObj = $mapObj;
@@ -55,7 +65,7 @@ Google Maps integration for YAG gallery
         this.markers = [];
         this.options.mapOptions = $.extend(true, {}, this.options.mapOptions, {
           center: new google.maps.LatLng(this.options.center.lat, this.options.center.lng),
-          mapTypeId: google.maps.MapTypeId.ROADMAP
+          mapTypeId: google.maps.MapTypeId.HYBRID
         });
         this.$mapObj.css({
           width: this.options.width,
@@ -67,24 +77,13 @@ Google Maps integration for YAG gallery
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           dataEntry = _ref[_i];
           if (Math.abs(dataEntry.latitude) <= 90 && Math.abs(dataEntry.longitude) <= 180) {
-            console.log(dataEntry);
             this.markers.push(this.createMapMarker(dataEntry));
           }
         }
-        clusterStyles = [
-          {
-            url: '/typo3conf/ext/yag_themepack_jquery/Resources/Public/GallerySource/Gmaps/img/cluster.png',
-            height: 36,
-            width: 36,
-            anchor: [10, 0],
-            textColor: '#333',
-            textSize: 12
-          }
-        ];
         markerCluster = new MarkerClusterer(this.map, this.markers, {
-          gridSize: 20,
-          maxZoom: 13,
-          styles: clusterStyles
+          gridSize: 40,
+          maxZoom: options.mapOptions.zoom,
+          styles: options.clusterStyles
         });
         if (this.options.showAllMarkers && this.markers.length > 1) {
           this.showAllMarkers();

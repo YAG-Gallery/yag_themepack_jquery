@@ -33,6 +33,14 @@ Google Maps integration for YAG gallery
     center:
       lat: 49.02
       lng: 8.4
+    clusterStyles: [{
+      url: '/typo3conf/ext/yag_themepack_jquery/Resources/Public/GallerySource/Gmaps/img/cluster.png'
+      width: 32
+      height: 35
+      anchor: [8, 0]
+      textColor: '#333'
+      textSize: 20
+    }]
 
   ###
   Map class
@@ -45,7 +53,7 @@ Google Maps integration for YAG gallery
       # Load some default into map options
       @options.mapOptions = $.extend true, {}, @options.mapOptions,
         center: new google.maps.LatLng(@options.center.lat, @options.center.lng)
-        mapTypeId: google.maps.MapTypeId.ROADMAP
+        mapTypeId: google.maps.MapTypeId.HYBRID
 
       # Set map size
       @$mapObj.css
@@ -62,22 +70,13 @@ Google Maps integration for YAG gallery
       for dataEntry in @options.data
         # Store marker if coordinates are sane
         if Math.abs(dataEntry.latitude) <= 90 and Math.abs(dataEntry.longitude) <= 180
-          console.log dataEntry
           @markers.push @createMapMarker(dataEntry)
 
       # Create clusters
-      clusterStyles = [{
-        url: '/typo3conf/ext/yag_themepack_jquery/Resources/Public/GallerySource/Gmaps/img/cluster.png'
-        height: 36,
-        width: 36,
-        anchor: [10, 0],
-        textColor: '#333',
-        textSize: 12,
-      }]
       markerCluster = new MarkerClusterer @map, @markers,
-        gridSize: 20
-        maxZoom: 13
-        styles: clusterStyles
+        gridSize: 40
+        maxZoom: options.mapOptions.zoom
+        styles: options.clusterStyles
 
       # Zoom to show all markers
       @showAllMarkers() if @options.showAllMarkers and @markers.length > 1
