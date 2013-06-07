@@ -38,6 +38,10 @@
   font-weight: bold;
 }
 
+.wookmark-tiles .yag-wookmark-pager {
+  /*display: none;*/
+}
+
 .wookmark-image-wrap {
   display: block;
 }

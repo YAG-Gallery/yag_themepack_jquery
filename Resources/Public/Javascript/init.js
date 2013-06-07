@@ -2,7 +2,9 @@
 (function($) {
   $(function() {
     $('script[type="application/json"]').each(function() {
-      var data = JSON.parse($(this).html());
+      var data = JSON.parse($(this).html()),
+          $window = $(window),
+          $document = $(document);
 
       if (data.theme != undefined) {
         switch (data.theme) {
@@ -42,6 +44,59 @@
 
                 $items.wookmarkInstance.filter(activeFilters, data.options.filterMode);
               });
+
+              if ($pager.length) {
+                // Handlers for api
+                function loadData(page) {
+                  isLoading = true;
+  //                $('#loaderCircle').show();
+
+                  var pageUrl = $pager.eq(page).attr('href');
+
+                  $.ajax({
+                    url: pageUrl,
+                    dataType: 'jsonp',
+                    success: onLoadData
+                  });
+                };
+
+                function onLoadData(data) {
+                  isLoading = false;
+  //                $('#loaderCircle').hide();
+
+                  // Increment page index for future calls.
+                  currentPage++;
+
+                  // Create HTML for the images.
+                  var html = '', i = 0, length = data.length, image;
+
+                  for(; i < length; i++) {
+                    image = data[i];
+                    html += '<li>'
+                      + '<img src="'+image.preview+'" width="200" height="'+Math.round(image.height/image.width*200)+'">'
+                      + '<p>'+image.title+'</p>'
+                      + '</li>';
+                  }
+
+                  // Add image HTML to the page.
+                  $('#tiles').append(html);
+
+                  $handler.trigger('refreshWookmark');
+                };
+
+                // Initialize endless scroll handlers
+                function onScroll() {
+                  if (!isLoading && currentPage < $pager.length) {
+                    var winHeight = window.innerHeight ? window.innerHeight : $window.height();
+
+                    if ($window.scrollTop() + winHeight > $document.height() - 100) {
+                      loadData(currentPage);
+                    }
+                  }
+                };
+
+                $window.bind('scroll.wookmark', onScroll);
+              }
             });
             break;
           case 'gmaps':
@@ -65,6 +120,18 @@
                     '<p>' + itemData.description + '</p>'
                 });
               }
+            }
+
+            if (data.options.lightbox) {
+              $gmapsContainer.delegate('a', 'click.yag-gmaps', function(e) {
+                e.preventDefault();
+                $.colorbox({
+                  rel: '[rel=gmaps-lightbox-' + data.galleryId + ']',
+                  href: $(this).attr('href'),
+                  maxWidth: '90%',
+                  maxHeight: '90%'
+                });
+              });
             }
 
             $gmapsContainer

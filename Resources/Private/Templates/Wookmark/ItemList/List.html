@@ -3,7 +3,7 @@
 {namespace extlist=Tx_PtExtlist_ViewHelpers}
 
 <extlist:comment>
-<!--  
+<!--
 Template for rendering an album.
 
 Here is a list of objects / variables that can be accessed in this template:
@@ -56,9 +56,15 @@ Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in 
       </li>
     </themepackJquery:Wookmark.imageList>
   </ul>
+
+  <f:if condition="{config.settings.endlessScroll}">
+    <f:render partial="{config.itemListConfig.pagerPartial}" arguments="{action: listAction, controller: 'ItemList', pager: pager, pagerCollection: pagerCollection}" />
+  </f:if>
 </div>
 
-<yag:Javascript.template templatePath="EXT:yag_themepack_jquery/Resources/Private/Templates/Wookmark/JSTemplates/Wookmark.json"
-                         position="current"
-                         type="application/json"
-                         arguments="{contextIdentifier:config.contextIdentifier, wookmarkSettings:'{yag:javascript.jsonSettings(tsPath:\'wookmarkSettings\')}'}"></yag:Javascript.template>
+
+<yag:Javascript.template
+    templatePath="EXT:yag_themepack_jquery/Resources/Private/Templates/Wookmark/JSTemplates/Wookmark.json"
+    position="current"
+    type="application/json"
+    arguments="{contextIdentifier:config.contextIdentifier, wookmarkSettings:'{yag:javascript.jsonSettings(tsPath:\'wookmarkSettings\')}'}"></yag:Javascript.template>

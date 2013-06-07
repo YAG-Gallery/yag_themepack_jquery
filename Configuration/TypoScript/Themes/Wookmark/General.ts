@@ -40,26 +40,37 @@ plugin.tx_yag.settings.themes.wookmark {
 	# Show the items tags beneath the image
 	showTags = 1
 
-	# Do not limit the item count
-	itemList.itemsPerPage = 0
+	itemList {
+		itemsPerPage = 5
+		pagerPartial = EXT:yag_themepack_jquery/Resources/Private/Templates/Wookmark/ItemList/Pager.html
+	}
+
+	# Enable endless scrolling via json api
+	endlessScroll = 1
 
 	# jQuery Wookmark Settings
-
 	wookmarkSettings {
 		wookmark {
+			align = center
+			offset = 2
+			autoResize = false
+			itemWidth = 0
+			flexibleWidth = 0
+			resizeDelay = 50
 		}
-		colorbox {
+		lightbox {
 			enabled = 1
+			maxWidth = 100%
+			maxHeight = 100%
 		}
 		filterMode = or
 	}
 
 	controller {
 		ItemList {
-			list.template = EXT:yag_themepack_jquery/Resources/Private/Templates/Wookmark/ItemList/List.html
+#			list.template = EXT:yag_themepack_jquery/Resources/Private/Templates/Wookmark/ItemList/List.html
 		}
 	}
-
 
 	includeLibJS = jQuery
 	jsPosition = footer
@@ -69,13 +80,13 @@ plugin.tx_yag.settings.themes.wookmark {
 	includeJS {
 		wookmark10 = EXT:yag_themepack_jquery/Resources/Public/Javascript/json2.min.js
 		wookmark20 = EXT:yag_themepack_jquery/Resources/Public/Javascript/imagesloaded.pkgd.min.js
-		wookmark30 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Wookmark/example-lightbox/js/jquery.colorbox-min.js
+		wookmark30 = EXT:yag_themepack_jquery/Resources/Public/Javascript/jquery.colorbox-min.js
 		wookmark40 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Wookmark/jquery.wookmark.min.js
 		wookmark50 = EXT:yag_themepack_jquery/Resources/Public/Javascript/init.js
 	}
 
 	includeCSS {
-		wookmark10 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Wookmark/example-lightbox/css/colorbox.css
+		wookmark10 = EXT:yag_themepack_jquery/Resources/Public/CSS/Colorbox/colorbox.css
 		wookmark20 = EXT:yag_themepack_jquery/Resources/Public/CSS/Wookmark.css
 	}
 }
