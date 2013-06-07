@@ -13,14 +13,19 @@
             break;
           case 'wookmark':
             var $handler = $(data.galleryId),
+                $list = $('ul', $handler),
                 $items = $('li', $handler),
                 $filters = $('li', data.filterId),
                 $pager = $('.yag-wookmark-pager a', $handler),
+                $loaderCircle = $('.yag-wookmark-loader-circle', $handler),
                 $itemTemplate = $items.eq(0).clone(),
                 currentPage = 1,
                 isLoading = false;
 
-            $handler.imagesLoaded(function() {
+            function initItems() {
+              // Refresh item list
+              $items = $('li', $handler);
+
               // Initialize main wookmark plugin
               $items.wookmark($.extend(data.options.wookmark, {
                 container: $handler
@@ -32,9 +37,9 @@
               }
 
               // Initialize filters
-              $filters.click(function(event) {
+              $filters.unbind('click').click(function(event) {
                 var $item = $(event.currentTarget),
-                    activeFilters = [];
+                  activeFilters = [];
                 $item.toggleClass('active');
 
                 // Collect active filter strings
@@ -44,44 +49,57 @@
 
                 $items.wookmarkInstance.filter(activeFilters, data.options.filterMode);
               });
+            }
+
+            $handler.imagesLoaded(function() {
+
+              initItems();
 
               if ($pager.length) {
                 // Handlers for api
                 function loadData(page) {
                   isLoading = true;
-  //                $('#loaderCircle').show();
+                  $loaderCircle.show();
 
                   var pageUrl = $pager.eq(page).attr('href');
 
                   $.ajax({
                     url: pageUrl,
-                    dataType: 'jsonp',
+                    dataType: 'json',
                     success: onLoadData
                   });
                 };
 
                 function onLoadData(data) {
                   isLoading = false;
-  //                $('#loaderCircle').hide();
+                  $loaderCircle.hide();
 
                   // Increment page index for future calls.
                   currentPage++;
 
                   // Create HTML for the images.
-                  var html = '', i = 0, length = data.length, image;
+                  var i = 0, image, $newItem;
 
-                  for(; i < length; i++) {
+                  for(; i < data.length; i++) {
                     image = data[i];
-                    html += '<li>'
-                      + '<img src="'+image.preview+'" width="200" height="'+Math.round(image.height/image.width*200)+'">'
-                      + '<p>'+image.title+'</p>'
-                      + '</li>';
+                    $newItem = $itemTemplate.clone();
+                    $('img', $newItem).attr({
+                      'width': image.mediumWidth,
+                      'height':image.mediumHeight,
+                      'src': image.medium,
+                      'alt': image.title
+                    });
+                    $('a', $newItem).attr('href', image.lightbox);
+                    $('.yag-wookmark-description', $newItem).text(image.description);
+                    $('.yag-wookmark-title', $newItem).text(image.title);
+                    $('.yag-wookmark-tags', $newItem).text(image.tags);
+                    $newItem.data('filterClass', image.tags.split(','));
+
+                    // Add item to list
+                    $list.append($newItem);
                   }
 
-                  // Add image HTML to the page.
-                  $('#tiles').append(html);
-
-                  $handler.trigger('refreshWookmark');
+                  initItems();
                 };
 
                 // Initialize endless scroll handlers

@@ -1,3 +1,11 @@
+.wookmark-tiles {
+  -webkit-transition: height .3s ease-out;
+  -moz-transition: height .3s ease-out;
+  -o-transition: height .3s ease-out;
+  transition: height .3s ease-out;
+  position: relative;
+}
+
 .wookmark-tiles ul {
   list-style-type: none;
   position: relative; /** Needed to ensure items are laid out relative to this container **/
@@ -27,19 +35,19 @@
   display: block;
 }
 
-.wookmark-tiles li .title,
+.yag-wookmark-title,
 .wookmark-tiles li p {
   color: #666;
   font-size: 12px;
   margin: 7px 7px 0px;
 }
 
-.wookmark-tiles li .title {
+.yag-wookmark-title {
   font-weight: bold;
 }
 
-.wookmark-tiles .yag-wookmark-pager {
-  /*display: none;*/
+.yag-wookmark-pager {
+  display: none;
 }
 
 .wookmark-image-wrap {
@@ -95,4 +103,21 @@
 
 * html .wookmark-clearfix {
   height: 1%;
+}
+
+.yag-wookmark-loader {
+  height: 16px;
+  text-align: center;
+  padding: 25px 0 25px 0;
+  /*z-index: 1000;*/
+  bottom: 0px;
+  position: absolute;
+}
+
+.yag-wookmark-loader-circle {
+  width: 16px;
+  height: 16px;
+  margin: 0 auto;
+  display: none;
+  background-image: url('../Images/Wookmark/loader.gif');
 }

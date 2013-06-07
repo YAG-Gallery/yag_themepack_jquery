@@ -41,7 +41,7 @@ plugin.tx_yag.settings.themes.wookmark {
 	showTags = 1
 
 	itemList {
-		itemsPerPage = 5
+		itemsPerPage = 20
 		pagerPartial = EXT:yag_themepack_jquery/Resources/Private/Templates/Wookmark/ItemList/Pager.html
 	}
 
