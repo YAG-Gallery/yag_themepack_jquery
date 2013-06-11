@@ -53,7 +53,7 @@ plugin.tx_yag.settings.themes.wookmark {
 		wookmark {
 			align = center
 			offset = 2
-			autoResize = false
+			autoResize = true
 			itemWidth = 0
 			flexibleWidth = 0
 			resizeDelay = 50
