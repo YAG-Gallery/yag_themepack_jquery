@@ -32,8 +32,8 @@ plugin.tx_yag.settings.themes.gmaps {
 
 		marker >
 		marker {
-			maxW = 50
-			maxH = 50
+			width = 50c
+			height = 50c
 		}
 
 	}
@@ -80,9 +80,9 @@ plugin.tx_yag.settings.themes.gmaps {
 		gmaps05 = HTTP://www.google.com/jsapi
 		gmaps10 = EXT:yag_themepack_jquery/Resources/Public/Javascript/json2.min.js
 		gmaps20 = EXT:yag_themepack_jquery/Resources/Public/Javascript/jquery.colorbox-min.js
-		gmaps20 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Gmaps/js/markerclusterer.js
-		gmaps30 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Gmaps/js/yag.gmaps.js
-		gmaps40 = EXT:yag_themepack_jquery/Resources/Public/Javascript/init.js
+		gmaps30 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Gmaps/js/markerclusterer.js
+		gmaps40 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Gmaps/js/yag.gmaps.js
+		gmaps50 = EXT:yag_themepack_jquery/Resources/Public/Javascript/init.js
 	}
 
 	includeCSS {
