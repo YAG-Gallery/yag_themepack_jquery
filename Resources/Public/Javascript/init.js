@@ -98,8 +98,9 @@
                     // Add item to list
                     $list.append($newItem);
                   }
-
-                  initItems();
+                  $handler.imagesLoaded(function() {
+                    initItems();
+                  });
                 };
 
                 // Initialize endless scroll handlers
