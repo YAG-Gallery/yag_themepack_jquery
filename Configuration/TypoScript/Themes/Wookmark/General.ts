@@ -60,8 +60,8 @@ plugin.tx_yag.settings.themes.wookmark {
 		}
 		lightbox {
 			enabled = 1
-			maxWidth = 100%
-			maxHeight = 100%
+			maxWidth = 90%
+			maxHeight = 90%
 		}
 		filterMode = or
 	}
@@ -81,7 +81,7 @@ plugin.tx_yag.settings.themes.wookmark {
 		wookmark10 = EXT:yag_themepack_jquery/Resources/Public/Javascript/json2.min.js
 		wookmark20 = EXT:yag_themepack_jquery/Resources/Public/Javascript/imagesloaded.pkgd.min.js
 		wookmark30 = EXT:yag_themepack_jquery/Resources/Public/Javascript/jquery.colorbox-min.js
-		wookmark40 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Wookmark/jquery.wookmark.min.js
+		wookmark40 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Wookmark/jquery.wookmark.js
 		wookmark50 = EXT:yag_themepack_jquery/Resources/Public/Javascript/init.js
 	}
 
