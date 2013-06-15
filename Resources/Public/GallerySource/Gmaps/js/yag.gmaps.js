@@ -41,8 +41,8 @@ Google Maps integration for YAG gallery
           width: 32,
           height: 35,
           anchor: [8, 0],
-          textColor: '#333',
-          textSize: 20
+          textColor: '#fff',
+          textSize: 14
         }
       ]
     };
