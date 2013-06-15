@@ -72,7 +72,6 @@
 
                 function onLoadData(data) {
                   isLoading = false;
-                  $loaderCircle.hide();
 
                   // Increment page index for future calls.
                   currentPage++;
@@ -98,8 +97,10 @@
                     // Add item to list
                     $list.append($newItem);
                   }
-
-                  initItems();
+                  $handler.imagesLoaded(function() {
+                    initItems();
+                    $loaderCircle.hide();
+                  });
                 };
 
                 // Initialize endless scroll handlers
@@ -123,6 +124,13 @@
 
             for (i = 0; i < data.listData.length; i++) {
               itemData = data.listData[i];
+
+              try {
+                itemData.gpsLongitude = parseFloat(itemData.gpsLongitude);
+                itemData.gpsLatitude = parseFloat(itemData.gpsLatitude);
+              } catch(e) {
+                itemData.gpsLongitude = itemData.gpsLatitude = 0;
+              }
 
               if (itemData.gpsLongitude != 0 && itemData.gpsLatitude != 0) {
                 serviceData.push({
