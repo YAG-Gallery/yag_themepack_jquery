@@ -13,7 +13,6 @@ Google Maps integration for YAG gallery
 
   # Some global vars for the plugin
   selectedDestinationAddress = ''
-  geocoder = undefined
 
   # Default options for the map plugin
   defaultMapOptions =
@@ -35,16 +34,16 @@ Google Maps integration for YAG gallery
       lng: 8.4
     clusterStyles: [{
       url: '/typo3conf/ext/yag_themepack_jquery/Resources/Public/GallerySource/Gmaps/img/cluster.png'
-      width: 32
-      height: 35
+      width: 36
+      height: 36
       anchor: [8, 0]
-      textColor: '#333'
-      textSize: 20
+      textColor: '#fff'
+      textSize: 14
     }]
 
-  ###
-  Map class
-  ###
+  # Will later hold the SimpleMarker class after loading the gmaps api
+  SimpleMarker = undefined
+
   class YagGoogleMap
     constructor: (@$mapObj, @options) ->
       @infoWindow = undefined
@@ -73,7 +72,7 @@ Google Maps integration for YAG gallery
           @markers.push @createMapMarker(dataEntry)
 
       # Create clusters
-      markerCluster = new MarkerClusterer @map, @markers,
+      @markerCluster = new MarkerClusterer @map, @markers,
         gridSize: 40
         maxZoom: options.mapOptions.zoom
         styles: options.clusterStyles
@@ -120,17 +119,20 @@ Google Maps integration for YAG gallery
     ###
     createMapMarker: (markerData) =>
       markerOptions =
-        position: new google.maps.LatLng(markerData.latitude, markerData.longitude)
-#        map: @map
         title: markerData.title
-        icon: markerData.icon
+        image: markerData.icon
+        classname: 'yag-gmaps-marker'
+
+      markerPosition = new google.maps.LatLng markerData.latitude, markerData.longitude
 
       # Add drop animation if set
       if @options.dropAnimation
         markerOptions.animation = google.maps.Animation.DROP
 
-      marker = new google.maps.Marker markerOptions
+      #marker = new google.maps.Marker markerOptions
+      marker = new SimpleMarker @map, markerPosition, markerOptions
       marker.ptAdditionalData = markerData
+      marker.position = markerPosition
 
         # Add event listeners to map
       google.maps.event.addListener marker, 'click', (e) =>
@@ -226,6 +228,7 @@ Google Maps integration for YAG gallery
 
     # Load script if necessary and create map when it's done
     loadScript options, ->
+      SimpleMarker = initSimpleMarkerClass() unless SimpleMarker
       yagGoogleMaps.push new YagGoogleMap($self, options)
 
     # Return jQuery object for chaining

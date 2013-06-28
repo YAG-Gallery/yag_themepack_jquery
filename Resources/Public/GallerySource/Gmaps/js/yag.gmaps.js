@@ -9,13 +9,12 @@ Google Maps integration for YAG gallery
   var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   (function($) {
-    var YagGoogleMap, defaultMapOptions, geocoder, librariesLoading, loadScript, loaderCallbacks, runCallbacks, selectedDestinationAddress, yagGoogleMaps;
+    var SimpleMarker, YagGoogleMap, defaultMapOptions, librariesLoading, loadScript, loaderCallbacks, runCallbacks, selectedDestinationAddress, yagGoogleMaps;
 
     yagGoogleMaps = [];
     loaderCallbacks = [];
     librariesLoading = false;
     selectedDestinationAddress = '';
-    geocoder = void 0;
     defaultMapOptions = {
       mapOptions: {
         zoom: 14
@@ -38,21 +37,18 @@ Google Maps integration for YAG gallery
       clusterStyles: [
         {
           url: '/typo3conf/ext/yag_themepack_jquery/Resources/Public/GallerySource/Gmaps/img/cluster.png',
-          width: 32,
-          height: 35,
+          width: 36,
+          height: 36,
           anchor: [8, 0],
           textColor: '#fff',
           textSize: 14
         }
       ]
     };
-    /*
-    Map class
-    */
-
+    SimpleMarker = void 0;
     YagGoogleMap = (function() {
       function YagGoogleMap($mapObj, options) {
-        var dataEntry, markerCluster, _i, _len, _ref,
+        var dataEntry, _i, _len, _ref,
           _this = this;
 
         this.$mapObj = $mapObj;
@@ -80,7 +76,7 @@ Google Maps integration for YAG gallery
             this.markers.push(this.createMapMarker(dataEntry));
           }
         }
-        markerCluster = new MarkerClusterer(this.map, this.markers, {
+        this.markerCluster = new MarkerClusterer(this.map, this.markers, {
           gridSize: 40,
           maxZoom: options.mapOptions.zoom,
           styles: options.clusterStyles
@@ -144,19 +140,21 @@ Google Maps integration for YAG gallery
 
 
       YagGoogleMap.prototype.createMapMarker = function(markerData) {
-        var marker, markerOptions,
+        var marker, markerOptions, markerPosition,
           _this = this;
 
         markerOptions = {
-          position: new google.maps.LatLng(markerData.latitude, markerData.longitude),
           title: markerData.title,
-          icon: markerData.icon
+          image: markerData.icon,
+          classname: 'yag-gmaps-marker'
         };
+        markerPosition = new google.maps.LatLng(markerData.latitude, markerData.longitude);
         if (this.options.dropAnimation) {
           markerOptions.animation = google.maps.Animation.DROP;
         }
-        marker = new google.maps.Marker(markerOptions);
+        marker = new SimpleMarker(this.map, markerPosition, markerOptions);
         marker.ptAdditionalData = markerData;
+        marker.position = markerPosition;
         google.maps.event.addListener(marker, 'click', function(e) {
           return _this.showInfoWindow(e, marker);
         });
@@ -262,6 +260,9 @@ Google Maps integration for YAG gallery
       }
       options = $.extend(true, {}, defaultMapOptions, options);
       loadScript(options, function() {
+        if (!SimpleMarker) {
+          SimpleMarker = initSimpleMarkerClass();
+        }
         return yagGoogleMaps.push(new YagGoogleMap($self, options));
       });
       return this;
