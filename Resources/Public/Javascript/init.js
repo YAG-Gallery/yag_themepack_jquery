@@ -119,41 +119,67 @@
             });
             break;
           case 'gmaps':
-            var serviceData = [], i, itemData,
-                $gmapsContainer = $(data.galleryId);
+            var serviceData = [], i, itemData, currentItem,
+                longitude, latitude, locationHash,
+                $gmapsContainer = $(data.galleryId),
+                itemLength = data.listData.length,
+                itemGroupId, itemGroup, itemGroups = {}, markerContent;
 
-            for (i = 0; i < data.listData.length; i++) {
+            // Check for items on the same position
+            for (i = 0; i < itemLength; i++) {
               itemData = data.listData[i];
+              locationHash = (itemData.gpsLongitude + '-' + itemData.gpsLatitude).replace(/\./g, '-');
+              if (!itemGroups[locationHash]) itemGroups[locationHash] = [];
+              itemGroups[locationHash].push(i);
+            }
 
+            // Create markers and groups
+            for (itemGroupId in itemGroups) {
+              itemGroup = itemGroups[itemGroupId];
+              itemData = data.listData[itemGroup[0]];
               try {
-                itemData.gpsLongitude = parseFloat(itemData.gpsLongitude);
-                itemData.gpsLatitude = parseFloat(itemData.gpsLatitude);
+                longitude = parseFloat(itemData.gpsLongitude);
+                latitude = parseFloat(itemData.gpsLatitude);
               } catch(e) {
-                itemData.gpsLongitude = itemData.gpsLatitude = 0;
+                longitude = latitude = 0;
               }
 
-              if (itemData.gpsLongitude != 0 && itemData.gpsLatitude != 0) {
+              if (longitude != 0 && latitude != 0) {
+                if (itemGroup.length > 1) {
+                  // Create single groupmarker for multiple items
+                  markerContent = ''
+                  for (i = 0; i < itemGroup.length; i++) {
+                    currentItem = data.listData[itemGroup[i]];
+                    markerContent += '<a class="yag-gmaps-item-link" rel="gmaps-lightbox-' + itemGroupId + '" href="' +
+                      currentItem.lightbox + '" title="' + currentItem.title + '">' +
+                      '<img width="' + currentItem.markerWidth + '" height="' + currentItem.markerHeight +
+                      '" src="' + currentItem.marker + '" alt="' + currentItem.title + '" /></a>';
+                  }
+                } else {
+                  // Create single marker for one item
+                  markerContent = '<a class="yag-gmaps-item-link" href="' + itemData.lightbox + '" title="' +
+                    itemData.title + '">' +
+                    '<img width="' + itemData.thumbWidth + '" height="' + itemData.thumbHeight +
+                    '" src="' + itemData.thumb + '" alt="' + itemData.title + '" />' +
+                    '</a><p>' + itemData.description + '</p>';
+                }
+
                 serviceData.push({
-                  dataId: i,
+                  dataId: itemGroupId,
                   title: itemData.title,
-                  latitude: itemData.gpsLongitude,
-                  longitude: itemData.gpsLatitude,
+                  latitude: longitude,
+                  longitude: latitude,
                   icon: itemData.marker,
-                  markerContent: '' +
-                    '<a href="' + itemData.lightbox + '" rel="gmaps-lightbox-' + data.galleryId + '" title="Open in lightbox">' +
-                      '<img src="' + itemData.thumb + '" alt="' + itemData.title + '" />' +
-                    '</a>' +
-                    '<p>' + itemData.description + '</p>'
+                  markerContent: markerContent
                 });
               }
             }
 
             if (data.options.lightbox) {
-              $gmapsContainer.delegate('a', 'click.yag-gmaps', function(e) {
+              $gmapsContainer.delegate('.yag-gmaps-item-link', 'click', function(e) {
                 e.preventDefault();
-                $.colorbox({
-                  rel: '[rel=gmaps-lightbox-' + data.galleryId + ']',
-                  href: $(this).attr('href'),
+                $(this).parent().children('.yag-gmaps-item-link').colorbox({
+                  open: true,
                   maxWidth: '90%',
                   maxHeight: '90%'
                 });

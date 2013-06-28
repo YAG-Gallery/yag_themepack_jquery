@@ -1,11 +1,16 @@
+.yag-gmaps-container,
+.yag-gmaps-marker,
+.yag-gmaps-infowindow {
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  box-shadow: 0 1px 2px 1px rgba(0, 0, 0, .4);
+  -moz-box-shadow: 0 1px 2px 1px rgba(0, 0, 0, .4);
+  -webkit-box-shadow: 0 1px 2px 1px rgba(0, 0, 0, .4);
+}
+
 .yag-gmaps-container {
   border: 1px solid #333;
-          border-radius: 3px;
-     -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-          box-shadow: 0 1px 2px 1px rgba(0, 0, 0, .4);
-     -moz-box-shadow: 0 1px 2px 1px rgba(0, 0, 0, .4);
-  -webkit-box-shadow: 0 1px 2px 1px rgba(0, 0, 0, .4);
 }
 
 .yag-gmaps-marker {
@@ -14,7 +19,26 @@
           border-radius: 1px;
      -moz-border-radius: 1px;
   -webkit-border-radius: 1px;
-          box-shadow: 0 1px 2px 1px rgba(0, 0, 0, .4);
-     -moz-box-shadow: 0 1px 2px 1px rgba(0, 0, 0, .4);
-  -webkit-box-shadow: 0 1px 2px 1px rgba(0, 0, 0, .4);
+}
+
+.yag-gmaps-infowindow {
+  background-color: #fafafa;
+  background-color: rgba(255, 255, 255, .9);
+  padding: 5px;
+  color: #222;
+}
+
+
+.yag-gmaps-infowindow .gmaps-title {
+  font-weight: bold;
+  /*border-bottom: 1px solid #ccc;*/
+  padding-bottom: 3px;
+  margin-bottom: 5px;
+  display: block;
+  text-align: center;
+}
+
+.yag-gmaps-infowindow .yag-gmaps-item-link {
+  display: block;
+  text-align: center;
 }

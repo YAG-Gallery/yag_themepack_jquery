@@ -9,7 +9,7 @@ Google Maps integration for YAG gallery
   var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   (function($) {
-    var SimpleMarker, YagGoogleMap, defaultMapOptions, librariesLoading, loadScript, loaderCallbacks, runCallbacks, selectedDestinationAddress, yagGoogleMaps;
+    var InfoBox, SimpleMarker, YagGoogleMap, defaultMapOptions, librariesLoading, loadScript, loaderCallbacks, runCallbacks, selectedDestinationAddress, yagGoogleMaps;
 
     yagGoogleMaps = [];
     loaderCallbacks = [];
@@ -17,7 +17,10 @@ Google Maps integration for YAG gallery
     selectedDestinationAddress = '';
     defaultMapOptions = {
       mapOptions: {
-        zoom: 14
+        zoom: 14,
+        streetViewControl: false,
+        mapTypeControl: false,
+        panControl: false
       },
       data: {},
       cluster: true,
@@ -43,9 +46,21 @@ Google Maps integration for YAG gallery
           textColor: '#fff',
           textSize: 14
         }
-      ]
+      ],
+      infoBoxOptions: {
+        boxClass: 'yag-gmaps-infowindow',
+        alignBottom: true,
+        closeBoxURL: '/typo3conf/ext/yag_themepack_jquery/Resources/Public/GallerySource/Gmaps/img/close.png',
+        closeBoxMargin: '-15px',
+        enableEventPropagation: true,
+        pixelOffset: {
+          width: 15,
+          height: -25
+        }
+      }
     };
     SimpleMarker = void 0;
+    InfoBox = void 0;
     YagGoogleMap = (function() {
       function YagGoogleMap($mapObj, options) {
         var dataEntry, _i, _len, _ref,
@@ -170,7 +185,7 @@ Google Maps integration for YAG gallery
         var data, destination, infoHtml;
 
         if (!this.infoWindow) {
-          this.infoWindow = new google.maps.InfoWindow();
+          this.infoWindow = new InfoBox(this.options.infoBoxOptions);
         }
         data = marker.ptAdditionalData;
         destination = '';
@@ -262,6 +277,9 @@ Google Maps integration for YAG gallery
       loadScript(options, function() {
         if (!SimpleMarker) {
           SimpleMarker = initSimpleMarkerClass();
+        }
+        if (!InfoBox) {
+          InfoBox = initInfoBoxClass();
         }
         return yagGoogleMaps.push(new YagGoogleMap($self, options));
       });

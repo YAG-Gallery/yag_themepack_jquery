@@ -18,6 +18,9 @@ Google Maps integration for YAG gallery
   defaultMapOptions =
     mapOptions:
       zoom: 14
+      streetViewControl: false
+      mapTypeControl: false
+      panControl: false
     data: {}
     cluster: true
     langCode: 'de'
@@ -40,9 +43,21 @@ Google Maps integration for YAG gallery
       textColor: '#fff'
       textSize: 14
     }]
+    infoBoxOptions:
+      boxClass: 'yag-gmaps-infowindow'
+      alignBottom: true
+      closeBoxURL: '/typo3conf/ext/yag_themepack_jquery/Resources/Public/GallerySource/Gmaps/img/close.png'
+      closeBoxMargin: '-15px'
+      enableEventPropagation: true
+      pixelOffset:
+        width: 15
+        height: -25
 
   # Will later hold the SimpleMarker class after loading the gmaps api
   SimpleMarker = undefined
+
+  # Will later hold the InfoBox class after loading the gmaps api
+  InfoBox = undefined
 
   class YagGoogleMap
     constructor: (@$mapObj, @options) ->
@@ -145,7 +160,7 @@ Google Maps integration for YAG gallery
     ###
     showInfoWindow: (e, marker) =>
       unless @infoWindow
-        @infoWindow = new google.maps.InfoWindow()
+        @infoWindow = new InfoBox @options.infoBoxOptions
 
       # Create html for info window
       data = marker.ptAdditionalData
@@ -229,6 +244,8 @@ Google Maps integration for YAG gallery
     # Load script if necessary and create map when it's done
     loadScript options, ->
       SimpleMarker = initSimpleMarkerClass() unless SimpleMarker
+      InfoBox = initInfoBoxClass() unless InfoBox
+
       yagGoogleMaps.push new YagGoogleMap($self, options)
 
     # Return jQuery object for chaining
