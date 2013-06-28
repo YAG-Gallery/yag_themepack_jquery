@@ -69,6 +69,12 @@ plugin.tx_yag.settings.themes.gmaps {
 		showAllMarkers = true
 		showFirstMarkerOnStart = false
 		lightbox = true
+
+		# Google Map Options. For further options, see https://developers.google.com/maps/documentation/javascript/reference?hl=de#MapOptions
+		mapOptions {
+			streetViewControl = false
+			mapTypeControl = false
+		}
 	}
 
 	controller {
