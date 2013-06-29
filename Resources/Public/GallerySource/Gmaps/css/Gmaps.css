@@ -24,7 +24,7 @@
 .yag-gmaps-infowindow {
   background-color: #fafafa;
   background-color: rgba(255, 255, 255, .9);
-  padding: 5px;
+  padding: 3px;
   color: #222;
 }
 
@@ -38,7 +38,21 @@
   text-align: center;
 }
 
-.yag-gmaps-infowindow .yag-gmaps-item-link {
+.yag-gmaps-item-link {
   display: block;
   text-align: center;
+}
+
+.yag-gmaps-item-link img {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .4);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .4);
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .4);
+}
+
+.yag-gmaps-item-group {
+  margin: 3px auto 0;
+}
+
+.yag-gmaps-item-group .yag-gmaps-item-link {
+  display: inline;
 }

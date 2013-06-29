@@ -47,7 +47,7 @@ Google Maps integration for YAG gallery
       boxClass: 'yag-gmaps-infowindow'
       alignBottom: true
       closeBoxURL: '/typo3conf/ext/yag_themepack_jquery/Resources/Public/GallerySource/Gmaps/img/close.png'
-      closeBoxMargin: '-15px'
+      closeBoxMargin: '-12px'
       enableEventPropagation: true
       pixelOffset:
         width: 15
@@ -178,10 +178,14 @@ Google Maps integration for YAG gallery
       selectedDestinationAddress = destination
 
       # Add basic location information
-      infoHtml = "<span class=\"gmaps-title\">#{data.title}</span>"
+      infoHtml = ''
+
+      if data.title
+        infoHtml += "<span class=\"gmaps-title\">#{data.title}</span>"
 
       # Add marker content
-      infoHtml += "<div class=\"gmaps-marker-content\">#{data.markerContent}</div>"
+      if data.markerContent
+        infoHtml += "<div class=\"gmaps-marker-content\">#{data.markerContent}</div>"
 
       # Add link to google maps route
       if @options.showRouteToLink

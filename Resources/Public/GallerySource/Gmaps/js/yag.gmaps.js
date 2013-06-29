@@ -51,7 +51,7 @@ Google Maps integration for YAG gallery
         boxClass: 'yag-gmaps-infowindow',
         alignBottom: true,
         closeBoxURL: '/typo3conf/ext/yag_themepack_jquery/Resources/Public/GallerySource/Gmaps/img/close.png',
-        closeBoxMargin: '-15px',
+        closeBoxMargin: '-12px',
         enableEventPropagation: true,
         pixelOffset: {
           width: 15,
@@ -195,8 +195,13 @@ Google Maps integration for YAG gallery
           destination += "" + data.latitude + "," + data.longitude;
         }
         selectedDestinationAddress = destination;
-        infoHtml = "<span class=\"gmaps-title\">" + data.title + "</span>";
-        infoHtml += "<div class=\"gmaps-marker-content\">" + data.markerContent + "</div>";
+        infoHtml = '';
+        if (data.title) {
+          infoHtml += "<span class=\"gmaps-title\">" + data.title + "</span>";
+        }
+        if (data.markerContent) {
+          infoHtml += "<div class=\"gmaps-marker-content\">" + data.markerContent + "</div>";
+        }
         if (this.options.showRouteToLink) {
           infoHtml += "<p><a class='routeToLink' href='#' target='_blank'>Route anzeigen</a></p>";
         }

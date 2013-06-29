@@ -119,11 +119,11 @@
             });
             break;
           case 'gmaps':
-            var serviceData = [], i, itemData, currentItem,
+            var serviceData = [], i, itemData, currentItem, itemsPerColumn = 4,
                 longitude, latitude, locationHash,
                 $gmapsContainer = $(data.galleryId),
                 itemLength = data.listData.length,
-                itemGroupId, itemGroup, itemGroups = {}, markerContent;
+                itemGroupId, itemGroup, itemGroups = {}, markerContent, markerTitle;
 
             // Check for items on the same position
             for (i = 0; i < itemLength; i++) {
@@ -147,7 +147,8 @@
               if (longitude != 0 && latitude != 0) {
                 if (itemGroup.length > 1) {
                   // Create single groupmarker for multiple items
-                  markerContent = ''
+                  markerContent = '<div class="yag-gmaps-item-group" style="width:' + itemData.markerWidth * Math.min(itemGroup.length, itemsPerColumn) + 'px;">';
+                  markerTitle = '';
                   for (i = 0; i < itemGroup.length; i++) {
                     currentItem = data.listData[itemGroup[i]];
                     markerContent += '<a class="yag-gmaps-item-link" rel="gmaps-lightbox-' + itemGroupId + '" href="' +
@@ -155,8 +156,10 @@
                       '<img width="' + currentItem.markerWidth + '" height="' + currentItem.markerHeight +
                       '" src="' + currentItem.marker + '" alt="' + currentItem.title + '" /></a>';
                   }
+                  markerContent += '</div>';
                 } else {
                   // Create single marker for one item
+                  markerTitle = itemData.title;
                   markerContent = '<a class="yag-gmaps-item-link" href="' + itemData.lightbox + '" title="' +
                     itemData.title + '">' +
                     '<img width="' + itemData.thumbWidth + '" height="' + itemData.thumbHeight +
@@ -166,7 +169,7 @@
 
                 serviceData.push({
                   dataId: itemGroupId,
-                  title: itemData.title,
+                  title: markerTitle,
                   latitude: longitude,
                   longitude: latitude,
                   icon: itemData.marker,
