@@ -40,6 +40,9 @@ plugin.tx_yag.settings.themes.wookmark {
 	# Show the items tags beneath the image
 	showTags = 1
 
+	# Show the breadcrumb header
+	showBreadcrumbs = 0
+
 	itemList {
 		itemsPerPage = 20
 		pagerPartial = EXT:yag_themepack_jquery/Resources/Private/Templates/Wookmark/ItemList/Pager.html
