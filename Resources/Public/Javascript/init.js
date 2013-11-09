@@ -133,16 +133,15 @@
      * Gmaps initialization function
      */
     function initGmaps($selector, settings) {
-
         var serviceData = [], i, itemData, currentItem, itemsPerColumn = 4,
             longitude, latitude, locationHash,
-            $gmapsContainer = $(data.galleryId),
-            itemLength = data.listData.length,
+            listData = $selector.data('yag-list-data'),
+            itemLength = listData.length,
             itemGroupId, itemGroup, itemGroups = {}, markerContent, markerTitle;
 
         // Check for items on the same position
         for (i = 0; i < itemLength; i++) {
-            itemData = data.listData[i];
+            itemData = listData[i];
             locationHash = (itemData.gpsLongitude + '-' + itemData.gpsLatitude).replace(/\./g, '-');
             if (!itemGroups[locationHash]) itemGroups[locationHash] = [];
             itemGroups[locationHash].push(i);
@@ -151,7 +150,7 @@
         // Create markers and groups
         for (itemGroupId in itemGroups) {
             itemGroup = itemGroups[itemGroupId];
-            itemData = data.listData[itemGroup[0]];
+            itemData = listData[itemGroup[0]];
             try {
                 longitude = parseFloat(itemData.gpsLongitude);
                 latitude = parseFloat(itemData.gpsLatitude);
@@ -165,7 +164,7 @@
                     markerContent = '<div class="yag-gmaps-item-group" style="width:' + itemData.markerWidth * Math.min(itemGroup.length, itemsPerColumn) + 'px;">';
                     markerTitle = '';
                     for (i = 0; i < itemGroup.length; i++) {
-                        currentItem = data.listData[itemGroup[i]];
+                        currentItem = listData[itemGroup[i]];
                         markerContent += '<a class="yag-gmaps-item-link" rel="gmaps-lightbox-' + itemGroupId + '" href="' +
                             currentItem.lightbox + '" title="' + currentItem.title + '">' +
                             '<img width="' + currentItem.markerWidth + '" height="' + currentItem.markerHeight +
@@ -193,8 +192,8 @@
             }
         }
 
-        if (data.options.lightbox) {
-            $gmapsContainer.delegate('.yag-gmaps-item-link', 'click', function (e) {
+        if (settings.lightbox) {
+            $selector.on('click', '.yag-gmaps-item-link', function (e) {
                 e.preventDefault();
                 $(this).parent().children('.yag-gmaps-item-link').colorbox({
                     open: true,
@@ -204,10 +203,10 @@
             });
         }
 
-        $gmapsContainer
+        $selector
             .css({
-                width: data.options.width,
-                height: data.options.height
+                width: settings.width,
+                height: settings.height
             })
             .yagGoogleMap($.extend({data: serviceData}, settings.gmaps));
     }
