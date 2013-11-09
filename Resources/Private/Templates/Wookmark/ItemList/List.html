@@ -3,84 +3,81 @@
 {namespace extlist=Tx_PtExtlist_ViewHelpers}
 
 <extlist:comment>
-<!--
-Template for rendering an album.
+    <!--
+    Template for rendering an album.
 
-Here is a list of objects / variables that can be accessed in this template:
+    Here is a list of objects / variables that can be accessed in this template:
 
-Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in album
+    Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in album
 
-@package YAG
-@author Sebastian Helzle <sebastian@helzle.net>
--->
+    @package YAG
+    @author Sebastian Helzle <sebastian@helzle.net>
+    -->
 </extlist:comment>
 
-<f:layout name="Default" />
-<f:section name="head" ></f:section>
+<f:layout name="Default"/>
+<f:section name="head"></f:section>
 <f:section name="main">
 
     <f:if condition="{config.settings.showTags}">
-      <div class="wookmark-filter-container">
-        <ul class="wookmark-filters wookmark-clearfix" id="filters-{config.contextIdentifier}">
-          <themepackJquery:Wookmark.tagList>
-            <li data-filter="{cleanTagName}">{tagName}</li>
-          </themepackJquery:Wookmark.tagList>
-        </ul>
-      </div>
+        <div class="wookmark-filter-container">
+            <ul class="wookmark-filters wookmark-clearfix" id="filters-{config.contextIdentifier}">
+                <themepackJquery:Wookmark.tagList>
+                    <li data-filter="{cleanTagName}">{tagName}</li>
+                </themepackJquery:Wookmark.tagList>
+            </ul>
+        </div>
     </f:if>
 
-    <div id="wookmarkGallery-{config.contextIdentifier}" class="wookmark-tiles">
-      <ul>
-        <themepackJquery:Wookmark.imageList listData="{listData}">
-          <li data-filter-class="[{quotedTags}]" style="width:{config.settings.resolutionConfigs.medium.width}px">
-            <a target="_blank" title="{image.title}" rel="wookmark_1" class="wookmark-image-wrap"
-               href="{yag:resource.image(item:image, resolutionName:'lightbox')}">
-              <yag:image class="resizeable" item="{image}" resolutionName="medium" />
-            </a>
+    <div id="wookmarkGallery-{config.contextIdentifier}" class="wookmark-tiles yag-gallery"
+         data-yag-wookmark-filter-id="filters-{config.contextIdentifier}"
+         data-yag-gallery-settings='{yag:javascript.jsonSettings(tsPath:"javaScriptSettings")}'>
+        <ul>
+            <themepackJquery:Wookmark.imageList listData="{listData}">
+                <li data-filter-class="[{quotedTags}]" style="width:{config.settings.resolutionConfigs.medium.width}px;">
+                    <a target="_blank" title="{image.title}" rel="wookmark_1" class="wookmark-image-wrap"
+                       href="{yag:resource.image(item:image, resolutionName:'lightbox')}">
+                        <yag:image class="resizeable" item="{image}" resolutionName="medium"/>
+                    </a>
 
-            <f:if condition="{config.settings.showTitle}">
-              <div class="yag-wookmark-title">
-                <f:if condition="{image.title}">
-                  {image.title}
-                </f:if>
-              </div>
-            </f:if>
-          </div>
+                    <f:if condition="{config.settings.showTitle}">
+                        <div class="yag-wookmark-title">
+                            <f:if condition="{image.title}">
+                                {image.title}
+                            </f:if>
+                        </div>
+                    </f:if>
+                    <f:if condition="{config.settings.showDescription}">
+                        <p class="yag-wookmark-description">
+                            <f:if condition="{image.description}">
+                                {image.description}
+                            </f:if>
+                        </p>
+                    </f:if>
+                    <div class="yag-lightbox-meta">
+                        <f:render partial="{config.settings.item.lightBoxMetaPartial}" arguments="{config: config, image: image}"/>
+                    </div>
+                    <f:if condition="{config.settings.showTags}">
+                        <p class="yag-wookmark-tags">
+                            <f:if condition="{tags}">
+                                {tags}
+                            </f:if>
+                        </p>
+                    </f:if>
+                </li>
+            </themepackJquery:Wookmark.imageList>
+        </ul>
+
+        <div class="yag-wookmark-loader">
+            <div class="yag-wookmark-loader-circle"></div>
+        </div>
+
+        <f:if condition="{config.settings.endlessScroll}">
+            <f:render partial="{config.itemListConfig.pagerPartial}"
+                      arguments="{action: listAction, controller: 'ItemList', pager: pager, pagerCollection: pagerCollection}"/>
         </f:if>
-          <f:if condition="{config.settings.showDescription}">
-              <p class="yag-wookmark-description">
-                  <f:if condition="{image.description}">
-                      {image.description}
-                  </f:if>
-              </p>
-          </f:if>
-          <div class="yag-lightbox-meta">
-              <f:render partial="{config.settings.item.lightBoxMetaPartial}" arguments="{config: config, image: image}" />
-          </div>
-        <f:if condition="{config.settings.showTags}">
-          <p class="yag-wookmark-tags">
-            <f:if condition="{tags}">
-              {tags}
-            </f:if>
-          </li>
-        </themepackJquery:Wookmark.imageList>
-      </ul>
-
-      <div class="yag-wookmark-loader">
-        <div class="yag-wookmark-loader-circle"></div>
-      </div>
-
-      <f:if condition="{config.settings.endlessScroll}">
-        <f:render partial="{config.itemListConfig.pagerPartial}" arguments="{action: listAction, controller: 'ItemList', pager: pager, pagerCollection: pagerCollection}" />
-      </f:if>
     </div>
-
-    <yag:Javascript.template
-        templatePath="EXT:yag_themepack_jquery/Resources/Private/Templates/Wookmark/JSTemplates/Wookmark.json"
-        position="current"
-        type="application/json"
-        arguments="{contextIdentifier:config.contextIdentifier, wookmarkSettings:'{yag:javascript.jsonSettings(tsPath:\'wookmarkSettings\')}'}"></yag:Javascript.template>
 
 </f:section>
 
-<f:section name="feEdit" />
+<f:section name="feEdit"/>

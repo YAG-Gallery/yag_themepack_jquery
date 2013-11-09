@@ -14,7 +14,7 @@ Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in 
 @author Daniel Lienert <daniel@lienert.cc>
 -->
 </extlist:comment>
-<div id="rondellGallery-{config.contextIdentifier}">
+<div id="rondellGallery-{config.contextIdentifier}" class="yag-gallery" data-yag-gallery-settings='{yag:javascript.jsonSettings(tsPath:"javaScriptSettings")}'>
     <f:for each="{listData}" key="rowIndex" as="listRow">
 		<a target="_blank" title="{listRow.image.value.title}" rel="rondell_1" href="{yag:resource.image(item:listRow.image.value, resolutionName:'lightbox')}">
 			<yag:image class="resizeable" item="{listRow.image.value}" resolutionName="medium" />
@@ -33,9 +33,3 @@ Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in 
 		</a>
     </f:for>
 </div>
-
-
-<yag:Javascript.template templatePath="EXT:yag_themepack_jquery/Resources/Private/Templates/Rondell/JSTemplates/Rondell.json"
-                         position="current"
-                         type="application/json"
-                         arguments="{contextIdentifier:config.contextIdentifier, rondellSettings:'{yag:javascript.jsonSettings(tsPath:\'rondellSettings\')}'}"></yag:Javascript.template>

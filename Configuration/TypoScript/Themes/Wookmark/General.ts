@@ -64,7 +64,8 @@ plugin.tx_yag.settings.themes.wookmark {
 	endlessScroll = 1
 
 	# jQuery Wookmark Settings
-	wookmarkSettings {
+	javaScriptSettings {
+		theme = wookmark
 		wookmark {
 			align = center
 			offset = 2
@@ -72,6 +73,7 @@ plugin.tx_yag.settings.themes.wookmark {
 			itemWidth = 0
 			flexibleWidth = 0
 			resizeDelay = 50
+			filterMode = or
 		}
 		lightbox {
 			enabled = 1
@@ -82,7 +84,6 @@ plugin.tx_yag.settings.themes.wookmark {
 			  easing = ease-in-out
 			}
 		}
-		filterMode = or
 	}
 
 	controller {

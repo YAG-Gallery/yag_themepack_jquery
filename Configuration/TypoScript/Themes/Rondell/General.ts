@@ -43,9 +43,12 @@ plugin.tx_yag.settings.themes.rondell {
 
 	# jQuery Rondell Settings
 
-	rondellSettings {
-		# Presets (carousel, products, pages, cubic, gallery, thumbGallery)
-		preset = carousel
+	javaScriptSettings {
+		theme = rondell
+		rondell {
+			# Presets (carousel, products, pages, cubic, gallery, thumbGallery)
+			preset = carousel
+		}
 	}
 
 	controller {
