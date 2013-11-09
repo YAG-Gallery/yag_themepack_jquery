@@ -31,9 +31,23 @@
                 container: $handler
               }));
 
-              // Initialize colorbox if enabled in options
-              if (data.options.lightbox.enabled && $.fn.colorbox) {
-                $('li a', $handler).colorbox($.extend({rel: 'wookmark_1'}, data.options.lightbox));
+              // Initialize lightbox if enabled in options
+              if (data.options.lightbox.enabled && $.fn.magnificPopup) {
+                  $($handler).magnificPopup($.extend(true, {
+                      delegate: 'li > a', // child items selector, by clicking on it popup will open
+                      type: 'image',
+                      gallery: {
+                          enabled:true
+                      },
+                      image: {
+                          verticalFit: false,
+                          titleSrc: function(item) {
+                              var caption = item.el.attr('title'),
+                                  description = $(item.el).siblings('.yag-lightbox-meta').html().trim();
+                              return description || caption;
+                          }
+                      }
+                  }, data.options.lightbox));
               }
 
               // Initialize filters

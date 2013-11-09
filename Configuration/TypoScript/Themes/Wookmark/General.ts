@@ -40,6 +40,18 @@ plugin.tx_yag.settings.themes.wookmark {
 	# Show the items tags beneath the image
 	showTags = 1
 
+
+	item {
+		## Set partial used for rendering the lightBox meta data
+       	lightBoxMetaPartial = EXT:yag/Resources/Private/Templates/Themes/LightBox/Partials/LightBoxMeta.html
+
+       	# Show download link to original item
+        showOriginalDownloadLink = 0
+
+        # Perma Link to directly link to the lightbox
+        showPermaLink = 0
+	}
+
 	itemList {
 		itemsPerPage = 20
 		pagerPartial = EXT:yag_themepack_jquery/Resources/Private/Templates/Wookmark/ItemList/Pager.html
@@ -60,8 +72,12 @@ plugin.tx_yag.settings.themes.wookmark {
 		}
 		lightbox {
 			enabled = 1
-			maxWidth = 90%
-			maxHeight = 90%
+			mainClass = mfp-with-zoom mfp-fade
+			zoom {
+			  enabled = true
+			  duration = 200
+			  easing = ease-in-out
+			}
 		}
 		filterMode = or
 	}
@@ -72,21 +88,19 @@ plugin.tx_yag.settings.themes.wookmark {
 		}
 	}
 
-	includeLibJS = jQuery
+	includeLibJS = jQuery, lightBox
+	includeLibCSS = lightBox
 	jsPosition = footer
 
-	includeLibCSS >
 
 	includeJS {
 		wookmark10 = EXT:yag_themepack_jquery/Resources/Public/Javascript/json2.min.js
 		wookmark20 = EXT:yag_themepack_jquery/Resources/Public/Javascript/imagesloaded.pkgd.min.js
-		wookmark30 = EXT:yag_themepack_jquery/Resources/Public/Javascript/jquery.colorbox-min.js
 		wookmark40 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Wookmark/jquery.wookmark.js
 		wookmark50 = EXT:yag_themepack_jquery/Resources/Public/Javascript/init.js
 	}
 
 	includeCSS {
-		wookmark10 = EXT:yag_themepack_jquery/Resources/Public/CSS/Colorbox/colorbox.css
-		wookmark20 = EXT:yag_themepack_jquery/Resources/Public/CSS/Wookmark.css
+		wookmark10 = EXT:yag_themepack_jquery/Resources/Public/CSS/Wookmark.css
 	}
 }
