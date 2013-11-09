@@ -59,7 +59,7 @@ class Tx_YagThemepackJquery_ViewHelpers_Wookmark_ImageListViewHelper extends Tx_
 
 		$output = '';
 
-		foreach($listData as $row) {
+		foreach($listData as $rowIndex => $row) {
 
 			$image = $row->getCell('image')->getValue(); /** @var Tx_YAG_Domain_Model_Item $image  */
 
@@ -71,6 +71,7 @@ class Tx_YagThemepackJquery_ViewHelpers_Wookmark_ImageListViewHelper extends Tx_
 			}
 
 			$this->templateVariableContainer->add('image', $image);
+            $this->templateVariableContainer->add('imageIndex', $rowIndex +1);
 			$this->templateVariableContainer->add('quotedTags', '"' . implode('","', $tagNames) . '"');
 			$this->templateVariableContainer->add('tags', implode(', ', $tagNames));
 
@@ -79,6 +80,7 @@ class Tx_YagThemepackJquery_ViewHelpers_Wookmark_ImageListViewHelper extends Tx_
 			$this->templateVariableContainer->remove('quotedTags');
 			$this->templateVariableContainer->remove('tags');
 			$this->templateVariableContainer->remove('image');
+			$this->templateVariableContainer->remove('imageIndex');
 
 		}
 

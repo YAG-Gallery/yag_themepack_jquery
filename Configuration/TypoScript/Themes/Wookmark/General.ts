@@ -43,14 +43,17 @@ plugin.tx_yag.settings.themes.wookmark {
 
 	item {
 		## Set partial used for rendering the lightBox meta data
-       	lightBoxMetaPartial = EXT:yag/Resources/Private/Templates/Themes/LightBox/Partials/LightBoxMeta.html
+	       	lightBoxMetaPartial = EXT:yag/Resources/Private/Templates/Themes/LightBox/Partials/LightBoxMeta.html
 
-       	# Show download link to original item
-        showOriginalDownloadLink = 0
+	       	# Show download link to original item
+		showOriginalDownloadLink = 0
 
-        # Perma Link to directly link to the lightbox
-        showPermaLink = 0
+		# Perma Link to directly link to the lightbox
+		showPermaLink = 0
 	}
+
+	# Show the breadcrumb header
+	showBreadcrumbs = 0
 
 	itemList {
 		itemsPerPage = 20

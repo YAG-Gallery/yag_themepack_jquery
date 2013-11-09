@@ -13,12 +13,14 @@ Google Maps integration for YAG gallery
 
   # Some global vars for the plugin
   selectedDestinationAddress = ''
-  geocoder = undefined
 
   # Default options for the map plugin
   defaultMapOptions =
     mapOptions:
       zoom: 14
+      streetViewControl: false
+      mapTypeControl: false
+      panControl: false
     data: {}
     cluster: true
     langCode: 'de'
@@ -35,16 +37,28 @@ Google Maps integration for YAG gallery
       lng: 8.4
     clusterStyles: [{
       url: '/typo3conf/ext/yag_themepack_jquery/Resources/Public/GallerySource/Gmaps/img/cluster.png'
-      width: 32
-      height: 35
+      width: 36
+      height: 36
       anchor: [8, 0]
-      textColor: '#333'
-      textSize: 20
+      textColor: '#fff'
+      textSize: 14
     }]
+    infoBoxOptions:
+      boxClass: 'yag-gmaps-infowindow'
+      alignBottom: true
+      closeBoxURL: '/typo3conf/ext/yag_themepack_jquery/Resources/Public/GallerySource/Gmaps/img/close.png'
+      closeBoxMargin: '-12px'
+      enableEventPropagation: true
+      pixelOffset:
+        width: 15
+        height: -25
 
-  ###
-  Map class
-  ###
+  # Will later hold the SimpleMarker class after loading the gmaps api
+  SimpleMarker = undefined
+
+  # Will later hold the InfoBox class after loading the gmaps api
+  InfoBox = undefined
+
   class YagGoogleMap
     constructor: (@$mapObj, @options) ->
       @infoWindow = undefined
@@ -73,7 +87,7 @@ Google Maps integration for YAG gallery
           @markers.push @createMapMarker(dataEntry)
 
       # Create clusters
-      markerCluster = new MarkerClusterer @map, @markers,
+      @markerCluster = new MarkerClusterer @map, @markers,
         gridSize: 40
         maxZoom: options.mapOptions.zoom
         styles: options.clusterStyles
@@ -120,17 +134,20 @@ Google Maps integration for YAG gallery
     ###
     createMapMarker: (markerData) =>
       markerOptions =
-        position: new google.maps.LatLng(markerData.latitude, markerData.longitude)
-#        map: @map
         title: markerData.title
-        icon: markerData.icon
+        image: markerData.icon
+        classname: 'yag-gmaps-marker'
+
+      markerPosition = new google.maps.LatLng markerData.latitude, markerData.longitude
 
       # Add drop animation if set
       if @options.dropAnimation
         markerOptions.animation = google.maps.Animation.DROP
 
-      marker = new google.maps.Marker markerOptions
+      #marker = new google.maps.Marker markerOptions
+      marker = new SimpleMarker @map, markerPosition, markerOptions
       marker.ptAdditionalData = markerData
+      marker.position = markerPosition
 
         # Add event listeners to map
       google.maps.event.addListener marker, 'click', (e) =>
@@ -143,7 +160,7 @@ Google Maps integration for YAG gallery
     ###
     showInfoWindow: (e, marker) =>
       unless @infoWindow
-        @infoWindow = new google.maps.InfoWindow()
+        @infoWindow = new InfoBox @options.infoBoxOptions
 
       # Create html for info window
       data = marker.ptAdditionalData
@@ -161,10 +178,14 @@ Google Maps integration for YAG gallery
       selectedDestinationAddress = destination
 
       # Add basic location information
-      infoHtml = "<span class=\"gmaps-title\">#{data.title}</span>"
+      infoHtml = ''
+
+      if data.title
+        infoHtml += "<span class=\"gmaps-title\">#{data.title}</span>"
 
       # Add marker content
-      infoHtml += "<div class=\"gmaps-marker-content\">#{data.markerContent}</div>"
+      if data.markerContent
+        infoHtml += "<div class=\"gmaps-marker-content\">#{data.markerContent}</div>"
 
       # Add link to google maps route
       if @options.showRouteToLink
@@ -226,6 +247,9 @@ Google Maps integration for YAG gallery
 
     # Load script if necessary and create map when it's done
     loadScript options, ->
+      SimpleMarker = initSimpleMarkerClass() unless SimpleMarker
+      InfoBox = initInfoBoxClass() unless InfoBox
+
       yagGoogleMaps.push new YagGoogleMap($self, options)
 
     # Return jQuery object for chaining
