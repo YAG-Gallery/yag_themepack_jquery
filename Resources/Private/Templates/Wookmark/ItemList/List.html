@@ -34,20 +34,21 @@
          data-yag-gallery-settings='{yag:javascript.jsonSettings(tsPath:"javaScriptSettings")}'>
         <ul>
             <themepackJquery:Wookmark.imageList listData="{listData}">
-                <li data-filter-class="[{quotedTags}]" style="width:{config.settings.resolutionConfigs.medium.width}px;">
-                    <a target="_blank" title="{image.title}" rel="wookmark_1" class="wookmark-image-wrap"
-                       href="{yag:resource.image(item:image, resolutionName:'lightbox')}">
+                <li data-filter-class="[{quotedTags}]"
+                    style="width:{config.settings.resolutionConfigs.medium.width}px;">
+                    <a target="_blank" title="{image.title}" rel="wookmark_1" class="wookmark-image-wrap" href="{yag:resource.image(item:image, resolutionName:'lightbox')}">
                         <yag:image class="resizeable" item="{image}" resolutionName="medium"/>
                     </a>
 
-                    <f:if condition="{config.settings.showTitle}">
+                    <f:if condition="{config.settings.item.showTitle}">
                         <div class="yag-wookmark-title">
                             <f:if condition="{image.title}">
                                 {image.title}
                             </f:if>
                         </div>
                     </f:if>
-                    <f:if condition="{config.settings.showDescription}">
+
+                    <f:if condition="{config.settings.item.showDescription}">
                         <p class="yag-wookmark-description">
                             <f:if condition="{image.description}">
                                 {image.description}
