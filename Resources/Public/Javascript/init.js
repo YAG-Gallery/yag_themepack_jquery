@@ -15,7 +15,8 @@
     function initWookmark($selector, settings) {
         var $list = $('ul:first', $selector),
             $items = $list.children(),
-            $filterBlock = $($selector.data('yag-wookmark-filter-id')),
+            $filterBlock = $('#' + $selector.data('yag-wookmark-filter-id')),
+            $filters = $('li', $filterBlock);
             $pager = $('.yag-wookmark-pager a', $selector),
             $loaderCircle = $('.yag-wookmark-loader-circle', $selector),
             $itemTemplate = $items.eq(0).clone(),
@@ -122,7 +123,7 @@
                 activeFilters.push($(this).data('filter'));
             });
 
-            $items.wookmarkInstance.filter(activeFilters, settings.filterMode);
+            $items.wookmarkInstance.filter(activeFilters, settings.wookmark.filterMode);
         });
 
         // Init wookmark after images have loaded
