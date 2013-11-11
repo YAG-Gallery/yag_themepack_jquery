@@ -38,7 +38,7 @@ Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in 
               <yag:image class="resizeable" item="{image}" resolutionName="medium" />
             </a>
 
-            <f:if condition="{config.settings.showTitle}">
+            <f:if condition="{config.settings.item.showTitle}">
               <div class="yag-wookmark-title">
                 <f:if condition="{image.title}">
                   {image.title}
@@ -47,7 +47,7 @@ Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in 
             </f:if>
           </div>
         </f:if>
-          <f:if condition="{config.settings.showDescription}">
+          <f:if condition="{config.settings.item.showDescription}">
               <p class="yag-wookmark-description">
                   <f:if condition="{image.description}">
                       {image.description}
