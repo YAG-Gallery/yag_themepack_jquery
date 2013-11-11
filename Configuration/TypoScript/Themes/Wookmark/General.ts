@@ -96,15 +96,14 @@ plugin.tx_yag.settings.themes.wookmark {
 	includeLibCSS = lightBox
 	jsPosition = footer
 
-
 	includeJS {
-		wookmark10 = EXT:yag_themepack_jquery/Resources/Public/Javascript/json2.min.js
-		wookmark20 = EXT:yag_themepack_jquery/Resources/Public/Javascript/imagesloaded.pkgd.min.js
-		wookmark40 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Wookmark/jquery.wookmark.js
-		wookmark50 = EXT:yag_themepack_jquery/Resources/Public/Javascript/init.js
+		json = EXT:yag_themepack_jquery/Resources/Public/Javascript/json2.min.js
+		imagesloaded = EXT:yag_themepack_jquery/Resources/Public/Javascript/imagesloaded.pkgd.min.js
+		wookmark = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Wookmark/jquery.wookmark.js
+		init = EXT:yag_themepack_jquery/Resources/Public/Javascript/init.js
 	}
 
 	includeCSS {
-		wookmark10 = EXT:yag_themepack_jquery/Resources/Public/CSS/Wookmark.css
+		wookmark = EXT:yag_themepack_jquery/Resources/Public/CSS/Wookmark.css
 	}
 }

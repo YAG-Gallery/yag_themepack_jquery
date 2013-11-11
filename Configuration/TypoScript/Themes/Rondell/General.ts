@@ -98,45 +98,48 @@ plugin.tx_yag.settings.themes.rondellGallery {
 		maxH = 580
 	}
 
-	rondellSettings {
-		# Presets (carousel, products, pages, cubic, gallery, thumbGallery)
-		preset = thumbGallery
-		center {
-			top = 215
-			left = 280
-		}
-
-		size {
-			height = 430
-			width = 810
-		}
-
-		itemProperties {
-
-			sizeFocused {
-				width = 480
-				height = 420
+	javaScriptSettings {
+		theme = rondell
+		rondell {
+			# Presets (carousel, products, pages, cubic, gallery, thumbGallery)
+			preset = thumbGallery
+			center {
+				top = 215
+				left = 280
 			}
 
 			size {
-				width = 85
-				height = 85
+				height = 430
+				width = 810
 			}
-		}
 
-		scrollbar {
-			enabled = true
-			style {
-				width = 240
-				right = 30
-				bottom = 50
+			itemProperties {
+
+				sizeFocused {
+					width = 480
+					height = 420
+				}
+
+				size {
+					width = 85
+					height = 85
+				}
 			}
-		}
 
-		special {
-			thumbsOffset {
-				x = 525
-				y = 70
+			scrollbar {
+				enabled = true
+				style {
+					width = 240
+					right = 30
+					bottom = 50
+				}
+			}
+
+			special {
+				thumbsOffset {
+					x = 525
+					y = 70
+				}
 			}
 		}
 	}

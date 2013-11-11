@@ -16,7 +16,7 @@
         var $list = $('ul:first', $selector),
             $items = $list.children(),
             $filterBlock = $('#' + $selector.data('yag-wookmark-filter-id')),
-            $filters = $('li', $filterBlock);
+            $filters = $('li', $filterBlock),
             $pager = $('.yag-wookmark-pager a', $selector),
             $loaderCircle = $('.yag-wookmark-loader-circle', $selector),
             $itemTemplate = $items.eq(0).clone(),
@@ -63,7 +63,7 @@
                     dataType: 'json',
                     success: onLoadData
                 });
-            };
+            }
 
             function onLoadData(data) {
                 isLoading = false;
@@ -96,7 +96,7 @@
                     initWookmarkItems();
                     $loaderCircle.hide();
                 });
-            };
+            }
 
             // Initialize endless scroll handlers
             function onScroll() {
@@ -107,7 +107,7 @@
                         loadData(currentPage);
                     }
                 }
-            };
+            }
 
             $window.bind('scroll.wookmark', onScroll);
         }
