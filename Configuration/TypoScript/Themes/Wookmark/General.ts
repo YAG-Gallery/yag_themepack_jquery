@@ -31,26 +31,39 @@ plugin.tx_yag.settings.themes.wookmark {
 
 	}
 
-	# Show the item title beneath the image
-	showTitle = 1
-
-	# Show the item description beneath the image
-	showDescription = 1
-
-	# Show the items tags beneath the image
-	showTags = 1
-
 
 	item {
 		## Set partial used for rendering the lightBox meta data
-	       	lightBoxMetaPartial = EXT:yag/Resources/Private/Templates/Themes/LightBox/Partials/LightBoxMeta.html
+	    lightBoxMetaPartial = EXT:yag/Resources/Private/Templates/Themes/LightBox/Partials/LightBoxMeta.html
 
-	       	# Show download link to original item
-		showOriginalDownloadLink = 0
+		# Show the item title beneath the image
+		showTitle = 1
 
-		# Perma Link to directly link to the lightbox
-		showPermaLink = 0
+		# Show the item description beneath the image
+		showDescription = 1
+
+		# Show the items tags beneath the image
+		showTags = 1
+
+
+		lightbox {
+			# Show download link to original item
+			showOriginalDownloadLink = 0
+
+			# Perma Link to directly link to the lightbox
+			showPermaLink = 0
+
+			# Show the item title beneath the image
+			showTitle = 1
+
+			# Show the item description beneath the image
+			showDescription = 1
+
+			# Show the items tags beneath the image
+			showTags = 0
+		}
 	}
+
 
 	# Show the breadcrumb header
 	showBreadcrumbs = 0
@@ -59,6 +72,7 @@ plugin.tx_yag.settings.themes.wookmark {
 		itemsPerPage = 20
 		pagerPartial = EXT:yag_themepack_jquery/Resources/Private/Templates/Wookmark/ItemList/Pager.html
 	}
+
 
 	# Enable endless scrolling via json api
 	endlessScroll = 1

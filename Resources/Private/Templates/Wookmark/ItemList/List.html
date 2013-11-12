@@ -58,7 +58,7 @@
                     <div class="yag-lightbox-meta">
                         <f:render partial="{config.settings.item.lightBoxMetaPartial}" arguments="{config: config, image: image}"/>
                     </div>
-                    <f:if condition="{config.settings.showTags}">
+                    <f:if condition="{config.settings.item.showTags}">
                         <p class="yag-wookmark-tags">
                             <f:if condition="{tags}">
                                 {tags}
