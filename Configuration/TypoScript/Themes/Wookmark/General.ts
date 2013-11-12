@@ -61,6 +61,9 @@ plugin.tx_yag.settings.themes.wookmark {
 
 			# Show the items tags beneath the image
 			showTags = 0
+
+			#Show the Copyright info
+			showCopyRight = 0
 		}
 	}
 
