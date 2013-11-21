@@ -43,7 +43,7 @@
                           verticalFit: false,
                           titleSrc: function(item) {
                               var caption = item.el.attr('title'),
-                                  description = $(item.el).siblings('.yag-lightbox-meta').html().trim();
+                                  description = $(item.el).siblings('.yag-lightbox-meta').html();
                               return description || caption;
                           }
                       }
