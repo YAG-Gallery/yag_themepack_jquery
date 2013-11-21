@@ -45,7 +45,6 @@ plugin.tx_yag.settings.themes.wookmark {
 		# Show the items tags beneath the image
 		showTags = 1
 
-
 		lightbox {
 			# Show download link to original item
 			showOriginalDownloadLink = 0
@@ -70,6 +69,10 @@ plugin.tx_yag.settings.themes.wookmark {
 
 	# Show the breadcrumb header
 	showBreadcrumbs = 0
+
+
+	# Show the TagFilter
+	showTagFilter = 1
 
 	itemList {
 		itemsPerPage = 20
