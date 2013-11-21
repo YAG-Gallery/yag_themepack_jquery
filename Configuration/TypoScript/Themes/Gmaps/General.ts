@@ -53,23 +53,26 @@ plugin.tx_yag.settings.themes.gmaps {
 	}
 
 	# Gmaps plugin Settings
-	gmapsSettings {
-		# Google Map Options. For further options, see https://developers.google.com/maps/documentation/javascript/reference?hl=de#MapOptions
-    mapOptions {
-      zoom = 14
-      streetViewControl = false
-      mapTypeControl = false
-      panControl = false
+	javaScriptSettings {
+		theme = gmaps
+		gmaps {
+			width = 100%
+			height = 600
+			showRouteToLink = false
+			dropAnimation = true
+			cluster = true
+			langCode = de
+			showAllMarkers = true
+			showFirstMarkerOnStart = false
+			lightbox = true
+			# Google Map Options. For further options, see https://developers.google.com/maps/documentation/javascript/reference?hl=de#MapOptions
+			mapOptions {
+				zoom = 14
+				streetViewControl = false
+				mapTypeControl = false
+				panControl = false
+			}
 		}
-		width = 100%
-		height = 600
-		showRouteToLink = false
-		dropAnimation = true
-		cluster = true
-		langCode = 'de'
-		showAllMarkers = true
-		showFirstMarkerOnStart = false
-		lightbox = true
 	}
 
 	controller {

@@ -31,40 +31,61 @@ plugin.tx_yag.settings.themes.wookmark {
 
 	}
 
-	# Show the item title beneath the image
-	showTitle = 1
-
-	# Show the item description beneath the image
-	showDescription = 1
-
-	# Show the items tags beneath the image
-	showTags = 1
-
 
 	item {
 		## Set partial used for rendering the lightBox meta data
-	       	lightBoxMetaPartial = EXT:yag/Resources/Private/Templates/Themes/LightBox/Partials/LightBoxMeta.html
+	    lightBoxMetaPartial = EXT:yag/Resources/Private/Templates/Themes/LightBox/Partials/LightBoxMeta.html
 
-	       	# Show download link to original item
-		showOriginalDownloadLink = 0
+		# Show the item title beneath the image
+		showTitle = 1
 
-		# Perma Link to directly link to the lightbox
-		showPermaLink = 0
+		# Show the item description beneath the image
+		showDescription = 1
+
+		# Show the items tags beneath the image
+		showTags = 1
+
+		lightbox {
+			# Show download link to original item
+			showOriginalDownloadLink = 0
+
+			# Perma Link to directly link to the lightbox
+			showPermaLink = 0
+
+			# Show the item title beneath the image
+			showTitle = 1
+
+			# Show the item description beneath the image
+			showDescription = 1
+
+			# Show the items tags beneath the image
+			showTags = 0
+
+			#Show the Copyright info
+			showCopyRight = 0
+		}
 	}
+
 
 	# Show the breadcrumb header
 	showBreadcrumbs = 0
+
+
+	# Show the TagFilter
+	showTagFilter = 1
 
 	itemList {
 		itemsPerPage = 20
 		pagerPartial = EXT:yag_themepack_jquery/Resources/Private/Templates/Wookmark/ItemList/Pager.html
 	}
 
+
 	# Enable endless scrolling via json api
 	endlessScroll = 1
 
 	# jQuery Wookmark Settings
-	wookmarkSettings {
+	javaScriptSettings {
+		theme = wookmark
 		wookmark {
 			align = center
 			offset = 2
@@ -72,6 +93,7 @@ plugin.tx_yag.settings.themes.wookmark {
 			itemWidth = 0
 			flexibleWidth = 0
 			resizeDelay = 50
+			filterMode = or
 		}
 		lightbox {
 			enabled = 1
@@ -82,7 +104,6 @@ plugin.tx_yag.settings.themes.wookmark {
 			  easing = ease-in-out
 			}
 		}
-		filterMode = or
 	}
 
 	controller {
@@ -95,15 +116,14 @@ plugin.tx_yag.settings.themes.wookmark {
 	includeLibCSS = lightBox
 	jsPosition = footer
 
-
 	includeJS {
-		wookmark10 = EXT:yag_themepack_jquery/Resources/Public/Javascript/json2.min.js
-		wookmark20 = EXT:yag_themepack_jquery/Resources/Public/Javascript/imagesloaded.pkgd.min.js
-		wookmark40 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Wookmark/jquery.wookmark.js
-		wookmark50 = EXT:yag_themepack_jquery/Resources/Public/Javascript/init.js
+		json = EXT:yag_themepack_jquery/Resources/Public/Javascript/json2.min.js
+		imagesloaded = EXT:yag_themepack_jquery/Resources/Public/Javascript/imagesloaded.pkgd.min.js
+		wookmark = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Wookmark/jquery.wookmark.js
+		init = EXT:yag_themepack_jquery/Resources/Public/Javascript/init.js
 	}
 
 	includeCSS {
-		wookmark10 = EXT:yag_themepack_jquery/Resources/Public/CSS/Wookmark.css
+		wookmark = EXT:yag_themepack_jquery/Resources/Public/CSS/Wookmark.css
 	}
 }
