@@ -90,6 +90,8 @@ plugin.tx_yag.settings.themes.nivoSlider {
 	includeLibJS = jQuery
 	includeLibCSS >
 
+	jsPosition = footer
+
 	includeJS {
 		nivoSlider = EXT:yag_themepack_jquery/Resources/Public/GallerySource/NivoSlider/jquery.nivo.slider.pack.js
 	}
