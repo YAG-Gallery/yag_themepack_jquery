@@ -97,6 +97,7 @@ plugin.tx_yag.settings.themes.gmaps {
 		gmaps70 = EXT:yag_themepack_jquery/Resources/Public/Javascript/init.js
 	}
 
+	includeCSS >
 	includeCSS {
 		wookmark10 = EXT:yag_themepack_jquery/Resources/Public/CSS/Colorbox/colorbox.css
 		wookmark20 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Gmaps/css/Gmaps.css
