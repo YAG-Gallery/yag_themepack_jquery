@@ -73,11 +73,12 @@ plugin.tx_yag.settings.themes.galleria {
 	includeLibCSS >
 
 	includeJS {
-		galleria = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Galleria/src/galleria.js
+		galleria10 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Galleria/src/galleria.js
+		//galleria20 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Galleria/src/themes/classic/galleria.classic.js
 	}
 
+	includeCSS >
 	includeCSS {
-	    #nivoSlider10 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/NivoSlider/themes/default/default.css
-
+	    //galleria10 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Galleria/themes/classic/galleria.classic.css
 	}
 }

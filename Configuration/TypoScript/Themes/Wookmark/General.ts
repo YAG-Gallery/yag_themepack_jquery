@@ -123,6 +123,7 @@ plugin.tx_yag.settings.themes.wookmark {
 		init = EXT:yag_themepack_jquery/Resources/Public/Javascript/init.js
 	}
 
+	includeCSS >
 	includeCSS {
 		wookmark = EXT:yag_themepack_jquery/Resources/Public/CSS/Wookmark.css
 	}
