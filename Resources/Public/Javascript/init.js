@@ -33,7 +33,7 @@
         // Initialize lightbox if enabled in options
         if (settings.lightbox.enabled && $.fn.magnificPopup) {
             $selector.magnificPopup($.extend(true, {
-                delegate: 'li > a', // child items selector, by clicking on it popup will open
+                delegate: 'li:not(.inactive) > a', // child items selector, by clicking on it popup will open
                 type: 'image',
                 gallery: {
                     enabled: true
