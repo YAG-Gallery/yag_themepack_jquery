@@ -115,14 +115,19 @@
         // Initialize filters
         $filterBlock.on('click.wookmark', 'li', function (event) {
             var $item = $(event.currentTarget),
-                activeFilters = [];
-            $item.toggleClass('active');
+                activeFilters = [],
+                filterType = $item.data('filter');
 
-            // Collect active filter strings
-            $filters.filter('.active').each(function () {
-                activeFilters.push($(this).data('filter'));
-            });
+            if (filterType === '__all__') {
+                $filters.removeClass('active');
+            } else {
+                $item.toggleClass('active');
 
+                // Collect active filter strings
+                $filters.filter('.active').each(function () {
+                    activeFilters.push($(this).data('filter'));
+                });
+            }
             $items.wookmarkInstance.filter(activeFilters, settings.wookmark.filterMode);
         });
 

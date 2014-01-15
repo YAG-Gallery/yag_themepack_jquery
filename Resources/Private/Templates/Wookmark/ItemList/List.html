@@ -22,6 +22,9 @@
     <f:if condition="{config.settings.showTagFilter}">
         <div class="wookmark-filter-container">
             <ul class="wookmark-filters wookmark-clearfix" id="filters-{config.contextIdentifier}">
+                <f:if condition="{config.settings.showAllFilter}">
+                	<li data-filter="__all__">All</li>
+                </f:if>
                 <themepackJquery:Wookmark.tagList>
                     <li data-filter="{cleanTagName}">{tagName}</li>
                 </themepackJquery:Wookmark.tagList>
