@@ -77,10 +77,20 @@ Jquery Rondell
 Jquery Rondell uses the gallery script of Sebastian Helzle from
 `http://projects.sebastianhelzle.net/jquery.rondell/
 <http://projects.sebastianhelzle.net/jquery.rondell/>`_ . It can
-display images in various ways. We use it here in the rondell gallery
+display images in various ways. We use it here in the rondell
 preset.
 
 |img-6|
+
+
+Jquery Rondell Gallery
+""""""""""""""""""""""""""""
+
+Jquery Rondell Gallery uses the gallery script of Sebastian Helzle from
+`http://projects.sebastianhelzle.net/jquery.rondell/
+<http://projects.sebastianhelzle.net/jquery.rondell/>`_ . This is a screenshot of the Rondell Gallery Preset
+
+|img-9|
 
 
 Google Maps

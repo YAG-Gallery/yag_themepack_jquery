@@ -30,65 +30,67 @@ For a detailed description see: `http://spaceforaname.com/galleryview
 
 These are the default settings:
 
-plugin.tx\_yag.settings.themes.galleryView {
+   ::
 
-## Configuration for gallery view
+      plugin.tx\_yag.settings.themes.galleryView {
 
-transition\_interval = 0
+         ## Configuration for gallery view
 
-transition\_speed = 1000
+         transition\_interval = 0
 
-easing = 0
+         transition\_speed = 1000
 
-pause\_on\_hover = false
+         easing = 0
 
-show\_panels = true
+         pause\_on\_hover = false
 
-panel\_width = 800
+         show\_panels = true
 
-panel\_height = 500
+         panel\_width = 800
 
-panel\_animation = crossfade
+         panel\_height = 500
 
-overlay\_opacity = 0.7
+         panel\_animation = crossfade
 
-overlay\_position = bottom
+         overlay\_opacity = 0.7
 
-panel\_scale = crop
+         overlay\_position = bottom
 
-show\_panel\_nav = true
+         panel\_scale = crop
 
-show\_overlays = true
+         show\_panel\_nav = true
 
-show\_filmstrip = true
+         show\_overlays = true
 
-frame\_width = 120
+         show\_filmstrip = true
 
-frame\_height = 80
+         frame\_width = 120
 
-start\_frame = 1
+         frame\_height = 80
 
-filmstrip\_size = 3
+         start\_frame = 1
 
-frame\_opacity = 0.5
+         filmstrip\_size = 3
 
-filmstrip\_style = scroll
+         frame\_opacity = 0.5
 
-filmstrip\_position = bottom
+         filmstrip\_style = scroll
 
-show\_filmstrip\_nav = true
+         filmstrip\_position = bottom
 
-frame\_gap = 15
+         show\_filmstrip\_nav = true
 
-frame\_scale = crop
+         frame\_gap = 15
 
-show\_captions = false
+         frame\_scale = crop
 
-pointer\_size = 0
+         show\_captions = false
 
-animate\_pointer = true
+         pointer\_size = 0
 
-}
+         animate\_pointer = true
+
+      }
 
 
 crossSlide
@@ -98,275 +100,262 @@ crossSlide
 
 Configuration that affects the whole gallery.
 
-.. ### BEGIN~OF~TABLE ###
+.. t3-field-list-table::
+ :header-rows: 1
 
-.. container:: table-row
+ - :Property:
+       Property:
 
-   Property
-         Property:
-   
-   Data type
-         Data type:
-   
-   Description
-         Description:
-   
-   Default
-         Default:
+   :Data type:
+      Data type:
+
+   :Description:
+      Description:
+
+   :Default:
+      Default:
 
 
-.. container:: table-row
-
-   Property
+ - :Property:
          canvasWidth
    
-   Data type
+   :Data type:
          int
    
-   Description
+   :Description:
          Width of the div container holding the slideshow
    
-   Default
+   :Default:
          600
 
 
-.. container:: table-row
-
-   Property
+ - :Property:
          canvasHeight
    
-   Data type
+   :Data type:
          int
    
-   Description
+   :Description:
          Height of the div container holding the slideshow
    
-   Default
+   :Default:
          300
 
 
-.. container:: table-row
-
-   Property
+ - :Property:
          fade
    
-   Data type
+   :Data type:
          int
    
-   Description
+   :Description:
          Crossfade between images
    
-   Default
+   :Default:
          1
 
 
-.. container:: table-row
-
-   Property
+ - :Property:
          sleep
    
-   Data type
+   :Data type:
          int
    
-   Description
+   :Description:
          Time in sconds to wait between the crossfades. If you aset a value for
          sleep, the image remain static between the crossfades.
    
-   Default
+   :Default:
          Not used
 
 
-.. ###### END~OF~TABLE ######
+
 
 **plugin.tx\_yag.settings.themes.crossSlide.image**
 
 Configuration that affects a single image.
 
-.. ### BEGIN~OF~TABLE ###
+.. t3-field-list-table::
+ :header-rows: 1
 
-.. container:: table-row
+ - :Property:
+       Property:
 
-   Property
-         Property:
-   
-   Data type
-         Data type:
-   
-   Description
-         Description:
-   
-   Default
-         Default:
+   :Data type:
+      Data type:
+
+   :Description:
+      Description:
+
+   :Default:
+      Default:
 
 
-.. container:: table-row
 
-   Property
+
+ - :Property:
          pan.startX
    
-   Data type
+   :Data type:
          int
    
-   Description
+   :Description:
          Horizontal start position of the image in percent.
    
-   Default
+   :Default:
          40
 
 
-.. container:: table-row
 
-   Property
+
+ - :Property:
          pan.stopX
    
-   Data type
+   :Data type:
          int
    
-   Description
+   :Description:
          Horizontal end position of the image in percent.
    
-   Default
+   :Default:
          60
 
 
-.. container:: table-row
 
-   Property
+
+ - :Property:
          pan.startY
    
-   Data type
+   :Data type:
          int
    
-   Description
+   :Description:
          Vertical start position of the image in percent.
    
-   Default
+   :Default:
          30
 
 
-.. container:: table-row
 
-   Property
+
+ - :Property:
          pan.stopY
    
-   Data type
+   :Data type:
          int
    
-   Description
+   :Description:
          Vertical end position of the image in percent.
    
-   Default
+   :Default:
          50
 
 
-.. container:: table-row
 
-   Property
+
+ - :Property:
          pan.variance
    
-   Data type
+   :Data type:
          int
    
-   Description
+   :Description:
          For every image, starX/Y and stopX/Y is adjusted by a random value in
          the range of +/- variance
    
-   Default
+   :Default:
          20
 
 
-.. container:: table-row
 
-   Property
+
+ - :Property:
          pan.alternate
    
-   Data type
+   :Data type:
          int
    
-   Description
+   :Description:
          Alternate the direction of the panning with each image.
    
-   Default
+   :Default:
          1
 
 
-.. container:: table-row
 
-   Property
+
+ - :Property:
          zoom.start
    
-   Data type
+   :Data type:
          float
    
-   Description
+   :Description:
          Start value of the magnification.
    
-   Default
+   :Default:
          1.0
 
 
-.. container:: table-row
 
-   Property
+
+ - :Property:
          zoom.stop
    
-   Data type
+   :Data type:
          float
    
-   Description
+   :Description:
          End value of the magnification.
    
-   Default
+   :Default:
          1.3
 
 
-.. container:: table-row
 
-   Property
+
+ - :Property:
          zoom.variance
    
-   Data type
+   :Data type:
          float
    
-   Description
+   :Description:
          For every image the start/stop magnification is adjusted by a random
          value in the range of +/- variance.
    
-   Default
+   :Default:
          0.3
 
 
-.. container:: table-row
 
-   Property
+
+ - :Property:
          alternate
    
-   Data type
+   :Data type:
          int
    
-   Description
+   :Description:
          Alternate the direction of the zoomwith each image.
    
-   Default
+   :Default:
          1
 
 
-.. container:: table-row
 
-   Property
+
+ - :Property:
          time
    
-   Data type
+   :Data type:
          int
    
-   Description
+   :Description:
          Duration of a pan/zoom/fade period in seconds.
    
-   Default
+   :Default:
          3
-
-
-.. ###### END~OF~TABLE ######
 
 
 Isotope
@@ -381,84 +370,73 @@ resolution configuration of this theme.
 
 **plugin.tx\_yag.settings.themes.isotope.blockSizeWeighting**
 
-.. ### BEGIN~OF~TABLE ###
+.. t3-field-list-table::
+ :header-rows: 1
 
-.. container:: table-row
+ - :Property:
+       Property:
 
-   Property
-         Property:
-   
-   Data type
-         Data type:
-   
-   Description
-         Description:
-   
-   Default
-         Default:
+   :Data type:
+      Data type:
+
+   :Description:
+      Description:
+
+   :Default:
+      Default:
 
 
-.. container:: table-row
-
-   Property
+ - :Property:
          smallSquare
    
-   Data type
+   :Data type:
          int
    
-   Description
+   :Description:
          Small square image
    
-   Default
+   :Default:
          40
 
 
-.. container:: table-row
-
-   Property
+ - :Property:
          bigSquare
    
-   Data type
+   :Data type:
          int
    
-   Description
+   :Description:
          Big square image
    
-   Default
+   :Default:
          20
 
 
-.. container:: table-row
-
-   Property
+ - :Property:
          verticalLong
    
-   Data type
+   :Data type:
          int
    
-   Description
+   :Description:
          Vertical image
    
-   Default
+   :Default:
          20
 
 
-.. container:: table-row
-
-   Property
+ - :Property:
          horizontalLong
    
-   Data type
+   :Data type:
          int
    
-   Description
+   :Description:
          Horizontal image
    
-   Default
+   :Default:
          20
 
-
-.. ###### END~OF~TABLE ######
 
 
 Supersized
@@ -470,74 +448,76 @@ supersized plugin. Please have a look at
 <http://buildinternet.com/project/supersized/docs.html>`_ for a full
 documentation.
 
-superSizedSettings {
+   ::
 
-// General
+      superSizedSettings {
 
-slideshow = 1
+         // General
 
-autoplay = 1
+         slideshow = 1
 
-start\_slide = 1
+         autoplay = 1
 
-stop\_loop = 0
+         start\_slide = 1
 
-random = 0
+         stop\_loop = 0
 
-slide\_interval = 3000
+         random = 0
 
-transition = 1
+         slide\_interval = 3000
 
-transition\_speed = 1000
+         transition = 1
 
-new\_window = 1
+         transition\_speed = 1000
 
-pause\_hover = 0
+         new\_window = 1
 
-keyboard\_nav = 1
+         pause\_hover = 0
 
-performance = 2
+         keyboard\_nav = 1
 
-image\_protect = 1
+         performance = 2
 
-image\_path = EXT:yag\_themepack\_jquery/Resources/Public/GallerySourc
-e/SuperSized/slideshow/img/
+         image\_protect = 1
 
-//Size & Position
+         image\_path = EXT:yag\_themepack\_jquery/Resources/Public/GallerySourc
+         e/SuperSized/slideshow/img/
 
-min\_width = 1024
+         //Size & Position
 
-min\_height = 768
+         min\_width = 1024
 
-vertical\_center = 1
+         min\_height = 768
 
-horizontal\_center = 1
+         vertical\_center = 1
 
-fit\_portrait = 1
+         horizontal\_center = 1
 
-fit\_landscape = 0
+         fit\_portrait = 1
 
-fit\_always = 0
+         fit\_landscape = 0
 
-//Components
+         fit\_always = 0
 
-slide\_links = blank
+         //Components
 
-thumb\_links = 1
+         slide\_links = blank
 
-navigation = 1
+         thumb\_links = 1
 
-thumbnail\_navigation = 0
+         navigation = 1
 
-slide\_counter = 1
+         thumbnail\_navigation = 0
 
-slide\_captions = 1
+         slide\_counter = 1
 
-progress\_bar = 1
+         slide\_captions = 1
 
-mouse\_scrub = 0
+         progress\_bar = 1
 
-}
+         mouse\_scrub = 0
+
+      }
 
 
 NivoSlider
@@ -548,262 +528,261 @@ animations and and an optional thumbnail navigation.
 
 **plugin.tx\_yag.settings.themes.nivoSlider.nivoSliderSettings**
 
-.. ### BEGIN~OF~TABLE ###
+.. t3-field-list-table::
+ :header-rows: 1
 
-.. container:: table-row
+ - :Property:
+       Property:
 
-   Property
-         Property:
-   
-   Data type
-         Data type:
-   
-   Description
-         Description:
-   
-   Default
-         Default:
+   :Data type:
+      Data type:
+
+   :Description:
+      Description:
+
+   :Default:
+      Default:
 
 
-.. container:: table-row
 
-   Property
+
+ - :Property:
          effect
    
-   Data type
+   :Data type:
          string
    
-   Description
+   :Description:
          One of these: sliceDown,sliceDownLeft,sliceUp,sliceUpLeft,sliceUpDown,
          sliceUpDownLeft,fold,fade,random,slideInRight,slideInLeft,boxRandom,bo
          xRain,boxRainReverse,boxRainGrow,boxRainGrowReverse
    
-   Default
+   :Default:
          random
 
 
-.. container:: table-row
 
-   Property
+
+ - :Property:
          slices
    
-   Data type
+   :Data type:
          int
    
-   Description
+   :Description:
          For slice animations
    
-   Default
+   :Default:
          15
 
 
-.. container:: table-row
 
-   Property
+
+ - :Property:
          boxCols
    
-   Data type
+   :Data type:
          int
    
-   Description
+   :Description:
          For box animations
    
-   Default
+   :Default:
          15
 
 
-.. container:: table-row
 
-   Property
+
+ - :Property:
          boxRows
    
-   Data type
+   :Data type:
          int
    
-   Description
+   :Description:
          For box animations
    
-   Default
+   :Default:
          4
 
 
-.. container:: table-row
 
-   Property
+
+ - :Property:
          animSpeed
    
-   Data type
+   :Data type:
          int
    
-   Description
+   :Description:
          Slide transition speed
    
-   Default
+   :Default:
          500
 
 
-.. container:: table-row
 
-   Property
+
+ - :Property:
          pauseTime
    
-   Data type
+   :Data type:
          int
    
-   Description
+   :Description:
          How long each slide will show
    
-   Default
+   :Default:
          3000
 
 
-.. container:: table-row
 
-   Property
+
+ - :Property:
          startSlide
    
-   Data type
+   :Data type:
          int
    
-   Description
+   :Description:
          Set starting Slide (0 index)
    
-   Default
+   :Default:
          0
 
 
-.. container:: table-row
 
-   Property
+
+ - :Property:
          directionNav
    
-   Data type
+   :Data type:
          boolean
    
-   Description
+   :Description:
          Next & Prev navigation
    
-   Default
+   :Default:
          true
 
 
-.. container:: table-row
 
-   Property
+
+ - :Property:
          directionNavHide
    
-   Data type
+   :Data type:
          boolean
    
-   Description
+   :Description:
          Only show on hover
    
-   Default
+   :Default:
          true
 
 
-.. container:: table-row
 
-   Property
+
+ - :Property:
          controlNav
    
-   Data type
+   :Data type:
          boolean
    
-   Description
+   :Description:
          1,2,3... navigation
    
-   Default
+   :Default:
          true
 
 
-.. container:: table-row
 
-   Property
+
+ - :Property:
          controlNavThumbs
    
-   Data type
+   :Data type:
          boolean
    
-   Description
+   :Description:
          Use thumbnails for Control Nav
    
-   Default
+   :Default:
          false
 
 
-.. container:: table-row
 
-   Property
+
+ - :Property:
          keyboardNav
    
-   Data type
+   :Data type:
          boolean
    
-   Description
+   :Description:
          Use left & right arrows
    
-   Default
+   :Default:
          true
 
 
-.. container:: table-row
 
-   Property
+
+ - :Property:
          pauseOnHover
    
-   Data type
+   :Data type:
          boolean
    
-   Description
+   :Description:
          Stop animation while hovering
    
-   Default
+   :Default:
          true
 
 
-.. container:: table-row
 
-   Property
+
+ - :Property:
          manualAdvance
    
-   Data type
+   :Data type:
          boolean
    
-   Description
+   :Description:
          Force manual transitions
    
-   Default
+   :Default:
          true
 
 
-.. container:: table-row
 
-   Property
+
+ - :Property:
          captionOpacity
    
-   Data type
+   :Data type:
          float
    
-   Description
+   :Description:
          Universal caption opacity
    
-   Default
+   :Default:
          0.8
 
 
-.. container:: table-row
 
-   Property
+
+ - :Property:
          randomStart
    
-   Data type
+   :Data type:
          boolean
    
-   Description
+   :Description:
          Start on a random slide
    
-   Default
+   :Default:
          false
 
 
@@ -813,39 +792,34 @@ animations and and an optional thumbnail navigation.
 jQuery Rondell
 """"""""""""""
 
-Currently only presets are supported and forwarded to the template. If
-you need further configuration options, feel free to alter the
-javascript template in
-Resources/Private/Templates/Rondell/JSTemplates/Rondell.js
-
-*plugin.tx\_yag.settings.themes.rondell.rondellSettings.*
-
-.. ### BEGIN~OF~TABLE ###
-
-.. container:: table-row
-
-   Property
-         Property:
-   
-   Data type
-         Data type:
-   
-   Description
-         Description:
-   
-   Default
-         Default:
+All configuration values for the frontend theme are set within the typoscript key **javaScriptSettings.rondell**.
 
 
-.. container:: table-row
+*plugin.tx\_yag.settings.themes.rondell.javaScriptSettings.*
 
-   Property
+.. t3-field-list-table::
+ :header-rows: 1
+
+ - :Property:
+       Property:
+
+   :Data type:
+      Data type:
+
+   :Description:
+      Description:
+
+   :Default:
+      Default:
+
+
+ - :Property:
          preset
    
-   Data type
+   :Data type:
          string
    
-   Description
+   :Description:
          Gallery Preset. In this version also available are:
          
          - carousel
@@ -853,118 +827,297 @@ Resources/Private/Templates/Rondell/JSTemplates/Rondell.js
          - slider
          
          - products
+
+         - thumbGallery
    
-   Default
-         Carousel
+   :Default:
+         carousel
 
 
 .. ###### END~OF~TABLE ######
+
+jQuery RondellGallery
+""""""""""""""""""""""""""""
+
+All configuration values for the frontend theme are set within the typoscript key **javaScriptSettings.rondellGallery**.
+
+
+.. t3-field-list-table::
+ :header-rows: 1
+
+ - :Property:
+       Property:
+
+   :Data type:
+      Data type:
+
+   :Description:
+      Description:
+
+   :Default:
+      Default:
+
+
+ - :Property:
+         preset
+
+   :Data type:
+         string
+
+   :Description:
+         Gallery Preset. In this version also available are:
+
+         - carousel
+
+         - slider
+
+         - products
+
+         - thumbGallery
+
+   :Default:
+         thumbGallery
 
 
 Galleria.io
 """""""""""
 
-The galkeria script comes with its own theming system. The default
+The galeria script comes with its own theming system. The default
 theme “classic” is free of charge and included into the the extension.
 You can also purchase more advanced themes on their website
 (http://www.galleria.io).
 
 plugin.tx\_yag.settings.themes.galleria.galleriaSettings
 
-.. ### BEGIN~OF~TABLE ###
+.. t3-field-list-table::
+ :header-rows: 1
 
-.. container:: table-row
+ - :Property:
+       Property:
 
-   Property
-         Property:
-   
-   Data type
-         Data type:
-   
-   Description
-         Description:
-   
-   Default
-         Default:
+   :Data type:
+      Data type:
+
+   :Description:
+      Description:
+
+   :Default:
+      Default:
 
 
-.. container:: table-row
-
-   Property
+ - :Property:
          themeBasePath
    
-   Data type
+   :Data type:
          string
    
-   Description
+   :Description:
          Basepath to the gallery theme directory. If you have purchased one of
          the more advanced themes of galleria.io, upload this theme to a theme
          directory on your sever and point the themeBasePath to this directory.
    
-   Default
+   :Default:
          typo3conf/ext/yag\_themepack\_jquery/Resources/Public/GallerySource/Ga
          lleria/src/themes/
 
 
-.. container:: table-row
-
-   Property
+ - :Property:
          theme
    
-   Data type
+   :Data type:
          string
    
-   Description
+   :Description:
          Select a theme from the directory configured with themeBasePath
    
-   Default
+   :Default:
          Classic
 
 
-.. container:: table-row
-
-   Property
+ - :Property:
          width
    
-   Data type
+   :Data type:
          String
    
-   Description
+   :Description:
          Width of the galleria frame
    
-   Default
+   :Default:
          800
 
 
-.. container:: table-row
-
-   Property
+ - :Property:
          height
    
-   Data type
+   :Data type:
          String
    
-   Description
+   :Description:
          Height of the galleria frame
    
-   Default
+   :Default:
          370
 
 
-.. container:: table-row
-
-   Property
+ - :Property:
          jsonMode
    
-   Data type
+   :Data type:
          Integer
    
-   Description
+   :Description:
          If set to 1, the image data is rendered as JSON array
    
-   Default
+   :Default:
          0
 
+Wookmark
+"""""""""""
 
-.. ###### END~OF~TABLE ######
+All configuration values for the frontend theme are set within the typoscript key **javaScriptSettings.wookmark**.
 
+Available Options:
+
+   ::
+
+      javaScriptSettings {
+         theme = wookmark
+         wookmark {
+            align = center
+            offset = 2
+            autoResize = true
+            itemWidth = 0
+            flexibleWidth = 0
+            resizeDelay = 50
+            filterMode = or
+         }
+         lightbox {
+            enabled = 1
+            mainClass = mfp-with-zoom mfp-fade
+            zoom {
+              enabled = true
+              duration = 200
+              easing = ease-in-out
+            }
+         }
+      }
+
+Google Maps
+"""""""""""
+
+All configuration values for the frontend theme are set within the typoscript key **javaScriptSettings.gmaps**.
+
+.. t3-field-list-table::
+ :header-rows: 1
+
+ - :Property:
+       Property:
+
+   :Data type:
+      Data type:
+
+   :Description:
+      Description:
+
+   :Default:
+      Default:
+
+
+ - :Property:
+         width
+
+   :Data type:
+         string
+
+   :Description:
+         The width of the map. Can be set relative or by pixel.
+
+   :Default:
+         100%
+
+
+ - :Property:
+         height
+
+   :Data type:
+         string
+
+   :Description:
+         The width of the map. Can be set relative or by pixel.
+
+   :Default:
+         600
+
+
+ - :Property:
+         showRouteToLink
+
+   :Data type:
+         Boolean
+
+   :Description:
+
+
+   :Default:
+         false
+
+
+ - :Property:
+         dropAnimation
+
+   :Data type:
+         Boolean
+
+   :Description:
+
+
+   :Default:
+         true
+
+
+ - :Property:
+         cluster
+
+   :Data type:
+         Booelean
+
+   :Description:
+         Cluster the images when zoomed out
+
+   :Default:
+         true
+
+
+ - :Property:
+         lightbox
+
+   :Data type:
+         Boolean
+
+   :Description:
+         Show a lightbox when clicked on a marker
+
+   :Default:
+         true
+
+
+ - :Property:
+         mapOptions
+
+   :Data type:
+         array
+
+   :Description:
+         Further google maps ooptions
+
+
+   :Default:
+
+      ::
+
+         mapOptions {
+            zoom = 14
+            streetViewControl = false
+            mapTypeControl = false
+         }
