@@ -70,15 +70,16 @@ plugin.tx_yag.settings.themes.wookmark {
 	# Show the breadcrumb header
 	showBreadcrumbs = 0
 
-
 	# Show the TagFilter
 	showTagFilter = 1
+
+	# Show additional all filter which shows the items for all tags
+	showAllFilter = 1
 
 	itemList {
 		itemsPerPage = 20
 		pagerPartial = EXT:yag_themepack_jquery/Resources/Private/Templates/Wookmark/ItemList/Pager.html
 	}
-
 
 	# Enable endless scrolling via json api
 	endlessScroll = 1

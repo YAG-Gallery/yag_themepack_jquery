@@ -33,7 +33,7 @@
         // Initialize lightbox if enabled in options
         if (settings.lightbox.enabled && $.fn.magnificPopup) {
             $selector.magnificPopup($.extend(true, {
-                delegate: 'li > a', // child items selector, by clicking on it popup will open
+                delegate: 'li:not(.inactive) > a', // child items selector, by clicking on it popup will open
                 type: 'image',
                 gallery: {
                     enabled: true
@@ -115,14 +115,19 @@
         // Initialize filters
         $filterBlock.on('click.wookmark', 'li', function (event) {
             var $item = $(event.currentTarget),
-                activeFilters = [];
-            $item.toggleClass('active');
+                activeFilters = [],
+                filterType = $item.data('filter');
 
-            // Collect active filter strings
-            $filters.filter('.active').each(function () {
-                activeFilters.push($(this).data('filter'));
-            });
+            if (filterType === '__all__') {
+                $filters.removeClass('active');
+            } else {
+                $item.toggleClass('active');
 
+                // Collect active filter strings
+                $filters.filter('.active').each(function () {
+                    activeFilters.push($(this).data('filter'));
+                });
+            }
             $items.wookmarkInstance.filter(activeFilters, settings.wookmark.filterMode);
         });
 
