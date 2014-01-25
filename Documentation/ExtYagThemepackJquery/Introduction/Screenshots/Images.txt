@@ -1,0 +1,43 @@
+﻿.. |img-3|      image:: ../../../Images/manual_html_671c60ca.png
+   :height: 411
+   :width: 530
+.. :align: left
+.. :border: 0
+.. :name: Grafik1
+
+.. |img-4|      image:: ../../../Images/manual_html_m656dd1e7.jpg
+   :height: 366
+   :width: 601
+.. :align: left
+.. :border: 0
+.. :name: Grafik5
+
+.. |img-5|      image:: ../../../Images/manual_html_18ef06cc.jpg
+   :height: 388
+   :width: 565
+.. :align: left
+.. :border: 0
+.. :name: Grafik7
+
+.. |img-6|      image:: ../../../Images/manual_html_4f839cda.jpg
+   :height: 267
+   :width: 548
+.. :align: left
+.. :border: 0
+.. :name: Grafik8
+
+.. |img-7|      image:: ../../../Images/GoogleMaps.jpg
+   :height: 386
+   :width: 737
+.. :align: left
+.. :border: 0
+.. :name: GoogleMaps
+
+
+.. |img-8|      image:: ../../../Images/Wookmark.jpg
+   :height: 410
+   :width: 700
+.. :align: left
+.. :border: 0
+.. :name: GoogleMaps
+
