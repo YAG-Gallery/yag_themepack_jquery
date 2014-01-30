@@ -1,0 +1,7 @@
+﻿.. |img-7|      image:: ../../Images/manual_html_580c8478.png
+   :height: 308
+   :width: 425
+.. :align: left
+.. :border: 0
+.. :name: Grafik3
+
