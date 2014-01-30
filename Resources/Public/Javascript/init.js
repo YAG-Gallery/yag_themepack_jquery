@@ -125,7 +125,7 @@
 
                 // Collect active filter strings
                 $filters.filter('.active').each(function () {
-                    activeFilters.push($(this).data('filter'));
+                    activeFilters.push($(this).data('filter').toString());
                 });
             }
             $items.wookmarkInstance.filter(activeFilters, settings.wookmark.filterMode);
