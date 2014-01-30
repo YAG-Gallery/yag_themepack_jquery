@@ -1,0 +1,6 @@
+﻿.. |img-8|      image:: ../../../Images/manual_html_m78b1d4f9.png
+   :height: 187
+   :width: 554
+.. :align: left
+.. :border: 0
+.. :name: Grafik4
