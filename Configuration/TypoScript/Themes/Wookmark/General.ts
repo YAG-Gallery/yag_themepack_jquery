@@ -92,7 +92,7 @@ plugin.tx_yag.settings.themes.wookmark {
 			offset = 2
 			autoResize = true
 			itemWidth = 0
-			flexibleWidth = 0
+			flexibleWidth = 25%
 			resizeDelay = 50
 			filterMode = or
 		}
