@@ -3,7 +3,7 @@
 /***************************************************************
  * Extension Manager/Repository config file for ext "yag_themepack_jquery".
  *
- * Auto generated 01-02-2014 16:54
+ * Auto generated 01-02-2014 17:38
  *
  * Manual updates:
  * Only the data in the array - everything else is removed by next
@@ -29,13 +29,13 @@ $EM_CONF[$_EXTKEY] = array(
 	'modify_tables' => '',
 	'clearCacheOnLoad' => 0,
 	'lockType' => '',
-	'version' => '1.2.0-dev',
+	'version' => '1.2.1-dev',
 	'constraints' => array(
 		'depends' => array(
 			'typo3' => '4.5.0-6.2.99',
 			'extbase' => '',
 			'fluid' => '',
-			'yag' => '3.1.0',
+			'yag' => '3.0.0',
 		),
 		'conflicts' => array(
 		),
