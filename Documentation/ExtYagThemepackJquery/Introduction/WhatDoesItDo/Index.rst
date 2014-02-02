@@ -58,3 +58,6 @@ This extension includes the following jQuery gallery scripts:
 - Galleria.io ( `http://galleria.io/ <http://galleria.io/>`_ ) by
   galleria.io
 
+- GMaps
+
+- Wookmark http://www.wookmark.com/jquery-plugin / https://github.com/GBKS/Wookmark-jQuery

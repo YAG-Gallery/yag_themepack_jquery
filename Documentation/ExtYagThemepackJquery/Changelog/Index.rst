@@ -32,6 +32,20 @@ https://github.com/daniellienert/yag\_themepack\_jquery
          Changes:
 
  - :Version:
+         1.2.2
+
+   :Changes:
+         [BUGFIX]: Update isotope to work with YAG 3.x lightbox
+
+
+ - :Version:
+         1.2.1
+
+   :Changes:
+         Revert minimum required YAG version to 3.0.0
+
+
+ - :Version:
          1.2.0
 
    :Changes:
