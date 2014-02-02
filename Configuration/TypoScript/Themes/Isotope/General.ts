@@ -24,13 +24,18 @@ plugin.tx_yag.settings.themes.isotope {
 		}
 
 		verticalLong {
-		    width = 230c
+			width = 230c
 			height = 110c
 		}
 
 		horizontalLong {
-		    width = 110c
+			width = 110c
 			height = 230c
+		}
+
+		medium {
+			maxW = 1200
+			maxH = 1200
 		}
 	}
 	
@@ -40,18 +45,18 @@ plugin.tx_yag.settings.themes.isotope {
 		}
 	}
 	
-    includeLibJS = jQuery,jQueryFancybox
-	includeLibCSS = jQueryFancybox
+	includeLibJS = jQuery,lightBox
+	includeLibCSS = lightBox
 
 	
 	includeJS {
         isotope10 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Isotope/jquery.isotope.min.js
+        lightbox = EXT:yag/Resources/Public/Js/LightBox.js
 	}
 	
 	includeCSS >
 	includeCSS {
-        #isotope10 = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Isotope/css/style.css
-        isotope11 = EXT:yag_themepack_jquery/Resources/Public/CSS/Isotope.css
+        isotope10 = EXT:yag_themepack_jquery/Resources/Public/CSS/Isotope.css
 	}
 
 	# --------------------
@@ -66,33 +71,15 @@ plugin.tx_yag.settings.themes.isotope {
     }
 
 
-	/**
-	 * FancyBox settings. See http://fancybox.net/api for a detailed description
-	 */
-	fancybox {
-		margin = 10
-		padding = 0
-		opacity = 0
-		modal = 0
-		cyclic = 1
-		scrolling = auto
-		hideOnOverlayClick = 1
-		hideOnContentClick = 0
-		overlayShow = 1
-		overlayOpacity = 0.8
-		overlayColor = #000
-		transitionIn = elastic
-		transitionOut = elastic
-		titlePosition = over
-		autoScale =	1
-		titleShow = 1
-		speedIn = 300
-		speedOut = 300
-		changeFade = fast
-		easingIn = swing
-		easingOut = swing
-		showCloseButton = 1
-		showNavArrows = 1
-		enableEscapeButton = 1
+	javaScriptSettings {
+		lightBox {
+			enabled = 1
+			mainClass = mfp-with-zoom mfp-fade
+			zoom {
+				enabled = true
+				duration = 200
+				easing = ease-in-out
+			}
+		}
 	}
 }
