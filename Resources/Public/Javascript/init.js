@@ -92,10 +92,9 @@
                     // Add item to list
                     $list.append($newItem);
                 }
-                $selector.imagesLoaded(function () {
-                    initWookmarkItems();
-                    $loaderCircle.hide();
-                });
+
+                initWookmarkItems();
+                $loaderCircle.hide();
             }
 
             // Initialize endless scroll handlers
@@ -132,7 +131,7 @@
         });
 
         // Init wookmark after images have loaded
-        $selector.imagesLoaded(initWookmarkItems);
+        initWookmarkItems()
     }
 
     /**
