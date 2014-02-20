@@ -119,7 +119,7 @@ plugin.tx_yag.settings.themes.wookmark {
 
 	includeJS {
 		json = EXT:yag_themepack_jquery/Resources/Public/Javascript/json2.min.js
-		imagesloaded = EXT:yag_themepack_jquery/Resources/Public/Javascript/imagesloaded.pkgd.min.js
+		imagesloaded = EXT:yag_themepack_jquery/Resources/Public/Javascript/imagesloaded-3.1.4.pkgd.min.js
 		wookmark = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Wookmark/jquery.wookmark.js
 		init = EXT:yag_themepack_jquery/Resources/Public/Javascript/init.js
 	}
