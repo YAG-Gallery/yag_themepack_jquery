@@ -63,8 +63,11 @@
                     }
                 },
                 callbacks: {
-                    imageLoadComplete: function() {
+                    change: function() {
                         delayResizeLightboxImage(this.content);
+                    },
+                    imageLoadComplete: function() {
+                        resizeLightboxImage(this.content);
                     },
                     resize: function() {
                         resizeLightboxImage(this.content);
