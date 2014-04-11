@@ -101,7 +101,7 @@ class Tx_YagThemepackJquery_ViewHelpers_CrossSlideViewHelper extends Tx_Fluid_Co
 	 * @return complet crossSlide call
 	 */
 	protected function buildScript($identifier, $parameterString, $imageListArray) {
-		$jsScript = "$('#%s').crossSlide(%s,%s);";
+		$jsScript = "jQuery('#%s').crossSlide(%s,%s);";
 		$jsScript = sprintf($jsScript, $identifier, $parameterString, $imageListArray);
 		return $jsScript;
 	}

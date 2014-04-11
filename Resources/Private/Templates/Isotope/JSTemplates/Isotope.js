@@ -1,6 +1,6 @@
-$(function() {
+jQuery(function() {
 
-    var $container = $('####conatiner###');
+    var $container = jQuery('####conatiner###');
 
     $container.isotope({
         itemSelector: '.element',
@@ -10,8 +10,8 @@ $(function() {
     });
 });
 
-$('####filters### a').click(function() {
-    var selector = $(this).attr('data-filter');
-    $('####conatiner###').isotope({ filter: selector });
+jQuery('####filters### a').click(function() {
+    var selector = jQuery(this).attr('data-filter');
+    jQuery('####conatiner###').isotope({ filter: selector });
     return false;
 });
