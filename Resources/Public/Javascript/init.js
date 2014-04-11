@@ -1,6 +1,7 @@
 (function ($) {
     var $window = $(window),
-        $document = $(document);
+        $document = $(document),
+        $html = $('html');
 
     /**
      * Rondell initialization function
@@ -30,6 +31,21 @@
             }));
         }
 
+        function resizeLightboxImage(lightboxContent) {
+            var $content = $(lightboxContent),
+                $picture = $('.mfp-img', $content),
+                $caption = $('.mfp-bottom-bar', $content),
+                maxImageHeight = $window.height() - $caption.outerHeight();
+
+            $picture.css('max-height', maxImageHeight);
+        }
+
+        function delayResizeLightboxImage(lightboxContent) {
+            window.setTimeout(function() {
+                resizeLightboxImage(lightboxContent);
+            }, 0);
+        }
+
         // Initialize lightbox if enabled in options
         if (settings.lightbox.enabled && $.fn.magnificPopup) {
             $selector.magnificPopup($.extend(true, {
@@ -44,6 +60,17 @@
                         var caption = item.el.attr('title'),
                             description = $(item.el).siblings('.yag-lightbox-meta').html();
                         return description || caption;
+                    }
+                },
+                callbacks: {
+                    change: function() {
+                        delayResizeLightboxImage(this.content);
+                    },
+                    imageLoadComplete: function() {
+                        resizeLightboxImage(this.content);
+                    },
+                    resize: function() {
+                        resizeLightboxImage(this.content);
                     }
                 }
             }, settings.lightbox));
@@ -92,10 +119,9 @@
                     // Add item to list
                     $list.append($newItem);
                 }
-                $selector.imagesLoaded(function () {
-                    initWookmarkItems();
-                    $loaderCircle.hide();
-                });
+
+                initWookmarkItems();
+                $loaderCircle.hide();
             }
 
             // Initialize endless scroll handlers
@@ -132,7 +158,7 @@
         });
 
         // Init wookmark after images have loaded
-        $selector.imagesLoaded(initWookmarkItems);
+        initWookmarkItems()
     }
 
     /**
