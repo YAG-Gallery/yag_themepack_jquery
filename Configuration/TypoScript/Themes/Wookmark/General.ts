@@ -91,8 +91,8 @@ plugin.tx_yag.settings.themes.wookmark {
 			align = center
 			offset = 2
 			autoResize = true
-			itemWidth = 0
-			flexibleWidth = 25%
+			itemWidth = 160
+			flexibleWidth = 50%
 			resizeDelay = 50
 			filterMode = or
 		}
@@ -119,6 +119,7 @@ plugin.tx_yag.settings.themes.wookmark {
 
 	includeJS {
 		json = EXT:yag_themepack_jquery/Resources/Public/Javascript/json2.min.js
+		imagesloaded = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Wookmark/libs/jquery.imagesloaded.js
 		wookmark = EXT:yag_themepack_jquery/Resources/Public/GallerySource/Wookmark/jquery.wookmark.js
 		init = EXT:yag_themepack_jquery/Resources/Public/Javascript/init.js
 	}

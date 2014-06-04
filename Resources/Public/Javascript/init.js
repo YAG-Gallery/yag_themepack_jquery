@@ -26,9 +26,12 @@
 
         function initWookmarkItems() {
             $items = $list.children();
-            $items.wookmark($.extend(settings.wookmark, {
+
+            $items.imagesLoaded(function() {
+              $items.wookmark($.extend(settings.wookmark, {
                 container: $selector
-            }));
+              }));
+            });
         }
 
         function resizeLightboxImage(lightboxContent) {
