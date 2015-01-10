@@ -32,6 +32,26 @@ https://github.com/daniellienert/yag\_themepack\_jquery
          Changes:
 
  - :Version:
+         1.2.3
+
+   :Changes:
+         Task: Updated imagesloaded plugin to new version which should fix problems with IE8
+
+         FIX: image size in magnific popup is now updated after content has loaded and the real maximum height is available
+
+         CHG: magnific popup lightbox content for the wookmark theme will refresh the picture also before the image has loaded
+
+         [BUGFIX] Bug #57027 EXT:yag_themepack_jquery 1.2.2 noConflict
+
+         [TASK] Updated Wookmark theme to 1.4.7 and enabled imagesLoaded again
+
+            * Changed defaults for itemWidth and flexibleWidth to work with 1.4.7
+            * imagesLoaded plugin now works better with IE8
+            * Using flexibleWidth requires imagesLoaded or images won't have correct size
+
+         [CHG] Move Isotope inline code to the footer
+
+ - :Version:
          1.2.2
 
    :Changes:
