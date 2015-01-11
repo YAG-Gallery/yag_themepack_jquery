@@ -2,45 +2,46 @@
 
 <themepackJquery:superSized listData="{listData}" />
 
-        
-<!--Thumbnail Navigation-->
-<div id="prevthumb"></div>
-<div id="nextthumb"></div>
+<f:if condition="{config.settings.superSizedSettings.navigation}">
+	<!--Thumbnail Navigation-->
+	<div id="prevthumb"></div>
+	<div id="nextthumb"></div>
 
-<!--Arrow Navigation-->
-<img id="prevslide" src="{superSizedImagePath}/back.png"/>
-<img id="nextslide" src="{superSizedImagePath}/forward.png"/>
-
+	<!--Arrow Navigation-->
+	<img id="prevslide" src="{superSizedImagePath}/back.png"/>
+	<img id="nextslide" src="{superSizedImagePath}/forward.png"/>
+</f:if>
 
 <div id="thumb-tray" class="load-item">
     <div id="thumb-back"></div>
     <div id="thumb-forward"></div>
 </div>
 
-<!--Time Bar-->
-<div id="progress-back" class="load-item">
-    <div id="progress-bar"></div>
 
-</div>
+<f:if condition="{config.settings.superSizedSettings.progress_bar}">
+	<div id="progress-back" class="load-item">
+		<div id="progress-bar"></div>
+	</div>
+</f:if>
 
 <!--Control Bar-->
-<div id="controls-wrapper">
-    <div id="controls">
 
-        <a id="play-button"><img id="pauseplay" src="{superSizedImagePath}/pause.png"/></a>
+<f:if condition="{config.settings.superSizedSettings.slide_counter}">
+	<div id="controls-wrapper">
+		<div id="controls">
 
-        <!--Slide counter-->
-        <div id="slidecounter">
-            <span class="slidenumber"></span> / <span class="totalslides"></span>
-        </div>
+			<a id="play-button"><img id="pauseplay" src="{superSizedImagePath}/pause.png"/></a>
 
-        <!--Slide captions displayed here-->
-        <div id="slidecaption"></div>
+			<!--Slide counter-->
+			<div id="slidecounter">
+				<span class="slidenumber"></span> / <span class="totalslides"></span>
+			</div>
 
-        <!--Thumb Tray button-->
-        <a id="tray-button"><img id="tray-arrow" src="{superSizedImagePath}/button-tray-up.png"/></a>
+			<!--Slide captions displayed here-->
+			<div id="slidecaption"></div>
 
-
-
-    </div>
-</div>
+			<!--Thumb Tray button-->
+			<a id="tray-button"><img id="tray-arrow" src="{superSizedImagePath}/button-tray-up.png"/></a>
+		</div>
+	</div>
+</f:if>

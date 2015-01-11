@@ -38,6 +38,20 @@ class Tx_YagThemepackJquery_ViewHelpers_SuperSizedViewHelper extends \TYPO3\CMS\
 	 */
 	protected $configurationBuilder;
 
+	/**
+	 * @var Tx_Yag_Utility_HeaderInclusion
+	 */
+	protected $inclusionUtility;
+
+	/**
+	 *
+	 * @param Tx_Yag_Utility_HeaderInclusion
+	 * @return void
+	 */
+	public function inject(Tx_Yag_Utility_HeaderInclusion $inclusionUtility) {
+		$this->inclusionUtility = $inclusionUtility;
+	}
+
 	
 	/**
 	 * (non-PHPdoc)
@@ -66,11 +80,11 @@ class Tx_YagThemepackJquery_ViewHelpers_SuperSizedViewHelper extends \TYPO3\CMS\
 		$output = '
 				jQuery(function($){
 					$.supersized('.$superSizedSettingsJSon.');
+					$.supersized.themeVars.image_path = "'.$superSizedSettings['image_path'].'";
 				});
-				$.supersized.themeVars.image_path = "'.$superSizedSettings['image_path'].'";
 			';
 
-		$this->objectManager->get('Tx_Yag_Utility_HeaderInclusion')->addJsInlineCode('superSized-' . $this->configurationBuilder->getContextIdentifier(), $output);
+		$this->inclusionUtility->addJsInlineCode('superSized-' . $this->configurationBuilder->getContextIdentifier(), $output);
 	}
 
 
