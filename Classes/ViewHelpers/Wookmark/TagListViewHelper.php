@@ -29,7 +29,7 @@
  * @author Daniel Lienert <daniel@lienert.cc>
  * @package ViewHelpers
  */
-class Tx_YagThemepackJquery_ViewHelpers_Wookmark_TagListViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper {
+class Tx_YagThemepackJquery_ViewHelpers_Wookmark_TagListViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 	
 	
 	/**
@@ -45,7 +45,7 @@ class Tx_YagThemepackJquery_ViewHelpers_Wookmark_TagListViewHelper extends Tx_Fl
 	public function initialize() {
 		parent::initialize();
 
-		$this->tagRepository = t3lib_div::makeInstance('Tx_Extbase_Object_ObjectManager')->get('Tx_Yag_Domain_Repository_TagRepository');
+		$this->tagRepository = $this->objectManager->get('Tx_Yag_Domain_Repository_TagRepository');
 	}
 	
 
@@ -53,6 +53,7 @@ class Tx_YagThemepackJquery_ViewHelpers_Wookmark_TagListViewHelper extends Tx_Fl
 	 * Renders a tagList
 	 *
 	 * @param string $identifier
+	 * @return string
 	 */
 	public function render() {
 
@@ -78,6 +79,5 @@ class Tx_YagThemepackJquery_ViewHelpers_Wookmark_TagListViewHelper extends Tx_Fl
 		}
 
 		return $output;
-
 	}
 }

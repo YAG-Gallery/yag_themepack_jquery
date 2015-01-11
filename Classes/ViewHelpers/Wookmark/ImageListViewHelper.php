@@ -29,7 +29,7 @@
  * @author Sebastian Helzle <sebastian@helzle.net>
  * @package ViewHelpers
  */
-class Tx_YagThemepackJquery_ViewHelpers_Wookmark_ImageListViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper {
+class Tx_YagThemepackJquery_ViewHelpers_Wookmark_ImageListViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 	
 	
 	/**

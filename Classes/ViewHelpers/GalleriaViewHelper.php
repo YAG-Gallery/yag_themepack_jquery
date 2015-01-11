@@ -29,7 +29,7 @@
  * @author Daniel Lienert <daniel@lienert.cc>
  * @package ViewHelpers
  */
-class Tx_YagThemepackJquery_ViewHelpers_GalleriaViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractTagBasedViewHelper {
+class Tx_YagThemepackJquery_ViewHelpers_GalleriaViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper {
 
 
 	/**
@@ -100,7 +100,7 @@ class Tx_YagThemepackJquery_ViewHelpers_GalleriaViewHelper extends Tx_Fluid_Core
 
 
 	protected function renderTypoLink($linkData) {
-		$cObj = t3lib_div::makeInstance('tslib_cObj');	/** @var tslib_cObj $cObj */
+		$cObj = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer');	/** @var \TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer $cObj */
 		$configuration = array(
 			'parameter' => $linkData,
 			'returnLast' => true

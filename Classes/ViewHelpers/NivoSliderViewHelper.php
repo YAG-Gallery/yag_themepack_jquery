@@ -29,7 +29,7 @@
  * @author Daniel Lienert <daniel@lienert.cc>
  * @package ViewHelpers
  */
-class Tx_YagThemepackJquery_ViewHelpers_NivoSliderViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractTagBasedViewHelper {
+class Tx_YagThemepackJquery_ViewHelpers_NivoSliderViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper {
 	
 	
 	/**
@@ -73,7 +73,7 @@ class Tx_YagThemepackJquery_ViewHelpers_NivoSliderViewHelper extends Tx_Fluid_Co
 	public function initialize() {
 		parent::initialize();
 		$this->configurationBuilder =  Tx_Yag_Domain_Configuration_ConfigurationBuilderFactory::getInstance();
-		$this->headerInclusion = t3lib_div::makeInstance('Tx_Extbase_Object_ObjectManager')->get('Tx_Yag_Utility_HeaderInclusion');
+		$this->headerInclusion = $this->objectManager->get('Tx_Yag_Utility_HeaderInclusion');
 		$this->contextIdentifier = $this->configurationBuilder->getContextIdentifier();
 	}
 	

@@ -22,6 +22,7 @@
 *
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Class 
@@ -29,7 +30,7 @@
  * @author Daniel Lienert <daniel@lienert.cc>
  * @package ViewHelpers
  */
-class Tx_YagThemepackJquery_ViewHelpers_SuperSizedViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractTagBasedViewHelper {
+class Tx_YagThemepackJquery_ViewHelpers_SuperSizedViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper {
 	
 	
 	/**
@@ -69,11 +70,7 @@ class Tx_YagThemepackJquery_ViewHelpers_SuperSizedViewHelper extends Tx_Fluid_Co
 				$.supersized.themeVars.image_path = "'.$superSizedSettings['image_path'].'";
 			';
 
-		//return $output;
-
-		t3lib_div::makeInstance('Tx_Extbase_Object_ObjectManager')
-								->get('Tx_Yag_Utility_HeaderInclusion')
-								->addJsInlineCode('superSized-' . $this->configurationBuilder->getContextIdentifier(), $output);
+		$this->objectManager->get('Tx_Yag_Utility_HeaderInclusion')->addJsInlineCode('superSized-' . $this->configurationBuilder->getContextIdentifier(), $output);
 	}
 
 
@@ -81,7 +78,7 @@ class Tx_YagThemepackJquery_ViewHelpers_SuperSizedViewHelper extends Tx_Fluid_Co
 	 * @return array
 	 */
 	public function buildSuperSizedSettings() {
-		$fileSystemDiv = t3lib_div::makeInstance('Tx_Yag_Domain_FileSystem_Div'); /** @var $fileSystemDiv Tx_Yag_Domain_FileSystem_Div */
+		$fileSystemDiv = GeneralUtility::makeInstance('Tx_Yag_Domain_FileSystem_Div'); /** @var $fileSystemDiv Tx_Yag_Domain_FileSystem_Div */
 
 		$superSizedSettings = $this->configurationBuilder->getJSCompliantSettings('superSizedSettings');
 
@@ -95,7 +92,7 @@ class Tx_YagThemepackJquery_ViewHelpers_SuperSizedViewHelper extends Tx_Fluid_Co
 
 	/**
 	 * @param $listData
-	 * @return void
+	 * @return array
 	 */
 	protected function buildSlideArray($listData) {
 		$slides = array();
