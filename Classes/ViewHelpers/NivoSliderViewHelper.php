@@ -87,7 +87,7 @@ class Tx_YagThemepackJquery_ViewHelpers_NivoSliderViewHelper extends Tx_Fluid_Co
 		$nivoSettings = json_encode($nivoSettings);
 
 		$output = '
-				 jQuery(window).load(function() {
+				$(function() {
 					  jQuery("#nivoSlider-'.$this->contextIdentifier.'").nivoSlider('.$nivoSettings.');
 				 });
 			';

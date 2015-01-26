@@ -29,7 +29,7 @@
  * @author Daniel Lienert <daniel@lienert.cc>
  * @package ViewHelpers
  */
-class Tx_YagThemepackJquery_ViewHelpers_SuperSizedViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractTagBasedViewHelper {
+class Tx_YagThemepackJquery_ViewHelpers_SuperSizedViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper {
 	
 	
 	/**
@@ -63,15 +63,13 @@ class Tx_YagThemepackJquery_ViewHelpers_SuperSizedViewHelper extends Tx_Fluid_Co
 		$this->templateVariableContainer->add('superSizedImagePath', $superSizedSettings['image_path']);
 
 		$output = '
-				jQuery(function($){
-					$.supersized('.$superSizedSettingsJSon.');
+				$(function(){
+					jQuery.supersized('.$superSizedSettingsJSon.');
+					jQuery.supersized.themeVars.image_path = "'.$superSizedSettings['image_path'].'";
 				});
-				$.supersized.themeVars.image_path = "'.$superSizedSettings['image_path'].'";
 			';
 
-		//return $output;
-
-		t3lib_div::makeInstance('Tx_Extbase_Object_ObjectManager')
+		\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Extbase_Object_ObjectManager')
 								->get('Tx_Yag_Utility_HeaderInclusion')
 								->addJsInlineCode('superSized-' . $this->configurationBuilder->getContextIdentifier(), $output);
 	}
@@ -95,7 +93,6 @@ class Tx_YagThemepackJquery_ViewHelpers_SuperSizedViewHelper extends Tx_Fluid_Co
 
 	/**
 	 * @param $listData
-	 * @return void
 	 */
 	protected function buildSlideArray($listData) {
 		$slides = array();

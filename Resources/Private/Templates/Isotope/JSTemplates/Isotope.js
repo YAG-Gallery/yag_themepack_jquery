@@ -1,8 +1,8 @@
 jQuery(function() {
 
-    var $container = jQuery('####conatiner###');
+    var container = jQuery('####conatiner###');
 
-    $container.isotope({
+    container.isotope({
         itemSelector: '.element',
         masonryHorizontal  : {
             columnWidth : 120
