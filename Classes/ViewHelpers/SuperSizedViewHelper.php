@@ -22,6 +22,7 @@
 *
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Class 
@@ -36,6 +37,20 @@ class Tx_YagThemepackJquery_ViewHelpers_SuperSizedViewHelper extends \TYPO3\CMS\
 	 * @var Tx_Yag_Domain_Configuration_ConfigurationBuilder
 	 */
 	protected $configurationBuilder;
+
+	/**
+	 * @var Tx_Yag_Utility_HeaderInclusion
+	 */
+	protected $inclusionUtility;
+
+	/**
+	 *
+	 * @param Tx_Yag_Utility_HeaderInclusion
+	 * @return void
+	 */
+	public function inject(Tx_Yag_Utility_HeaderInclusion $inclusionUtility) {
+		$this->inclusionUtility = $inclusionUtility;
+	}
 
 	
 	/**
@@ -63,15 +78,13 @@ class Tx_YagThemepackJquery_ViewHelpers_SuperSizedViewHelper extends \TYPO3\CMS\
 		$this->templateVariableContainer->add('superSizedImagePath', $superSizedSettings['image_path']);
 
 		$output = '
-				$(function(){
-					jQuery.supersized('.$superSizedSettingsJSon.');
-					jQuery.supersized.themeVars.image_path = "'.$superSizedSettings['image_path'].'";
+				jQuery(function($){
+					$.supersized('.$superSizedSettingsJSon.');
+					$.supersized.themeVars.image_path = "'.$superSizedSettings['image_path'].'";
 				});
 			';
 
-		\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Extbase_Object_ObjectManager')
-								->get('Tx_Yag_Utility_HeaderInclusion')
-								->addJsInlineCode('superSized-' . $this->configurationBuilder->getContextIdentifier(), $output);
+		$this->inclusionUtility->addJsInlineCode('superSized-' . $this->configurationBuilder->getContextIdentifier(), $output);
 	}
 
 
@@ -79,7 +92,7 @@ class Tx_YagThemepackJquery_ViewHelpers_SuperSizedViewHelper extends \TYPO3\CMS\
 	 * @return array
 	 */
 	public function buildSuperSizedSettings() {
-		$fileSystemDiv = t3lib_div::makeInstance('Tx_Yag_Domain_FileSystem_Div'); /** @var $fileSystemDiv Tx_Yag_Domain_FileSystem_Div */
+		$fileSystemDiv = GeneralUtility::makeInstance('Tx_Yag_Domain_FileSystem_Div'); /** @var $fileSystemDiv Tx_Yag_Domain_FileSystem_Div */
 
 		$superSizedSettings = $this->configurationBuilder->getJSCompliantSettings('superSizedSettings');
 
@@ -93,6 +106,7 @@ class Tx_YagThemepackJquery_ViewHelpers_SuperSizedViewHelper extends \TYPO3\CMS\
 
 	/**
 	 * @param $listData
+	 * @return array
 	 */
 	protected function buildSlideArray($listData) {
 		$slides = array();

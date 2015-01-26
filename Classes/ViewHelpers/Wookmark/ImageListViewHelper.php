@@ -24,27 +24,27 @@
 ***************************************************************/
 
 /**
- * Class 
- * 
+ * Class
+ *
  * @author Sebastian Helzle <sebastian@helzle.net>
  * @package ViewHelpers
  */
-class Tx_YagThemepackJquery_ViewHelpers_Wookmark_ImageListViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper {
-	
-	
+class Tx_YagThemepackJquery_ViewHelpers_Wookmark_ImageListViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
+
+
 	/**
 	 * @var Tx_Yag_Domain_Configuration_ConfigurationBuilder
 	 */
 	protected $configurationBuilder;
 
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see Classes/Core/ViewHelper/Tx_Fluid_Core_ViewHelper_AbstractTagBasedViewHelper::initialize()
 	 */
 	public function initialize() {
 		parent::initialize();
-		$this->configurationBuilder =  Tx_Yag_Domain_Configuration_ConfigurationBuilderFactory::getInstance();
+		$this->configurationBuilder = Tx_Yag_Domain_Configuration_ConfigurationBuilderFactory::getInstance();
 	}
 
 
@@ -59,18 +59,19 @@ class Tx_YagThemepackJquery_ViewHelpers_Wookmark_ImageListViewHelper extends Tx_
 		$output = '';
 
 		foreach($listData as $rowIndex => $row) {
-
 			$image = $row->getCell('image')->getValue(); /** @var Tx_YAG_Domain_Model_Item $image  */
 
+			$tags = $image->getTags();
+
 			$tagNames = array();
-			if(array($image->getTags())) {
-				foreach($image->getTags() as $tag) {
+			if($tags !== NULL) {
+				foreach($tags as $tag) {
 					$tagNames[] = str_replace(array('.', ' '), '', $tag->getName());
 				}
 			}
 
 			$this->templateVariableContainer->add('image', $image);
-            $this->templateVariableContainer->add('imageIndex', $rowIndex +1);
+			$this->templateVariableContainer->add('imageIndex', $rowIndex +1);
 			$this->templateVariableContainer->add('quotedTags', '"' . implode('","', $tagNames) . '"');
 			$this->templateVariableContainer->add('tags', implode(', ', $tagNames));
 
@@ -80,7 +81,6 @@ class Tx_YagThemepackJquery_ViewHelpers_Wookmark_ImageListViewHelper extends Tx_
 			$this->templateVariableContainer->remove('tags');
 			$this->templateVariableContainer->remove('image');
 			$this->templateVariableContainer->remove('imageIndex');
-
 		}
 
 		return $output;
