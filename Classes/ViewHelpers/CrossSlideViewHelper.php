@@ -30,8 +30,15 @@
  * @package ViewHelpers
  */
 class Tx_YagThemepackJquery_ViewHelpers_CrossSlideViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper {
-	
-	
+
+
+	/**
+	 * @inject
+	 * @var Tx_Yag_Utility_HeaderInclusion
+	 */
+	protected $inclusionUtility;
+
+
 	/**
 	 * @var Tx_Yag_Domain_Configuration_ConfigurationBuilder
 	 */
@@ -55,13 +62,13 @@ class Tx_YagThemepackJquery_ViewHelpers_CrossSlideViewHelper extends \TYPO3\CMS\
 	/**
 	 * @var bool
 	 */
-	protected $zoomReversed = false;
+	protected $zoomReversed = FALSE;
 	
 	
 	/**
 	 * @var bool
 	 */
-	protected $panReversed = false;
+	protected $panReversed = FALSE;
 	
 	
 	/**
@@ -73,9 +80,9 @@ class Tx_YagThemepackJquery_ViewHelpers_CrossSlideViewHelper extends \TYPO3\CMS\
 		
 		$this->configurationBuilder =  Tx_Yag_Domain_Configuration_ConfigurationBuilderFactory::getInstance();
 		$this->resolutionConfigCollection = $this->configurationBuilder->buildThemeConfiguration()->getResolutionConfigCollection();
-		$this->crossSlideSettings = $this->configurationBuilder->getSettings('crossSlide');					
+		$this->crossSlideSettings = $this->configurationBuilder->getSettings('crossSlide');
 	}
-	
+
 
 	/**
 	 * Renders the crossSlide call
@@ -85,9 +92,11 @@ class Tx_YagThemepackJquery_ViewHelpers_CrossSlideViewHelper extends \TYPO3\CMS\
 	 */
 	public function render($identifier, Tx_PtExtlist_Domain_Model_List_ListData $listData) { 
 		$imageListArray = $this->buildImageListArray($listData);
-		$parameterString = $this->buildParameterString($galleryOptions);
-		
-		return $this->buildScript($identifier, $parameterString, $imageListArray);
+		$parameterString = $this->buildParameterString();
+
+		$crossSlideJavascript = $this->buildScript($identifier, $parameterString, $imageListArray);
+
+		$this->inclusionUtility->addJSInlineCode('crosslide', $crossSlideJavascript);
 	}
 
 	
@@ -98,7 +107,7 @@ class Tx_YagThemepackJquery_ViewHelpers_CrossSlideViewHelper extends \TYPO3\CMS\
 	 * @param string $identifier div identifier
 	 * @param string $parameterString parameter JSON array
 	 * @param string $imageListArray imageList JSON array
-	 * @return complet crossSlide call
+	 * @return string complete crossSlide call
 	 */
 	protected function buildScript($identifier, $parameterString, $imageListArray) {
 		$jsScript = "jQuery('#%s').crossSlide(%s,%s);";
@@ -189,14 +198,14 @@ class Tx_YagThemepackJquery_ViewHelpers_CrossSlideViewHelper extends \TYPO3\CMS\
 			'to' => end($pan) . end($zoom),
 		);
 	}
-	
-	
-	
+
+
 	/**
 	 * Calculate pan random variance
-	 * 
+	 *
 	 * @param int $value
 	 * @param int $variance
+	 * @return int
 	 */
 	protected function calculatePanRandom($value, $variance) {
 		$randVariance = (int) rand($variance * -1, $variance);
@@ -207,14 +216,14 @@ class Tx_YagThemepackJquery_ViewHelpers_CrossSlideViewHelper extends \TYPO3\CMS\
 		
 		return $value;
 	}
-	
-	
-	
+
+
 	/**
 	 * Calculate zoom random variance
-	 * 
+	 *
 	 * @param int $value
 	 * @param int $variance
+	 * @return float|int
 	 */
 	protected function calculateZoomRandom($value, $variance) {
 		$variance = (int)($variance * 1000);
