@@ -16,11 +16,6 @@ Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in 
 -->
 </extlist:comment>
 
-<script>
-	Galleria.loadTheme('{yag:resource.file(path:config.settings.galleriaThemeBasePath)}{config.settings.galleriaTheme}/galleria.{config.settings.galleriaTheme}.js');
-	Galleria.configure({yag:javascript.jsonSettings(tsPath:'galleriaSettings')});
-</script>
-
 <f:if condition="{config.settings.jsonMode}">
     <f:then>
         <div id="galleria-{config.contextIdentifier}" class="tx-yag-galleria-wrapper" style="height:{ptx:cObjectConfig(config:config.settings.height)}px;width:{ptx:cObjectConfig(config:config.settings.width)}px"></div>
@@ -39,12 +34,12 @@ Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in 
                 </a>
             </f:for>
         </div>
-
-        <script>
-            Galleria.run('#galleria-{config.contextIdentifier}');
-        </script>
     </f:else>
 </f:if>
 
-
+<yag:javascript.include>
+	Galleria.loadTheme('{yag:resource.file(path:config.settings.galleriaThemeBasePath)}{config.settings.galleriaTheme}/galleria.{config.settings.galleriaTheme}.js');
+	Galleria.configure({yag:javascript.jsonSettings(tsPath:'galleriaSettings')});
+	Galleria.run('#galleria-{config.contextIdentifier}');
+</yag:javascript.include>
 
