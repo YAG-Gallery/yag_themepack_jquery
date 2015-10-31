@@ -11,6 +11,13 @@
     }
 
     /**
+     * Justified initialization function
+     */
+    function initJustified($selector, settings) {
+        $selector.justifiedGallery(settings.justified);
+    }
+
+    /**
      * Wookmark initialization function
      */
     function initWookmark($selector, settings) {
@@ -263,6 +270,9 @@
                     break;
                 case 'gmaps':
                     initGmaps($self, settings);
+                    break;
+                case 'justified':
+                    initJustified($self, settings);
                     break;
             }
         });
