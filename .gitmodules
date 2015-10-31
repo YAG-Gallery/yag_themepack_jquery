@@ -13,3 +13,9 @@
 [submodule "Resources/Public/GallerySource/Galleria"]
 	path = Resources/Public/GallerySource/Galleria
 	url = https://github.com/aino/galleria.git
+[submodule "Resources/Public/GallerySource/justified_gallery"]
+	path = Resources/Public/GallerySource/justified_gallery
+	url = git@github.com:miromannino/Justified-Gallery.git
+[submodule "Resources/Public/GallerySource/photoswipe"]
+	path = Resources/Public/GallerySource/photoswipe
+	url = git@github.com:dimsemenov/PhotoSwipe.git
