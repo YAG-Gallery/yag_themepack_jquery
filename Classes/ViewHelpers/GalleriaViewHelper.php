@@ -29,34 +29,34 @@
  * @author Daniel Lienert <daniel@lienert.cc>
  * @package ViewHelpers
  */
-class Tx_YagThemepackJquery_ViewHelpers_GalleriaViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper {
+class Tx_YagThemepackJquery_ViewHelpers_GalleriaViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper
+{
+    /**
+     * @var Tx_Yag_Domain_Configuration_ConfigurationBuilder
+     */
+    protected $configurationBuilder;
 
 
-	/**
-	 * @var Tx_Yag_Domain_Configuration_ConfigurationBuilder
-	 */
-	protected $configurationBuilder;
-
-
-	/**
-	 * (non-PHPdoc)
-	 * @see Classes/Core/ViewHelper/Tx_Fluid_Core_ViewHelper_AbstractTagBasedViewHelper::initialize()
-	 */
-	public function initialize() {
-		parent::initialize();
-		$this->configurationBuilder =  Tx_Yag_Domain_Configuration_ConfigurationBuilderFactory::getInstance();
-	}
+    /**
+     * (non-PHPdoc)
+     * @see Classes/Core/ViewHelper/Tx_Fluid_Core_ViewHelper_AbstractTagBasedViewHelper::initialize()
+     */
+    public function initialize()
+    {
+        parent::initialize();
+        $this->configurationBuilder =  Tx_Yag_Domain_Configuration_ConfigurationBuilderFactory::getInstance();
+    }
 
 
 
-	/**
-	 * @param string $identifier
-	 * @param Tx_PtExtlist_Domain_Model_List_ListData $listData
-	 * @return string
-	 */
-	public function render($identifier, Tx_PtExtlist_Domain_Model_List_ListData $listData) {
-
-		$output = "
+    /**
+     * @param string $identifier
+     * @param Tx_PtExtlist_Domain_Model_List_ListData $listData
+     * @return string
+     */
+    public function render($identifier, Tx_PtExtlist_Domain_Model_List_ListData $listData)
+    {
+        $output = "
 			<script>
 				var galleria%sdata = %s;
 				Galleria.run('#galleria-%s', {
@@ -65,47 +65,48 @@ class Tx_YagThemepackJquery_ViewHelpers_GalleriaViewHelper extends \TYPO3\CMS\Fl
 			</script>
 		";
 
-		return sprintf($output, $identifier, $this->buildGalleriaJSONData($listData), $identifier, $identifier);
-	}
+        return sprintf($output, $identifier, $this->buildGalleriaJSONData($listData), $identifier, $identifier);
+    }
 
 
 
-	/**
-	 * @param Tx_PtExtlist_Domain_Model_List_ListData $listData
-	 * @return string
-	 */
-	protected function buildGalleriaJSONData(Tx_PtExtlist_Domain_Model_List_ListData $listData) {
+    /**
+     * @param Tx_PtExtlist_Domain_Model_List_ListData $listData
+     * @return string
+     */
+    protected function buildGalleriaJSONData(Tx_PtExtlist_Domain_Model_List_ListData $listData)
+    {
+        $resolutionConfigCollection = $this->configurationBuilder->buildThemeConfiguration()->getResolutionConfigCollection();
 
-		$resolutionConfigCollection = $this->configurationBuilder->buildThemeConfiguration()->getResolutionConfigCollection();
+        $data = array();
 
-		$data = array();
+        foreach ($listData as $row) { /** @var Tx_PtExtlist_Domain_Model_List_Row $row */
+            $image = $row->getCell('image')->getValue(); /** @var Tx_Yag_Domain_Model_Item $image */
 
-		foreach($listData as $row) { /** @var Tx_PtExtlist_Domain_Model_List_Row $row */
-			$image = $row->getCell('image')->getValue(); /** @var Tx_Yag_Domain_Model_Item $image */
+            $pathPrefix = TYPO3_MODE === 'BE' ? '../' : $GLOBALS['TSFE']->absRefPrefix;
 
-			$pathPrefix = TYPO3_MODE === 'BE' ? '../' : $GLOBALS['TSFE']->absRefPrefix;
+            $data[] = array(
+                'thumb' => $pathPrefix . $image->getResolutionByConfig($resolutionConfigCollection->getResolutionConfig('thumb'))->getPath(),
+                'image' => $pathPrefix. $image->getResolutionByConfig($resolutionConfigCollection->getResolutionConfig('medium'))->getPath(),
+                'big' => $pathPrefix . $image->getResolutionByConfig($resolutionConfigCollection->getResolutionConfig('big'))->getPath(),
+                'title' => $image->getTitle(),
+                'description' =>  $image->getDescription(),
+                'link' => $this->renderTypoLink($image->getLink())
+            );
+        }
 
-			$data[] = array(
-				'thumb' => $pathPrefix . $image->getResolutionByConfig($resolutionConfigCollection->getResolutionConfig('thumb'))->getPath(),
-				'image' => $pathPrefix. $image->getResolutionByConfig($resolutionConfigCollection->getResolutionConfig('medium'))->getPath(),
-				'big' => $pathPrefix . $image->getResolutionByConfig($resolutionConfigCollection->getResolutionConfig('big'))->getPath(),
-        		'title' => $image->getTitle(),
-        		'description' =>  $image->getDescription(),
-        		'link' => $this->renderTypoLink($image->getLink())
-			);
-		}
-
-		return json_encode($data);
-	}
+        return json_encode($data);
+    }
 
 
-	protected function renderTypoLink($linkData) {
-		$cObj = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer');	/** @var \TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer $cObj */
-		$configuration = array(
-			'parameter' => $linkData,
-			'returnLast' => true
-		);
+    protected function renderTypoLink($linkData)
+    {
+        $cObj = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer');    /** @var \TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer $cObj */
+        $configuration = array(
+            'parameter' => $linkData,
+            'returnLast' => true
+        );
 
-		return $cObj->typolink('', $configuration);
-	}
+        return $cObj->typolink('', $configuration);
+    }
 }

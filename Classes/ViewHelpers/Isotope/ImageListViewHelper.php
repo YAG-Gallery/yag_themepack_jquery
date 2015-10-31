@@ -29,100 +29,98 @@
  * @author Daniel Lienert <daniel@lienert.cc>
  * @package ViewHelpers
  */
-class Tx_YagThemepackJquery_ViewHelpers_Isotope_ImageListViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper {
-	
-	
-	/**
-	 * @var Tx_Yag_Domain_Configuration_ConfigurationBuilder
-	 */
-	protected $configurationBuilder;
-	
-	
-	
-	/**
-	 * (non-PHPdoc)
-	 * @see Classes/Core/ViewHelper/Tx_Fluid_Core_ViewHelper_AbstractTagBasedViewHelper::initialize()
-	 */
-	public function initialize() {
-		parent::initialize();
-		$this->configurationBuilder =  Tx_Yag_Domain_Configuration_ConfigurationBuilderFactory::getInstance();
-	}
-	
+class Tx_YagThemepackJquery_ViewHelpers_Isotope_ImageListViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper
+{
+    /**
+     * @var Tx_Yag_Domain_Configuration_ConfigurationBuilder
+     */
+    protected $configurationBuilder;
+    
+    
+    
+    /**
+     * (non-PHPdoc)
+     * @see Classes/Core/ViewHelper/Tx_Fluid_Core_ViewHelper_AbstractTagBasedViewHelper::initialize()
+     */
+    public function initialize()
+    {
+        parent::initialize();
+        $this->configurationBuilder =  Tx_Yag_Domain_Configuration_ConfigurationBuilderFactory::getInstance();
+    }
+    
 
-	/**
-	 * Renders the crossSlide call
-	 *
-	 * @param string $identifier
-	 * @param Tx_PtExtlist_Domain_Model_List_ListData $listData
-	 */
-	public function render(Tx_PtExtlist_Domain_Model_List_ListData $listData) {
+    /**
+     * Renders the crossSlide call
+     *
+     * @param string $identifier
+     * @param Tx_PtExtlist_Domain_Model_List_ListData $listData
+     */
+    public function render(Tx_PtExtlist_Domain_Model_List_ListData $listData)
+    {
+        $output = '';
 
-		$output = '';
+        foreach ($listData as $row) {
+            $image = $row->getCell('image')->getValue(); /** @var Tx_YAG_Domain_Model_Item $image  */
 
-		foreach($listData as $row) {
+            $cleanTagNames = array();
+            if (array($image->getTags())) {
+                foreach ($image->getTags() as $tag) {
+                    $cleanTagNames[] = str_replace(array('.', ' '), '', $tag->getName());
+                }
+            }
 
-			$image = $row->getCell('image')->getValue(); /** @var Tx_YAG_Domain_Model_Item $image  */
+            $resolutionName = $this->getRandomResolutionName();
+            $resolutionHeight = $this->getResolutionHeight($resolutionName, $image);
 
-			$cleanTagNames = array();
-			if(array($image->getTags())) {
-				foreach($image->getTags() as $tag) {
-					$cleanTagNames[] = str_replace(array('.', ' '), '',$tag->getName());
-				}
-			}
+            $this->templateVariableContainer->add('image', $image);
+            $this->templateVariableContainer->add('resolutionName', $resolutionName);
+            $this->templateVariableContainer->add('resolutionHeight', $resolutionHeight);
+            $this->templateVariableContainer->add('tags', implode(' ', $cleanTagNames));
 
-			$resolutionName = $this->getRandomResolutionName();
-			$resolutionHeight = $this->getResolutionHeight($resolutionName, $image);
+            $output .= $this->renderChildren();
 
-			$this->templateVariableContainer->add('image', $image);
-			$this->templateVariableContainer->add('resolutionName', $resolutionName);
-			$this->templateVariableContainer->add('resolutionHeight', $resolutionHeight);
-			$this->templateVariableContainer->add('tags', implode(' ', $cleanTagNames));
+            $this->templateVariableContainer->remove('tags');
+            $this->templateVariableContainer->remove('image');
+            $this->templateVariableContainer->remove('resolutionName');
+            $this->templateVariableContainer->remove('resolutionHeight');
+        }
 
-			$output .= $this->renderChildren();
-
-			$this->templateVariableContainer->remove('tags');
-			$this->templateVariableContainer->remove('image');
-			$this->templateVariableContainer->remove('resolutionName');
-			$this->templateVariableContainer->remove('resolutionHeight');
-
-		}
-
-		return $output;
-
-	}
+        return $output;
+    }
 
 
-	/**
-	 * @param $resolutionName
-	 * @param Tx_YAG_Domain_Model_Item $image
-	 * @return int
-	 */
-	protected function getResolutionHeight($resolutionName, Tx_YAG_Domain_Model_Item $image) {
-		$resolutionConfig = $this->configurationBuilder->buildThemeConfiguration()->getResolutionConfigCollection()->getResolutionConfig($resolutionName);
-		$resolutionImage = $image->getResolutionByConfig($resolutionConfig);
-		$resolutionHeight = $resolutionImage->getHeight();
+    /**
+     * @param $resolutionName
+     * @param Tx_YAG_Domain_Model_Item $image
+     * @return int
+     */
+    protected function getResolutionHeight($resolutionName, Tx_YAG_Domain_Model_Item $image)
+    {
+        $resolutionConfig = $this->configurationBuilder->buildThemeConfiguration()->getResolutionConfigCollection()->getResolutionConfig($resolutionName);
+        $resolutionImage = $image->getResolutionByConfig($resolutionConfig);
+        $resolutionHeight = $resolutionImage->getHeight();
 
-		return $resolutionHeight;
-	}
+        return $resolutionHeight;
+    }
 
 
-	/**
-	 * @return int|string
-	 */
-	protected function getRandomResolutionName() {
+    /**
+     * @return int|string
+     */
+    protected function getRandomResolutionName()
+    {
+        $weightArray = $this->configurationBuilder->getSettings('blockSizeWeighting');
 
-		$weightArray = $this->configurationBuilder->getSettings('blockSizeWeighting');
+        $maxScore = 0;
+        $selectedResolution = '';
 
-		$maxScore = 0;
-		$selectedResolution = '';
-
-		foreach($weightArray as $resolution => $weight) {
-			$rand = rand(0,$weight);
-			if($rand > $maxScore) {
-				$selectedResolution = $resolution;
-				$maxScore = $rand;
-			}
-		}
-		return $selectedResolution;
-	}
+        foreach ($weightArray as $resolution => $weight) {
+            $rand = rand(0, $weight);
+            if ($rand > $maxScore) {
+                $selectedResolution = $resolution;
+                $maxScore = $rand;
+            }
+        }
+        return $selectedResolution;
+    }
 }

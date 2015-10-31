@@ -29,55 +29,53 @@
  * @author Daniel Lienert <daniel@lienert.cc>
  * @package ViewHelpers
  */
-class Tx_YagThemepackJquery_ViewHelpers_Wookmark_TagListViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
-	
-	
-	/**
-	 * @var Tx_Yag_Domain_Repository_TagRepository
-	 */
-	protected $tagRepository;
-	
-	
-	/**
-	 * (non-PHPdoc)
-	 * @see Classes/Core/ViewHelper/Tx_Fluid_Core_ViewHelper_AbstractTagBasedViewHelper::initialize()
-	 */
-	public function initialize() {
-		parent::initialize();
+class Tx_YagThemepackJquery_ViewHelpers_Wookmark_TagListViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
+{
+    /**
+     * @var Tx_Yag_Domain_Repository_TagRepository
+     */
+    protected $tagRepository;
+    
+    
+    /**
+     * (non-PHPdoc)
+     * @see Classes/Core/ViewHelper/Tx_Fluid_Core_ViewHelper_AbstractTagBasedViewHelper::initialize()
+     */
+    public function initialize()
+    {
+        parent::initialize();
 
-		$this->tagRepository = $this->objectManager->get('Tx_Yag_Domain_Repository_TagRepository');
-	}
-	
+        $this->tagRepository = $this->objectManager->get('Tx_Yag_Domain_Repository_TagRepository');
+    }
+    
 
-	/**
-	 * Renders a tagList
-	 *
-	 * @param string $identifier
-	 * @return string
-	 */
-	public function render() {
+    /**
+     * Renders a tagList
+     *
+     * @param string $identifier
+     * @return string
+     */
+    public function render()
+    {
+        $tags = $this->tagRepository->getTagsByCurrentItemListFilterSettings();
+        $tags = array_slice($tags, 0, 10);
 
-		$tags = $this->tagRepository->getTagsByCurrentItemListFilterSettings();
-		$tags = array_slice($tags, 0, 10);
+        $output = '';
 
-		$output = '';
+        foreach ($tags as $tag) {
+            $cleanTagName = str_replace(array('.', ' '), '', $tag['name']);
 
-		foreach($tags as $tag) {
+            $this->templateVariableContainer->add('tagName', $tag['name']);
+            $this->templateVariableContainer->add('cleanTagName', $cleanTagName);
+            $this->templateVariableContainer->add('tagCount', $tag['count']);
 
-			$cleanTagName = str_replace(array('.', ' '), '',$tag['name']);
+            $output .= $this->renderChildren();
 
-			$this->templateVariableContainer->add('tagName', $tag['name']);
-			$this->templateVariableContainer->add('cleanTagName', $cleanTagName);
-			$this->templateVariableContainer->add('tagCount', $tag['count']);
+            $this->templateVariableContainer->remove('tagName');
+            $this->templateVariableContainer->remove('cleanTagName');
+            $this->templateVariableContainer->remove('tagCount');
+        }
 
-			$output .= $this->renderChildren();
-
-			$this->templateVariableContainer->remove('tagName');
-			$this->templateVariableContainer->remove('cleanTagName');
-			$this->templateVariableContainer->remove('tagCount');
-
-		}
-
-		return $output;
-	}
+        return $output;
+    }
 }

@@ -29,105 +29,106 @@
  * @author Daniel Lienert <daniel@lienert.cc>
  * @package ViewHelpers
  */
-class Tx_YagThemepackJquery_ViewHelpers_NivoSliderViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper {
-	
-	
-	/**
-	 * @var Tx_Yag_Domain_Configuration_ConfigurationBuilder
-	 */
-	protected $configurationBuilder;
+class Tx_YagThemepackJquery_ViewHelpers_NivoSliderViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper
+{
+    /**
+     * @var Tx_Yag_Domain_Configuration_ConfigurationBuilder
+     */
+    protected $configurationBuilder;
 
 
-	/**
-	 * @var Tx_Yag_Utility_HeaderInclusion
-	 */
-	protected $headerInclusion;
+    /**
+     * @var Tx_Yag_Utility_HeaderInclusion
+     */
+    protected $headerInclusion;
 
 
-	/**
-	 * @var string
-	 */
-	protected $contextIdentifier;
+    /**
+     * @var string
+     */
+    protected $contextIdentifier;
 
 
-	/**
-	 * @var Tx_Yag_Domain_FileSystem_Div
-	 */
-	protected $fileSystemDiv;
-
-
-
-	/**
-	 * @param Tx_Yag_Domain_FileSystem_Div $fileSystemDiv
-	 */
-	public function injectFileSystemDiv(Tx_Yag_Domain_FileSystem_Div $fileSystemDiv) {
-		$this->fileSystemDiv = $fileSystemDiv;
-	}
+    /**
+     * @var Tx_Yag_Domain_FileSystem_Div
+     */
+    protected $fileSystemDiv;
 
 
 
-	/**
-	 * (non-PHPdoc)
-	 * @see Classes/Core/ViewHelper/Tx_Fluid_Core_ViewHelper_AbstractTagBasedViewHelper::initialize()
-	 */
-	public function initialize() {
-		parent::initialize();
-		$this->configurationBuilder =  Tx_Yag_Domain_Configuration_ConfigurationBuilderFactory::getInstance();
-		$this->headerInclusion = $this->objectManager->get('Tx_Yag_Utility_HeaderInclusion');
-		$this->contextIdentifier = $this->configurationBuilder->getContextIdentifier();
-	}
-	
+    /**
+     * @param Tx_Yag_Domain_FileSystem_Div $fileSystemDiv
+     */
+    public function injectFileSystemDiv(Tx_Yag_Domain_FileSystem_Div $fileSystemDiv)
+    {
+        $this->fileSystemDiv = $fileSystemDiv;
+    }
 
-	/**
-	 * @return void
-	 */
-	public function render() {
 
-		$nivoSettings = $this->buildNivoSettings();
-		$nivoSettings = json_encode($nivoSettings);
 
-		$output = '
+    /**
+     * (non-PHPdoc)
+     * @see Classes/Core/ViewHelper/Tx_Fluid_Core_ViewHelper_AbstractTagBasedViewHelper::initialize()
+     */
+    public function initialize()
+    {
+        parent::initialize();
+        $this->configurationBuilder =  Tx_Yag_Domain_Configuration_ConfigurationBuilderFactory::getInstance();
+        $this->headerInclusion = $this->objectManager->get('Tx_Yag_Utility_HeaderInclusion');
+        $this->contextIdentifier = $this->configurationBuilder->getContextIdentifier();
+    }
+    
+
+    /**
+     * @return void
+     */
+    public function render()
+    {
+        $nivoSettings = $this->buildNivoSettings();
+        $nivoSettings = json_encode($nivoSettings);
+
+        $output = '
 				$(function() {
 					  jQuery("#nivoSlider-'.$this->contextIdentifier.'").nivoSlider('.$nivoSettings.');
 				 });
 			';
 
-		$this->addCustomCSS();
-		$this->headerInclusion->addJsInlineCode('nivoSlider-' . $this->configurationBuilder->getContextIdentifier(), $output, TRUE, FALSE, 'footer');
+        $this->addCustomCSS();
+        $this->headerInclusion->addJsInlineCode('nivoSlider-' . $this->configurationBuilder->getContextIdentifier(), $output, true, false, 'footer');
+    }
 
-	}
+    /**
+     * @return void
+     */
+    public function addCustomCSS()
+    {
+        $nivoSettings = $this->configurationBuilder->getJSCompliantSettings('nivoSliderSettings');
 
-	/**
-	 * @return void
-	 */
-	public function addCustomCSS() {
+        if ($nivoSettings['controlNavThumbs'] == true) {
+            $this->headerInclusion->addCSSFile($this->configurationBuilder->getSettings('thumbNavCSS'));
+        } else {
+            $itemCount = $this->templateVariableContainer->get('listData')->getCount();
+            $leftMargin = (int) ($itemCount * 12.5);
 
-		$nivoSettings = $this->configurationBuilder->getJSCompliantSettings('nivoSliderSettings');
-
-		if($nivoSettings['controlNavThumbs'] == true) {
-			$this->headerInclusion->addCSSFile($this->configurationBuilder->getSettings('thumbNavCSS'));
-		} else {
-			$itemCount = $this->templateVariableContainer->get('listData')->getCount();
-			$leftMargin = (int) ($itemCount * 12.5);
-
-			$this->headerInclusion->addCssInlineBlock(
-				'nivoSlider-'.$this->contextIdentifier,
-				'#nivoSlider-'.$this->contextIdentifier.' .nivo-controlNav {
+            $this->headerInclusion->addCssInlineBlock(
+                'nivoSlider-'.$this->contextIdentifier,
+                '#nivoSlider-'.$this->contextIdentifier.' .nivo-controlNav {
 					margin-left: -'.$leftMargin.'px;
 				}'
-			);
-		}
-	}
+            );
+        }
+    }
 
 
-	/**
-	 * @return array
-	 */
-	public function buildNivoSettings() {
-		$nivoSettings = $this->configurationBuilder->getJSCompliantSettings('nivoSliderSettings');
+    /**
+     * @return array
+     */
+    public function buildNivoSettings()
+    {
+        $nivoSettings = $this->configurationBuilder->getJSCompliantSettings('nivoSliderSettings');
 
-		$nivoSettings['controlNavThumbsFromRel'] = true;
+        $nivoSettings['controlNavThumbsFromRel'] = true;
 
-		return $nivoSettings;
-	}
+        return $nivoSettings;
+    }
 }
