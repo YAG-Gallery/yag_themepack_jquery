@@ -44,6 +44,7 @@ plugin.tx_yag.settings.themes.justified {
 		justified {
 			selector = > figure > a, > div:not(.spinner)
 			rowHeight = 180
+			margins = 3
 		}
 	}
 
