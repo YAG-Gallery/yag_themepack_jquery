@@ -79,11 +79,11 @@ class Tx_YagThemepackJquery_ViewHelpers_GalleriaViewHelper extends \TYPO3\CMS\Fl
         $resolutionConfigCollection = $this->configurationBuilder->buildThemeConfiguration()->getResolutionConfigCollection();
 
         $data = array();
+		
+		$pathPrefix = TYPO3_MODE === 'BE' ? '../' : $GLOBALS['TSFE']->absRefPrefix;
 
         foreach ($listData as $row) { /** @var Tx_PtExtlist_Domain_Model_List_Row $row */
             $image = $row->getCell('image')->getValue(); /** @var Tx_Yag_Domain_Model_Item $image */
-
-            $pathPrefix = TYPO3_MODE === 'BE' ? '../' : $GLOBALS['TSFE']->absRefPrefix;
 
             $data[] = array(
                 'thumb' => $pathPrefix . $image->getResolutionByConfig($resolutionConfigCollection->getResolutionConfig('thumb'))->getPath(),
