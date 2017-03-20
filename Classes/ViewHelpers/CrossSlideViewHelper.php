@@ -145,12 +145,13 @@ class Tx_YagThemepackJquery_ViewHelpers_CrossSlideViewHelper extends \TYPO3\CMS\
     protected function buildImageListArray(Tx_PtExtlist_Domain_Model_List_ListData $listData)
     {
         $jsImageArray = array();
-        
+        $pathPrefix = TYPO3_MODE === 'BE' ? '../' : $GLOBALS['TSFE']->absRefPrefix;
+		
         foreach ($listData as $row) { /* @var Tx_PtExtlist_Domain_Model_List_Row $row */
             $imageObject = $row->getCell('image')->getValue(); /* @var $imageObject Tx_Yag_Domain_Model_Item */
-            
+			
             $jsImage = array(
-                'src' => $imageObject->getResolutionByConfig($this->resolutionConfigCollection->getResolutionConfig('medium'))->getPath(),
+                'src' => $pathPrefix . $imageObject->getResolutionByConfig($this->resolutionConfigCollection->getResolutionConfig('medium'))->getPath(),
                 'alt' => $imageObject->getTitle()
             );
             

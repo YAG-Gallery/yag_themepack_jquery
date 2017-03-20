@@ -113,11 +113,12 @@ class Tx_YagThemepackJquery_ViewHelpers_SuperSizedViewHelper extends \TYPO3\CMS\
     protected function buildSlideArray($listData)
     {
         $slides = array();
+		$pathPrefix = TYPO3_MODE === 'BE' ? '../' : $GLOBALS['TSFE']->absRefPrefix;
 
         foreach ($listData as $listRow) {
             $image = $listRow['image']->getValue(); /** @var $image Tx_Yag_Domain_Model_Item */
             $slides[] = array(
-                'image' => $image->getSourceuri(),
+                'image' => $pathPrefix . $image->getSourceuri(),
                 'title' => $image->getTitle(),
             );
         }
